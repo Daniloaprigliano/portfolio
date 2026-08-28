@@ -107,7 +107,8 @@ h1,h2,h3{font-family:inherit;font-weight:600;letter-spacing:-.015em;line-height:
 .ritratto{width:100%;max-width:210px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;justify-self:end;filter:grayscale(.25) contrast(1.05)}
 
 /* ---------- indice ---------- */
-.indice{margin-top:clamp(40px,7vw,70px)}
+.indice{margin-top:clamp(40px,7vw,70px);scroll-margin-top:20px}
+.sezione{scroll-margin-top:20px}
 .indice .titolo-blocco{
   font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grigio-1);padding:8px 0;
 }
@@ -131,9 +132,11 @@ h1,h2,h3{font-family:inherit;font-weight:600;letter-spacing:-.015em;line-height:
 .corpo{display:grid;grid-template-columns:84px 1fr;gap:30px;margin-top:28px}
 .corpo > .interno{min-width:0}
 
-.colonne{columns:3;column-gap:38px}
-.colonne p{margin:0 0 1em;break-inside:avoid-column}
+.colonne{columns:3;column-gap:38px;text-align:justify;hyphens:auto}
+.colonne p{margin:0 0 1em}
 .colonne p:last-child{margin-bottom:0}
+.unica{max-width:64ch}
+.unica p{margin:0}
 
 blockquote{
   margin:0;padding:0;border:0;max-width:38ch;
@@ -191,6 +194,15 @@ blockquote .fonte{
 .scritti .sede{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);text-align:right}
 .scritti .glossa{grid-column:1/-1;margin:0;font-size:15px;line-height:1.5;color:var(--grigio-1);max-width:74ch}
 
+.gruppo-titolo{
+  font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta);
+  margin:34px 0 12px;
+}
+.gruppo-scritti > .gruppo-titolo:first-child{margin-top:0}
+.scritti .sede a{color:var(--ciano-forte);text-decoration:none;border-bottom:1px solid var(--filo)}
+.scritti .sede a:hover{border-bottom-color:var(--ciano-forte)}
+.scritti .titolo em{font-style:italic}
+
 /* ---------- profilo ---------- */
 .profilo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 44px;border-top:1px solid var(--inchiostro);padding-top:26px}
 .blocco h3{font-size:1.0625rem;margin-bottom:12px;color:var(--ciano-forte)}
@@ -207,6 +219,15 @@ footer{
 footer a{color:var(--ciano-forte);text-decoration:none}
 
 a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
+
+.su{display:flex;justify-content:flex-end;margin-top:22px}
+.su a{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 4px;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio-2);
+  text-decoration:none;border-bottom:1px solid transparent;
+}
+.su a:hover{color:var(--ciano-forte);border-bottom-color:var(--ciano-forte)}
+.su svg{width:13px;height:13px;flex:none}
 
 /* ---------- adattamento ---------- */
 @media (max-width:1080px){
@@ -240,7 +261,7 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
 </style>
 </head>
 <body>
-<div class="foglio">
+<div class="foglio" lang="it">
 
   <div class="filo-6"></div>
   <div class="testata">
@@ -266,7 +287,7 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
   </div>
 
   <!-- INDICE -->
-  <nav class="indice" aria-label="Indice">
+  <nav class="indice" id="indice" aria-label="Indice">
     <div class="filo-3"></div>
     <div class="titolo-blocco">Indice</div>
     <div class="filo-1"></div>
@@ -311,11 +332,12 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
           <p>L’esame attivo, persistente e accurato di una credenza o di una presunta forma di sapere, alla luce delle ragioni che la sostengono e delle ulteriori conclusioni a cui tende, costituisce il pensiero riflessivo.</p>
           <span class="fonte">John Dewey, <em>How We Think</em>, 1910</span>
         </blockquote>
-        <div class="colonne" style="margin-top:36px">
+        <div class="unica" style="margin-top:36px">
           <p>Dewey scriveva di libri e di giornali, ma la definizione calza su un testo prodotto da una macchina meglio che su qualunque altra cosa. La domanda per la scuola non è se gli studenti useranno l’intelligenza artificiale: è se qualcuno insegnerà loro a chiedersi su quali ragioni si regge ciò che leggono. Per questo un corso sull’IA non è addestramento a un software, è educazione al giudizio, e i docenti sono i primi a doverne disporre.</p>
         </div>
       </div>
     </div>
+    <div class="su"><a href="#indice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Indice</a></div>
   </section>
 
   <!-- 02 -->
@@ -355,6 +377,7 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
         </div>
       </div>
     </div>
+    <div class="su"><a href="#indice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Indice</a></div>
   </section>
 
   <!-- 03 -->
@@ -394,6 +417,7 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
         <p class="chiusa" style="margin-top:22px">Uso soltanto strumenti gratuiti e accessibili a tutti: un corso che funziona solo con la licenza a pagamento della scuola smette di funzionare quando la licenza scade.</p>
       </div>
     </div>
+    <div class="su"><a href="#indice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Indice</a></div>
   </section>
 
   <!-- 04 -->
@@ -430,6 +454,7 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
         </div>
       </div>
     </div>
+    <div class="su"><a href="#indice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Indice</a></div>
   </section>
 
   <!-- 05 -->
@@ -472,6 +497,7 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
         </blockquote>
       </div>
     </div>
+    <div class="su"><a href="#indice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Indice</a></div>
   </section>
 
   <!-- 06 -->
@@ -480,40 +506,62 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
       <span class="capo-num">06</span>
       <div>
         <h2>Scritti</h2>
-        <p class="occhio">Scrivo di scuola, storia e politica. Il resto della produzione, di taglio accademico, è su Academia.edu.</p>
+        <p class="occhio">Curatele di volumi, ricerca storica e filologica, scrittura pubblica sulla scuola e sulla città.</p>
       </div>
     </div>
     <div class="corpo" style="margin-top:26px">
       <div></div>
       <div class="interno">
-        <ul class="scritti">
-          <li>
-            <span class="titolo">“Oltre il muro e i frammenti. La scuola come infrastruttura civile di Milano”</span>
-            <span class="sede">Centro Studi Caldara · 2026</span>
-            <p class="glossa">Diagnosi della disuguaglianza educativa milanese quartiere per quartiere e agenda in cinque priorità. Nasce dall’incrocio fra l’insegnamento nelle scuole della città, la ricerca del percorso «Hey Milano» e il lavoro del centro studi.</p>
-          </li>
-          <li>
-            <span class="titolo">“L’impresa di Fiume come storia letteraria”</span>
-            <span class="sede">Academia.edu</span>
-          </li>
-          <li>
-            <span class="titolo">“La «régalité» in Watriquet de Couvin”</span>
-            <span class="sede">Academia.edu</span>
-            <p class="glossa">Studio di filologia romanza sul poeta di corte del primo Trecento e sulla rappresentazione della regalità nei suoi <em>dits</em>.</p>
-          </li>
-          <li>
-            <span class="titolo">“Le Fiamme Verdi bresciane: da «il ribelle» alle battaglie del Mortirolo”</span>
-            <span class="sede">Academia.edu</span>
-            <p class="glossa">Ricerca sulla Resistenza bresciana, dal foglio clandestino cattolico alla guerra partigiana in Valtellina.</p>
-          </li>
-          <li>
-            <span class="titolo">«Il punto cieco»: politica, storia e cultura per chi sa di avere un punto cieco e prova a ridurlo</span>
-            <span class="sede">ilpuntocieco.it</span>
-            <p class="glossa">Testata personale con sei rubriche: politica, storia e memoria, scuola, intelligenza artificiale, cultura e letteratura, mondo. Fra i pezzi più letti, un’anatomia della polemica annuale sull’abolizione della maturità e una difesa della scuola come bene pubblico.</p>
-          </li>
-        </ul>
+        <div class="gruppo-scritti">
+          <div class="gruppo-titolo">Libri e curatele</div>
+          <ul class="scritti">
+            <li>
+              <span class="titolo">Guido Artom, <em>Yiddishe Mamma. Frammenti di vita</em></span>
+              <span class="sede"><a href="https://www.academia.edu/35187608/Guido_Artom_Yiddishe_Mamma_Frammenti_di_vita_A_cura_di_Danilo_Aprigliano_e_Giuditta_Grechi_Prefazione_di_Moni_Ovadia">Leggi la scheda</a></span>
+              <p class="glossa">A cura di Danilo Aprigliano e Giuditta Grechi, prefazione di Moni Ovadia. Il racconto di sé e della propria famiglia di un industriale ebreo piemontese: gli anni della persecuzione razziale e la fuga in Svizzera.</p>
+            </li>
+            <li>
+              <span class="titolo">Mino Martinazzoli, <em>Un’altra idea di Lombardia. Interventi in Consiglio regionale (2000–2005)</em></span>
+              <span class="sede">Senato della Repubblica, 2016</span>
+              <p class="glossa">A cura di Roberto Tagliani e Danilo Aprigliano, prefazione di Enrico Letta. Gli interventi consiliari dell’ultima stagione politica di Martinazzoli; il volume è stato presentato alla Sala degli Atti Parlamentari del Senato il 13 giugno 2016.</p>
+            </li>
+          </ul>
+
+          <div class="gruppo-titolo">Saggi e ricerche</div>
+          <ul class="scritti">
+            <li>
+              <span class="titolo">“Le Fiamme Verdi bresciane: da «il ribelle» alle battaglie del Mortirolo”</span>
+              <span class="sede"><a href="https://www.marsilioeditori.it/libri/scheda-libro/2970041/le-formazioni-autonome-nella-resistenza-italiana">Marsilio, 2020</a></span>
+              <p class="glossa">Con Rolando Anni e Roberto Tagliani, in <em>Le formazioni autonome nella Resistenza italiana</em>, a cura di Tommaso Piffer, Venezia, Marsilio, 2020, pp. 151–167. Dal foglio clandestino cattolico alla guerra partigiana in Valtellina.</p>
+            </li>
+            <li>
+              <span class="titolo">“L’impresa di Fiume come storia letteraria”</span>
+              <span class="sede">Academia.edu</span>
+            </li>
+            <li>
+              <span class="titolo">“La «régalité» in Watriquet de Couvin”</span>
+              <span class="sede">Academia.edu</span>
+              <p class="glossa">Studio di filologia romanza sul poeta di corte del primo Trecento e sulla rappresentazione della regalità nei suoi <em>dits</em>.</p>
+            </li>
+            <li>
+              <span class="titolo">“Oltre il muro e i frammenti. La scuola come infrastruttura civile di Milano”</span>
+              <span class="sede"><a href="https://www.heymilano.it/contributo/oltre-il-muro-e-i-frammenti/">Leggi su heymilano.it</a></span>
+              <p class="glossa">Centro Studi Caldara, 2026. Diagnosi della disuguaglianza educativa milanese quartiere per quartiere e agenda in cinque priorità. Nasce dall’incrocio fra l’insegnamento nelle scuole della città, la ricerca del percorso «Hey Milano» e il lavoro del centro studi.</p>
+            </li>
+          </ul>
+
+          <div class="gruppo-titolo">Scrittura periodica</div>
+          <ul class="scritti">
+            <li>
+              <span class="titolo">«Il punto cieco»: politica, storia e cultura per chi sa di avere un punto cieco e prova a ridurlo</span>
+              <span class="sede"><a href="https://www.ilpuntocieco.it">ilpuntocieco.it</a></span>
+              <p class="glossa">Testata personale con sei rubriche: politica, storia e memoria, scuola, intelligenza artificiale, cultura e letteratura, mondo. Fra i pezzi più letti, un’anatomia della polemica annuale sull’abolizione della maturità e una difesa della scuola come bene pubblico.</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    <div class="su"><a href="#indice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Indice</a></div>
   </section>
 
   <!-- 07 -->
@@ -569,6 +617,7 @@ a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
         </div>
       </div>
     </div>
+    <div class="su"><a href="#indice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Indice</a></div>
   </section>
 
   <footer>
