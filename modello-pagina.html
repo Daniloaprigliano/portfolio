@@ -7,6 +7,9 @@
 <title>Titolo della pagina — Danilo Aprigliano</title>
 <meta name="description" content="Una riga che dice di che cosa parla la pagina.">
 <link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="stile.css">
 </head>
 <!--
@@ -26,7 +29,10 @@
   Le classi che servono quasi sempre:
     .titolo-pagina  .occhiello-pagina  .filo-1  .filo-t
     .progetti > .progetto  (scheda: .capo-p > h3 + .genere, .dove, .testo)
-    .colonne  (testo su due colonne)   .chiusura  (nota finale)
+    .colonne  (testo corrente, colonna unica)   .chiusura  (nota finale)
+    .capo > .capo-num + div > h2 + .occhio   (apre una sezione numerata)
+  Il numero e la data stanno nella colonna di margine a sinistra: è il CSS
+  a metterceli, basta usare .capo-num e .genere.
 -->
 <body>
 <div class="foglio" lang="it">
@@ -34,7 +40,7 @@
   <div class="filo-6"></div>
   <div class="testata">
     <span>Milano</span>
-    <span class="centro">Docente · public historian · sviluppatore web</span>
+    <span class="centro">Docente · public historian · filologo · sviluppatore</span>
     <span>daniloaprigliano.it</span>
   </div>
   <div class="filo-1"></div>
@@ -53,7 +59,7 @@
       <div></div>
       <div class="interno">
         <div class="colonne">
-          <p>Il testo lungo va qui, in paragrafi normali. Su schermo largo si dispone su due colonne da solo.</p>
+          <p>Il testo lungo va qui, in paragrafi normali, in colonna unica sulla misura di lettura.</p>
         </div>
       </div>
     </div>
@@ -67,7 +73,7 @@
           <div class="progetto">
             <div class="capo-p"><h3>Titolo della scheda</h3><span class="genere">quando</span></div>
             <p class="dove">dove · con chi · <a href="https://esempio.it">un link</a></p>
-            <p class="testo">Che cos'è, com'è fatto, perché conta. Una scheda per ogni cosa che merita un titolo suo.</p>
+            <p class="testo">Che cos’è, com’è fatto, perché conta. Una scheda per ogni cosa che merita un titolo suo.</p>
           </div>
         </div>
       </div>
@@ -77,11 +83,8 @@
   <p class="chiusura">Nota di chiusura, se serve.</p>
 
   <footer>
-    <span>Danilo Aprigliano · Milano</span>
-    <span><a href="mailto:danilo@daniloaprigliano.it">danilo@daniloaprigliano.it</a></span>
-    <span><a href="articoli/">Archivio degli articoli</a></span>
-    <span><a href="https://ilpuntocieco.it">«Il punto cieco»</a></span>
-    <span><a href="en/">English</a></span>
+    <span class="colofone">Danilo Aprigliano · Milano · <a href="mailto:danilo@daniloaprigliano.it">danilo@daniloaprigliano.it</a><br>Composto a Milano nel 2026, in Vollkorn e Space Mono. Un foglio di stile solo, nessuno script, nessun cookie.</span>
+    <span class="servizi"><a href="tutto/">Tutto</a> · <a href="curriculum/">Curriculum</a> · <a href="articoli/">Archivio</a><br><a href="https://ilpuntocieco.it">«Il punto cieco»</a> · <a href="en/">English</a></span>
   </footer>
 
 </div>

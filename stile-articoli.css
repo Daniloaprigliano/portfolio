@@ -1,168 +1,190 @@
-/* Sito di Danilo Aprigliano — foglio di stile unico.
-   DIREZIONE A: quotidiano asimmetrico.
-   Sostituisce stile.css. Nessun nome di classe rimosso.
-   Aggiunte, da mirrorare nell'HTML solo se vuoi: le classi opzionali
-   .porta.docente / .storico / .filologo / .sviluppatore e le stesse su .sezione,
-   .progetto, .cifra. Senza di esse funziona tutto: il colore di lastra è
-   assegnato per posizione con :nth-of-type. */
+/* Sito di Danilo Aprigliano — l'archivio e gli articoli.
+   Stessi token e stessi caratteri di stile.css, direzione «Apparato»:
+   qui però la misura è quieta, una colonna sola, perché queste pagine
+   si leggono per intero e non si consultano.
+   Nessun nome di classe rimosso rispetto alla versione precedente. */
 
 /* ============================================================
-   1. TOKEN
+   1. TOKEN — identici a quelli del foglio principale
    ============================================================ */
 :root{
-  /* — paletta: tema chiaro — */
-  --carta:#F3F2F2;
-  --carta-alt:#EAE9E9;
-  --carta-3:#E4E3E2;        /* aggiunto: fondo delle fasce dati */
-  --inchiostro:#201E1D;
-  --grigio-1:#605D5D;
-  --grigio-2:#7D7979;
-  --grigio-3:#9B9797;
-  --ciano:#0A7597;
-  --ciano-forte:#006786;
-  --magenta:#C4005F;
-  --giallo:#EDBB00;
-  --giallo-testo:#8A6B00;   /* aggiunto: il giallo non è mai testo, questo sì */
-  --nero-lastra:#201E1D;    /* aggiunto: la quarta lastra */
-  --filo:rgba(32,30,29,.16);
-  --filo-forte:rgba(32,30,29,.30);
-  --filo-tenue:rgba(32,30,29,.09);  /* aggiunto */
+  --carta:#FBFAF8;
+  --carta-alt:#F2F0EC;
+  --inchiostro:#14120F;
+  --grigio-1:#57524A;
+  --grigio-2:#736C60;
+  --grigio-3:#8F887B;
+  --rubrica:#A81E12;
+  --rubrica-forte:#8C1810;
+  /* i nomi vecchi restano definiti perché non si rompa nulla */
+  --ciano:#A81E12;
+  --ciano-forte:#8C1810;
+  --magenta:#A81E12;
+  --giallo:#A81E12;
+  --nero-lastra:#14120F;
+  --filo:rgba(20,18,15,.14);
+  --filo-forte:rgba(20,18,15,.28);
+  --filo-tenue:rgba(20,18,15,.07);
 
-  /* — tipografia — */
-  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
-  --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --serif:'Vollkorn',Georgia,'Times New Roman',serif;
+  --mono:'Space Mono','SFMono-Regular',Consolas,monospace;
+  --sans:'Space Mono','SFMono-Regular',Consolas,monospace;
 
-  --t-1:12.5px;   /* chrome: testata, nav, date, occhielli */
-  --t-2:14.5px;   /* didascalie */
-  --t-3:15.5px;   /* glosse, testi secondari */
-  --t-4:17px;     /* corpo */
-  --t-5:19px;     /* corpo forte, occhielli di pagina */
-  --t-6:21.5px;   /* sommario */
-  --t-7:25px;     /* titoli di scheda */
-  --t-8:30px;     /* titoli di porta e di sezione piccoli */
-  --t-9:37px;     /* h2 */
-  --t-10:46px;    /* cifre, anni d'archivio */
-  --t-11:58px;    /* titolo di pagina */
+  --t-mono:12px;
+  --t-mono-s:11.5px;
+  --t-1:13px;
+  --t-2:15px;
+  --t-3:17.5px;
+  --t-4:18px;
+  --t-5:20px;
+  --t-6:22px;
 
-  /* — spaziature — */
-  --s-1:4px;  --s-2:8px;  --s-3:12px; --s-4:16px; --s-5:24px;
-  --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+  --s-1:4px;  --s-2:8px;  --s-3:12px; --s-4:16px; --s-5:22px;
+  --s-6:28px; --s-7:40px; --s-8:56px; --s-9:64px; --s-10:96px;
 
-  /* — misura del rigo — */
   --misura:66ch;
-  --rail:132px;             /* la colonna di sinistra, ora piena */
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --carta:#16151A;
-    --carta-alt:#1D1C22;
-    --carta-3:#232228;
-    --inchiostro:#ECEAE7;
-    --grigio-1:#B4B0AC;
-    --grigio-2:#948F8B;
-    --grigio-3:#78736F;
-    --ciano:#5CC6E8;
-    --ciano-forte:#8AD8F2;
-    --magenta:#FF74AC;
-    --giallo:#F0C942;
-    --giallo-testo:#EBC64B;
-    --nero-lastra:#ECEAE7;
-    --filo:rgba(236,234,231,.18);
-    --filo-forte:rgba(236,234,231,.34);
-    --filo-tenue:rgba(236,234,231,.10);
+    --carta:#100F0D;
+    --carta-alt:#1A1815;
+    --inchiostro:#EDE8DE;
+    --grigio-1:#B0A899;
+    --grigio-2:#8B8375;
+    --grigio-3:#736C60;
+    --rubrica:#F0705F;
+    --rubrica-forte:#F58C7D;
+    --ciano:#F0705F;
+    --ciano-forte:#F58C7D;
+    --magenta:#F0705F;
+    --giallo:#F0705F;
+    --nero-lastra:#EDE8DE;
+    --filo:rgba(237,232,222,.16);
+    --filo-forte:rgba(237,232,222,.32);
+    --filo-tenue:rgba(237,232,222,.08);
   }
 }
 :root[data-theme="dark"]{
-  --carta:#16151A;
-  --carta-alt:#1D1C22;
-  --carta-3:#232228;
-  --inchiostro:#ECEAE7;
-  --grigio-1:#B4B0AC;
-  --grigio-2:#948F8B;
-  --grigio-3:#78736F;
-  --ciano:#5CC6E8;
-  --ciano-forte:#8AD8F2;
-  --magenta:#FF74AC;
-  --giallo:#F0C942;
-  --giallo-testo:#EBC64B;
-  --nero-lastra:#ECEAE7;
-  --filo:rgba(236,234,231,.18);
-  --filo-forte:rgba(236,234,231,.34);
-  --filo-tenue:rgba(236,234,231,.10);
+  --carta:#100F0D;
+  --carta-alt:#1A1815;
+  --inchiostro:#EDE8DE;
+  --grigio-1:#B0A899;
+  --grigio-2:#8B8375;
+  --grigio-3:#736C60;
+  --rubrica:#F0705F;
+  --rubrica-forte:#F58C7D;
+  --ciano:#F0705F;
+  --ciano-forte:#F58C7D;
+  --magenta:#F0705F;
+  --giallo:#F0705F;
+  --nero-lastra:#EDE8DE;
+  --filo:rgba(237,232,222,.16);
+  --filo-forte:rgba(237,232,222,.32);
+  --filo-tenue:rgba(237,232,222,.08);
 }
-
-/* le quattro lastre, assegnate per posizione: nessuna modifica all'HTML */
-.porta:nth-of-type(1),.sezione:nth-of-type(1){--lastra:var(--ciano)}
-.porta:nth-of-type(2),.sezione:nth-of-type(2){--lastra:var(--magenta)}
-.porta:nth-of-type(3),.sezione:nth-of-type(3){--lastra:var(--giallo)}
-.porta:nth-of-type(4),.sezione:nth-of-type(4){--lastra:var(--nero-lastra)}
-.porta:nth-of-type(5),.sezione:nth-of-type(5){--lastra:var(--magenta)}
-.porta:nth-of-type(6),.sezione:nth-of-type(6){--lastra:var(--grigio-2)}
-/* modificatori espliciti, se preferisci scriverli in pagina */
-.docente{--lastra:var(--ciano)}
-.storico{--lastra:var(--magenta)}
-.filologo{--lastra:var(--giallo)}
-.sviluppatore{--lastra:var(--nero-lastra)}
-
 
 *,*::before,*::after{box-sizing:border-box}
 
-/* L'archivio e gli articoli seguono la misura quieta: colonna unica,
-   filetti quasi invisibili, corpo un punto più grande. */
+/* ============================================================
+   2. LA PAGINA
+   ============================================================ */
 body{
   background:var(--carta);color:var(--inchiostro);
-  font-family:var(--serif);font-size:18px;line-height:1.68;
+  font-family:var(--serif);font-size:18px;line-height:1.7;
   margin:0;padding:0 clamp(22px,6vw,64px) var(--s-9);
   -webkit-font-smoothing:antialiased;text-wrap:pretty;
 }
-.foglio{max-width:720px;margin:0 auto;padding-top:var(--s-5)}
+.foglio{max-width:700px;margin:0 auto;padding-top:var(--s-5)}
 .foglio.largo{max-width:760px}
-a{color:var(--ciano-forte)}
+a{color:var(--rubrica);text-decoration:none}
+a:hover{color:var(--rubrica-forte);border-bottom:1px solid currentColor}
+a:focus-visible{outline:2px solid var(--rubrica);outline-offset:3px;border-bottom:0}
+::selection{background:color-mix(in oklab,var(--rubrica) 22%,transparent)}
 
 .testata{
   display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-4);
-  border-bottom:1px solid var(--filo);padding-bottom:var(--s-3);margin-bottom:var(--s-7);
-  font-family:var(--sans);font-size:var(--t-1);font-weight:500;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--grigio-2);
+  border-bottom:1px solid var(--inchiostro);
+  padding-bottom:var(--s-3);margin-bottom:var(--s-8);
+  font-family:var(--mono);font-size:var(--t-mono);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);
 }
-.testata a{color:inherit;text-decoration:none}
-.testata a:hover{color:var(--ciano-forte)}
+.testata a{color:inherit;border:0}
+.testata a:hover{color:var(--rubrica);border:0}
 
-h1{font-size:clamp(30px,4.6vw,46px);font-weight:600;letter-spacing:-.024em;line-height:1.06;margin:0 0 var(--s-3);text-wrap:balance}
-.data{font-family:var(--sans);font-size:var(--t-1);letter-spacing:.13em;text-transform:uppercase;color:var(--grigio-2);margin:0 0 var(--s-7)}
-.occhiello{font-size:var(--t-5);color:var(--grigio-1);margin:0 0 var(--s-7);max-width:56ch}
+h1{
+  font-family:var(--serif);font-size:clamp(28px,4.4vw,40px);font-weight:600;
+  letter-spacing:-.022em;line-height:1.1;margin:0 0 var(--s-4);text-wrap:balance;
+}
+.data{
+  font-family:var(--mono);font-size:var(--t-mono);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);
+  margin:0 0 var(--s-8);
+}
+.occhiello{
+  font-size:var(--t-6);line-height:1.56;color:var(--grigio-1);
+  margin:0 0 var(--s-8);max-width:52ch;
+}
 
+/* ============================================================
+   3. IL TESTO DELL'ARTICOLO
+   ============================================================ */
 article p{margin:0 0 1.15em}
-article h2,article h3{font-weight:600;letter-spacing:-.014em;line-height:1.2;margin:var(--s-7) 0 var(--s-3)}
-article h2{font-size:26px}
+article h2,article h3{
+  font-family:var(--serif);font-weight:600;letter-spacing:-.014em;
+  line-height:1.2;margin:var(--s-8) 0 var(--s-3);text-wrap:balance;
+}
+article h2{font-size:25px}
 article h3{font-size:21px}
 article pre,article code{font-family:inherit;white-space:pre-wrap;font-size:inherit;background:none;padding:0}
-article img{max-width:100%;height:auto;display:block;margin:var(--s-7) auto;filter:grayscale(.95) contrast(1.05)}
-article blockquote{margin:var(--s-7) 0;padding-left:var(--s-5);border-left:2px solid var(--magenta);color:var(--grigio-1);font-style:italic}
+article img{max-width:100%;height:auto;display:block;margin:var(--s-8) auto;filter:grayscale(1) contrast(1.08)}
+article blockquote{
+  margin:var(--s-8) 0;padding-left:var(--s-5);
+  border-left:2px solid var(--rubrica);
+  color:var(--grigio-1);font-style:italic;
+}
 article ul,article ol{margin:0 0 1.15em;padding-left:1.2em}
 article li{margin-bottom:.5em}
+article a{border-bottom:1px solid var(--filo)}
+article a:hover{border-bottom-color:currentColor}
 
 .piede{
-  margin-top:var(--s-8);padding-top:var(--s-4);border-top:1px solid var(--filo);
-  font-family:var(--sans);font-size:var(--t-1);letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);
+  margin-top:var(--s-9);padding-top:var(--s-4);
+  border-top:1px solid var(--inchiostro);
+  font-family:var(--mono);font-size:var(--t-mono-s);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--grigio-2);
 }
 
-/* indice dell'archivio: l'anno resta in alto mentre si scorre */
+/* ============================================================
+   4. L'INDICE DELL'ARCHIVIO
+   L'anno resta in alto mentre si scorre: position:sticky, nessuno script.
+   ============================================================ */
 .anno{
   position:sticky;top:0;z-index:2;background:var(--carta);
-  margin:var(--s-8) 0 0;padding:var(--s-3) 0;
-  font-size:38px;font-weight:600;letter-spacing:-.03em;color:var(--inchiostro);
+  margin:var(--s-9) 0 0;padding:var(--s-3) 0;
+  font-family:var(--serif);font-size:32px;font-weight:600;
+  letter-spacing:-.025em;color:var(--inchiostro);
   font-variant-numeric:lining-nums tabular-nums;
-  border-bottom:4px solid var(--magenta);
+  border-bottom:3px solid var(--inchiostro);
 }
-.voce{padding:var(--s-6) 0;border-top:1px solid var(--filo-tenue);display:block}
-.voce a{font-size:23px;font-weight:600;text-decoration:none;color:var(--inchiostro);letter-spacing:-.014em;line-height:1.24;display:inline-block}
-.voce a:hover{color:var(--ciano-forte)}
-.voce .quando{font-family:var(--sans);font-size:var(--t-1);letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);margin-top:var(--s-2)}
-.voce .estratto{font-size:var(--t-3);color:var(--grigio-1);margin-top:var(--s-2);line-height:1.6}
+.voce{padding:var(--s-6) 0;border-bottom:1px solid var(--filo-tenue);display:block}
+.voce a{
+  font-size:var(--t-6);font-weight:600;color:var(--inchiostro);
+  letter-spacing:-.014em;line-height:1.24;display:inline-block;border:0;
+}
+.voce a:hover{color:var(--rubrica);border:0}
+.voce .quando{
+  font-family:var(--mono);font-size:var(--t-mono-s);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--grigio-2);
+  margin-top:var(--s-2);
+}
+.voce .estratto{
+  font-size:var(--t-3);line-height:1.68;color:var(--grigio-1);
+  margin-top:var(--s-2);max-width:var(--misura);
+}
 
 @media (max-width:660px){
   body{font-size:17.5px}
-  .anno{font-size:30px}
-  .voce a{font-size:21px}
+  .anno{font-size:26px}
+  .voce a{font-size:20px}
+  .occhiello{font-size:19px}
 }
