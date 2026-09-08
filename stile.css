@@ -505,7 +505,8 @@ blockquote .fonte{
 }
 .scritti li:last-child{border-bottom:1px solid var(--filo-forte)}
 .scritti .sede{
-  grid-column:1;grid-row:1;text-align:left;
+  /* occupa le due righe: se va a capo non spinge in basso la glossa */
+  grid-column:1;grid-row:1/span 2;text-align:left;
   font-family:var(--mono);font-size:var(--t-mono-s);
   letter-spacing:.08em;text-transform:uppercase;color:var(--grigio-2);
 }
