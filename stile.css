@@ -1,9 +1,19 @@
 /* Sito di Danilo Aprigliano — foglio di stile unico.
-   Cambiare qui cambia tutte le pagine. */
+   DIREZIONE A: quotidiano asimmetrico.
+   Sostituisce stile.css. Nessun nome di classe rimosso.
+   Aggiunte, da mirrorare nell'HTML solo se vuoi: le classi opzionali
+   .porta.docente / .storico / .filologo / .sviluppatore e le stesse su .sezione,
+   .progetto, .cifra. Senza di esse funziona tutto: il colore di lastra è
+   assegnato per posizione con :nth-of-type. */
 
+/* ============================================================
+   1. TOKEN
+   ============================================================ */
 :root{
+  /* — paletta: tema chiaro — */
   --carta:#F3F2F2;
   --carta-alt:#EAE9E9;
+  --carta-3:#E4E3E2;        /* aggiunto: fondo delle fasce dati */
   --inchiostro:#201E1D;
   --grigio-1:#605D5D;
   --grigio-2:#7D7979;
@@ -12,13 +22,41 @@
   --ciano-forte:#006786;
   --magenta:#C4005F;
   --giallo:#EDBB00;
+  --giallo-testo:#8A6B00;   /* aggiunto: il giallo non è mai testo, questo sì */
+  --nero-lastra:#201E1D;    /* aggiunto: la quarta lastra */
   --filo:rgba(32,30,29,.16);
   --filo-forte:rgba(32,30,29,.30);
+  --filo-tenue:rgba(32,30,29,.09);  /* aggiunto */
+
+  /* — tipografia — */
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
+
+  --t-1:12.5px;   /* chrome: testata, nav, date, occhielli */
+  --t-2:14.5px;   /* didascalie */
+  --t-3:15.5px;   /* glosse, testi secondari */
+  --t-4:17px;     /* corpo */
+  --t-5:19px;     /* corpo forte, occhielli di pagina */
+  --t-6:21.5px;   /* sommario */
+  --t-7:25px;     /* titoli di scheda */
+  --t-8:30px;     /* titoli di porta e di sezione piccoli */
+  --t-9:37px;     /* h2 */
+  --t-10:46px;    /* cifre, anni d'archivio */
+  --t-11:58px;    /* titolo di pagina */
+
+  /* — spaziature — */
+  --s-1:4px;  --s-2:8px;  --s-3:12px; --s-4:16px; --s-5:24px;
+  --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+
+  /* — misura del rigo — */
+  --misura:66ch;
+  --rail:132px;             /* la colonna di sinistra, ora piena */
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --carta:#16151A;
     --carta-alt:#1D1C22;
+    --carta-3:#232228;
     --inchiostro:#ECEAE7;
     --grigio-1:#B4B0AC;
     --grigio-2:#948F8B;
@@ -27,13 +65,17 @@
     --ciano-forte:#8AD8F2;
     --magenta:#FF74AC;
     --giallo:#F0C942;
+    --giallo-testo:#EBC64B;
+    --nero-lastra:#ECEAE7;
     --filo:rgba(236,234,231,.18);
     --filo-forte:rgba(236,234,231,.34);
+    --filo-tenue:rgba(236,234,231,.10);
   }
 }
 :root[data-theme="dark"]{
   --carta:#16151A;
   --carta-alt:#1D1C22;
+  --carta-3:#232228;
   --inchiostro:#ECEAE7;
   --grigio-1:#B4B0AC;
   --grigio-2:#948F8B;
@@ -42,224 +84,555 @@
   --ciano-forte:#8AD8F2;
   --magenta:#FF74AC;
   --giallo:#F0C942;
+  --giallo-testo:#EBC64B;
+  --nero-lastra:#ECEAE7;
   --filo:rgba(236,234,231,.18);
   --filo-forte:rgba(236,234,231,.34);
+  --filo-tenue:rgba(236,234,231,.10);
 }
+
+/* le quattro lastre, assegnate per posizione: nessuna modifica all'HTML */
+.porta:nth-of-type(1),.sezione:nth-of-type(1){--lastra:var(--ciano)}
+.porta:nth-of-type(2),.sezione:nth-of-type(2){--lastra:var(--magenta)}
+.porta:nth-of-type(3),.sezione:nth-of-type(3){--lastra:var(--giallo)}
+.porta:nth-of-type(4),.sezione:nth-of-type(4){--lastra:var(--nero-lastra)}
+.porta:nth-of-type(5),.sezione:nth-of-type(5){--lastra:var(--magenta)}
+.porta:nth-of-type(6),.sezione:nth-of-type(6){--lastra:var(--grigio-2)}
+/* modificatori espliciti, se preferisci scriverli in pagina */
+.docente{--lastra:var(--ciano)}
+.storico{--lastra:var(--magenta)}
+.filologo{--lastra:var(--giallo)}
+.sviluppatore{--lastra:var(--nero-lastra)}
 
 *,*::before,*::after{box-sizing:border-box}
 
 body{
   background:var(--carta);
   color:var(--inchiostro);
-  font-family:'Source Serif 4',Georgia,'Times New Roman',serif;
-  font-size:17px;line-height:1.55;font-weight:400;
-  margin:0;padding:0 clamp(16px,4vw,40px) 80px;
+  font-family:var(--serif);
+  font-size:var(--t-4);line-height:1.62;font-weight:400;
+  margin:0;padding:0 clamp(20px,4vw,44px) var(--s-9);
   -webkit-font-smoothing:antialiased;
   text-wrap:pretty;
+  font-variant-numeric:oldstyle-nums;
 }
+.foglio{max-width:1180px;margin:0 auto;padding-top:var(--s-4)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.016em;line-height:1.1;margin:0;text-wrap:balance}
 
-.foglio{max-width:1280px;margin:0 auto;padding-top:clamp(20px,4vw,32px)}
-
-h1,h2,h3{font-family:inherit;font-weight:600;letter-spacing:-.015em;line-height:1.1;margin:0;text-wrap:balance}
-
-/* ---------- filetti ---------- */
-.filo-6{height:6px;background:var(--inchiostro)}
-.filo-3{height:3px;background:var(--inchiostro)}
+/* ============================================================
+   2. FILETTI
+   ============================================================ */
+.filo-6{height:5px;background:var(--inchiostro)}
+.filo-3{height:2px;background:var(--inchiostro)}
 .filo-1{height:1px;background:var(--inchiostro)}
 .filo-t{height:1px;background:var(--filo)}
 
-/* ---------- testata ---------- */
+/* ============================================================
+   3. TESTATA E NAVIGAZIONE
+   ============================================================ */
 .testata{
-  display:flex;flex-wrap:wrap;gap:6px 32px;justify-content:space-between;align-items:baseline;
-  padding:9px 0;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio-1);
+  display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-6);
+  justify-content:space-between;align-items:baseline;
+  padding:var(--s-3) 0 var(--s-2);
+  font-family:var(--sans);font-size:var(--t-1);font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--grigio-1);
 }
-.testata .centro{color:var(--ciano-forte)}
+.testata .centro{color:var(--ciano-forte);letter-spacing:.11em}
 
+.nome-piccolo{
+  font-size:var(--t-6);font-weight:600;letter-spacing:-.012em;
+  margin:var(--s-5) 0 0;line-height:1.1;
+}
+.nome-piccolo a{color:var(--inchiostro);text-decoration:none}
+.nome-piccolo a:hover{color:var(--ciano-forte)}
+
+/* la nav regge etichette inglesi più lunghe: righe che vanno a capo,
+   nessun troncamento, nessuno scroll orizzontale */
+.navsito{
+  display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-5);
+  margin:var(--s-4) 0 0;padding-bottom:var(--s-2);
+  font-family:var(--sans);font-size:var(--t-1);font-weight:500;
+  letter-spacing:.09em;text-transform:uppercase;
+  border-bottom:1px solid var(--filo);
+}
+.navsito a{
+  color:var(--grigio-1);text-decoration:none;
+  padding:var(--s-2) 0;border-bottom:2px solid transparent;
+  min-height:38px;display:inline-flex;align-items:center;
+}
+.navsito a:hover{color:var(--ciano-forte);border-bottom-color:var(--filo-forte)}
+.navsito a.qui{color:var(--inchiostro);border-bottom-color:var(--magenta)}
+
+/* ============================================================
+   4. HOME: NOME, RITRATTO, SOMMARIO
+   Il nome scende di due terzi; il sommario sale a 21,5 px e diventa
+   il vero attacco. Il ritratto si allinea al filo del sommario.
+   ============================================================ */
 .nome{
-  font-size:clamp(3rem,12.4vw,7.4rem);
-  line-height:.9;letter-spacing:-.032em;font-weight:600;
-  margin:clamp(20px,3.4vw,30px) 0 0;
+  font-size:clamp(2.4rem,6vw,4.35rem);
+  line-height:.96;letter-spacing:-.028em;font-weight:600;
+  margin:var(--s-7) 0 0;max-width:22ch;
 }
-
 .cappello{
-  display:grid;grid-template-columns:1.15fr 1fr .8fr;gap:38px;align-items:start;
-  margin-top:30px;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr) 176px;
+  gap:var(--s-6) var(--s-7);align-items:start;
+  margin-top:var(--s-6);padding-top:var(--s-5);
+  border-top:1px solid var(--filo);
 }
-.cappello .sommario{margin:0;font-size:clamp(1.125rem,1.7vw,1.375rem);line-height:1.44}
-.blocco-contatti{display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.5}
-.etichetta{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta)}
-.blocco-contatti a{color:var(--ciano-forte);text-decoration:none;border-bottom:1px solid var(--filo);padding-bottom:2px;width:fit-content;max-width:100%;overflow-wrap:anywhere}
+.cappello .sommario{
+  margin:0;font-size:var(--t-6);line-height:1.5;max-width:34ch;
+  letter-spacing:-.006em;
+}
+.blocco-contatti{display:flex;flex-direction:column;gap:var(--s-3);font-size:var(--t-3);line-height:1.45}
+.etichetta{
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--magenta);
+}
+.blocco-contatti a{
+  color:var(--ciano-forte);text-decoration:none;
+  border-bottom:1px solid var(--filo);padding-bottom:2px;
+  width:fit-content;max-width:100%;overflow-wrap:anywhere;
+}
 .blocco-contatti a:hover{border-bottom-color:var(--ciano-forte)}
-.qualifiche{color:var(--grigio-1);font-style:italic}
-.ritratto{width:100%;max-width:210px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;justify-self:end;filter:grayscale(.25) contrast(1.05)}
+.qualifiche{color:var(--grigio-1);font-style:italic;font-size:var(--t-2)}
+.ritratto{
+  width:100%;max-width:176px;aspect-ratio:1/1;border-radius:0;
+  object-fit:cover;justify-self:end;
+  filter:grayscale(1) contrast(1.12);
+  border-top:5px solid var(--inchiostro);
+}
 
-/* ---------- indice ---------- */
-.indice{margin-top:clamp(40px,7vw,70px);scroll-margin-top:20px}
-.sezione{scroll-margin-top:20px}
+/* ============================================================
+   5. LE SEI PORTE
+   ::before è un elemento della griglia: diventa la lastra colorata.
+   Tre colonne — lastra, titolo, glossa — tutte e sei di pari peso.
+   ============================================================ */
+.porta{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-2);
+  padding:var(--s-5) 0;border-top:1px solid var(--filo);
+  text-decoration:none;color:inherit;
+}
+.porta::before{
+  content:"";display:block;width:28px;height:5px;
+  background:var(--lastra,var(--ciano));
+}
+.porta-titolo{
+  font-size:var(--t-7);font-weight:600;letter-spacing:-.018em;line-height:1.14;
+  max-width:24ch;
+}
+.porta-testo{font-size:var(--t-3);line-height:1.58;color:var(--grigio-1);max-width:58ch;margin:0}
+.porta:hover .porta-titolo{color:var(--ciano-forte)}
+.porta:hover::before{width:56px;transition:width .18s ease}
+@media(min-width:900px){
+  .porta{
+    grid-template-columns:28px minmax(0,300px) minmax(0,1fr);
+    gap:0 var(--s-6);align-items:start;padding:var(--s-5) 0;
+  }
+  .porta::before{margin-top:.62em;width:28px}
+  .porta:hover::before{width:28px}
+}
+.chiusura{
+  margin:var(--s-7) 0 0;font-size:var(--t-3);color:var(--grigio-2);
+  max-width:64ch;padding-top:var(--s-5);border-top:1px solid var(--filo-tenue);
+}
+
+/* indice storico (.voce): stessa logica, numero con lastra sopra */
+.indice{margin-top:var(--s-8);scroll-margin-top:20px}
 .indice .titolo-blocco{
-  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grigio-1);padding:8px 0;
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--grigio-1);
+  padding:var(--s-2) 0;border-top:2px solid var(--inchiostro);
 }
 .voce{
-  display:grid;grid-template-columns:84px 1fr 340px;gap:30px;align-items:baseline;
-  padding:18px 0;text-decoration:none;color:inherit;
+  display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,320px);
+  gap:0 var(--s-6);align-items:start;
+  padding:var(--s-5) 0;border-top:1px solid var(--filo);
+  text-decoration:none;color:inherit;
 }
 .voce:hover .voce-titolo{color:var(--ciano-forte)}
-.voce-num{font-size:40px;line-height:1;font-weight:600;color:var(--ciano);font-variant-numeric:lining-nums tabular-nums}
+.voce-num{
+  font-family:var(--sans);font-size:var(--t-6);line-height:1;font-weight:600;
+  color:var(--lastra,var(--ciano));font-variant-numeric:lining-nums tabular-nums;
+  border-top:5px solid currentColor;padding-top:var(--s-3);
+}
 .voce.magenta .voce-num{color:var(--magenta)}
-.voce-titolo{font-size:clamp(1.3rem,2.4vw,1.75rem);line-height:1.15;font-weight:600}
-.voce-glossa{font-size:15px;line-height:1.5;color:var(--grigio-1)}
+.voce-titolo{font-size:var(--t-7);line-height:1.15;font-weight:600;max-width:24ch}
+.voce-glossa{font-size:var(--t-3);line-height:1.55;color:var(--grigio-1)}
 
-/* ---------- sezioni ---------- */
-.sezione{margin-top:clamp(56px,9vw,96px)}
-.capo{display:grid;grid-template-columns:84px 1fr;gap:30px;align-items:baseline}
-.capo-num{font-size:40px;line-height:1;font-weight:600;color:var(--ciano);font-variant-numeric:lining-nums tabular-nums}
+/* ============================================================
+   6. PAGINE INTERNE: RITMO
+   La colonna di sinistra non è più vuota: tiene il numero di sezione
+   con la sua lastra. Il buco fra occhiello e primo blocco passa da
+   ~96 px a 48, e il primo blocco entra con un filetto che lo àncora.
+   ============================================================ */
+.titolo-pagina{
+  font-size:clamp(30px,5.2vw,var(--t-11));font-weight:600;
+  letter-spacing:-.026em;line-height:1.02;
+  margin:var(--s-7) 0 var(--s-4);max-width:26ch;
+}
+.occhiello-pagina{
+  font-size:var(--t-5);line-height:1.52;color:var(--grigio-1);
+  max-width:58ch;margin:0 0 var(--s-7);
+  padding-bottom:var(--s-5);border-bottom:1px solid var(--filo);
+}
+.sezione{margin-top:var(--s-9);scroll-margin-top:20px}
+.sezione:first-of-type{margin-top:var(--s-7)}
+.capo{
+  display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
+  gap:0 var(--s-7);align-items:start;
+}
+.capo-num{
+  font-family:var(--sans);font-size:var(--t-6);line-height:1;font-weight:600;
+  color:var(--lastra,var(--ciano));font-variant-numeric:lining-nums tabular-nums;
+  border-top:5px solid currentColor;padding-top:var(--s-3);
+}
 .sezione.magenta .capo-num{color:var(--magenta)}
-.capo h2{font-size:clamp(1.9rem,4.4vw,2.875rem);line-height:1.06;max-width:20ch}
-.capo .occhio{margin:14px 0 0;max-width:62ch;color:var(--grigio-1)}
-.corpo{display:grid;grid-template-columns:84px 1fr;gap:30px;margin-top:28px}
+.capo h2{font-size:clamp(26px,3.6vw,var(--t-9));line-height:1.06;max-width:22ch;margin-top:-.12em}
+.capo .occhio{
+  margin:var(--s-4) 0 0;max-width:56ch;color:var(--grigio-1);
+  font-size:var(--t-3);line-height:1.58;
+}
+.corpo{
+  display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
+  gap:0 var(--s-7);margin-top:var(--s-6);
+}
 .corpo > .interno{min-width:0}
 
-.colonne{columns:3;column-gap:38px;text-align:justify;hyphens:auto}
-.colonne p{margin:0 0 1em}
+.colonne{columns:2;column-gap:var(--s-7);text-align:left;hyphens:auto}
+.colonne p{margin:0 0 1.05em;max-width:52ch}
 .colonne p:last-child{margin-bottom:0}
-.unica{max-width:64ch}
-.unica p{margin:0}
+.unica{max-width:var(--misura)}
+.unica p{margin:0 0 1.05em}
+.unica p:last-child{margin-bottom:0}
 
 blockquote{
-  margin:0;padding:0;border:0;max-width:38ch;
-  font-size:clamp(1.25rem,2.6vw,1.8rem);line-height:1.32;font-style:italic;color:var(--grigio-1);
+  margin:var(--s-7) 0;padding:0;border:0;max-width:34ch;
+  font-size:clamp(21px,2.4vw,29px);line-height:1.34;font-style:italic;
+  color:var(--inchiostro);
 }
-blockquote p{margin:0 0 14px}
+blockquote p{margin:0 0 var(--s-3)}
 blockquote .fonte{
-  font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-style:normal;color:var(--magenta);
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--magenta);
 }
 
-/* ---------- scheda del corso ---------- */
-.scheda{border-top:1px solid var(--inchiostro);border-bottom:3px solid var(--inchiostro);padding:22px 0 0}
-.scheda-testa{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;align-items:baseline}
-.scheda-testa h3{font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.2;max-width:26ch}
-.scheda-data{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ciano-forte);white-space:nowrap}
-.scheda-ente{margin:10px 0 0;font-size:15px;color:var(--grigio-1)}
-.cifre{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin:26px 0 24px;padding-top:22px;border-top:1px solid var(--filo)}
-.cifra .valore{font-size:34px;line-height:1;font-weight:600;font-variant-numeric:lining-nums tabular-nums}
-.cifra .didascalia{font-size:13px;line-height:1.4;color:var(--grigio-1);margin-top:8px}
-.tappe{margin:0 0 22px;padding:0;list-style:none;border-top:1px solid var(--filo)}
-.tappe li{padding:13px 0;border-bottom:1px solid var(--filo);font-size:15.5px;line-height:1.5}
+/* ============================================================
+   7. LE SCHEDE — la struttura ricorrente del sito
+   Titolo a sinistra, data a destra in sans maiuscolo, riga di contesto,
+   paragrafo su misura di 66 caratteri. Regge paragrafi lunghi perché
+   la misura è chiusa e l'interlinea sale a 1,62.
+   ============================================================ */
+.scheda{
+  border-top:5px solid var(--inchiostro);border-bottom:1px solid var(--filo-forte);
+  padding:var(--s-5) 0 0;
+}
+.scheda-testa{
+  display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-6);
+  justify-content:space-between;align-items:baseline;
+}
+.scheda-testa h3{font-size:var(--t-8);line-height:1.12;max-width:24ch;letter-spacing:-.02em}
+.scheda-data{
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ciano-forte);
+  white-space:nowrap;
+}
+.scheda-ente{
+  margin:var(--s-3) 0 0;font-size:var(--t-2);color:var(--grigio-1);
+  max-width:70ch;line-height:1.5;
+}
+
+/* le cifre: quattro lastre di processo, non quattro numeri in fila */
+.cifre{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:var(--s-5) var(--s-6);
+  margin:var(--s-6) 0 var(--s-6);padding:var(--s-5) 0 0;
+  border-top:1px solid var(--filo);
+}
+.cifra{border-top:5px solid var(--lastra,var(--inchiostro));padding-top:var(--s-3)}
+.cifra:nth-of-type(1){--lastra:var(--ciano)}
+.cifra:nth-of-type(2){--lastra:var(--magenta)}
+.cifra:nth-of-type(3){--lastra:var(--giallo)}
+.cifra:nth-of-type(4){--lastra:var(--nero-lastra)}
+.cifra .valore{
+  font-size:var(--t-10);line-height:.95;font-weight:600;letter-spacing:-.03em;
+  font-variant-numeric:lining-nums tabular-nums;display:block;
+}
+.cifra .didascalia{
+  font-family:var(--sans);font-size:var(--t-1);line-height:1.45;font-weight:500;
+  color:var(--grigio-1);margin-top:var(--s-3);letter-spacing:.02em;
+  text-transform:none;
+}
+
+.tappe{margin:0 0 var(--s-5);padding:0;list-style:none;border-top:1px solid var(--filo)}
+.tappe li{
+  padding:var(--s-4) 0;border-bottom:1px solid var(--filo-tenue);
+  font-size:var(--t-3);line-height:1.58;max-width:74ch;
+}
 .tappe li:last-child{border-bottom:0}
-.tappe strong{font-weight:600}
-.chiusa{font-size:14px;color:var(--grigio-1);margin:0 0 22px}
+.tappe strong{font-weight:600;color:var(--inchiostro)}
+.chiusa{
+  font-size:var(--t-2);color:var(--grigio-2);margin:0 0 var(--s-5);
+  max-width:74ch;line-height:1.55;
+}
 
-/* ---------- metodo ---------- */
-.passi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--filo);border-top:1px solid var(--inchiostro);border-bottom:1px solid var(--inchiostro)}
-.passo{background:var(--carta);padding:22px 24px 24px}
-.passo .quando{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ciano-forte);margin-bottom:10px}
-.passo h3{font-size:1.125rem;line-height:1.25;margin-bottom:8px}
-.passo p{margin:0;font-size:15px;line-height:1.52;color:var(--grigio-1)}
+/* ============================================================
+   8. METODO E FORMATI
+   ============================================================ */
+.passi{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  background:var(--filo-tenue);
+  border-top:2px solid var(--inchiostro);border-bottom:1px solid var(--filo-forte);
+}
+.passo{background:var(--carta);padding:var(--s-5) var(--s-6) var(--s-6) 0}
+.passo:nth-of-type(even){padding-left:var(--s-6)}
+.passo .quando{
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ciano-forte);
+  margin-bottom:var(--s-3);
+}
+.passo h3{font-size:var(--t-5);line-height:1.22;margin-bottom:var(--s-2)}
+.passo p{margin:0;font-size:var(--t-3);line-height:1.58;color:var(--grigio-1);max-width:46ch}
 
-/* ---------- formati ---------- */
-.formati{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;border-top:1px solid var(--inchiostro);padding-top:24px}
-.formato .genere{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--magenta);margin-bottom:10px}
-.formato h3{font-size:1.25rem;line-height:1.2;margin-bottom:10px}
-.formato p{margin:0;font-size:15px;line-height:1.5;color:var(--grigio-1)}
-.formato .durata{margin-top:14px;padding-top:12px;border-top:1px solid var(--filo);font-size:13px;color:var(--grigio-2)}
+.formati{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-7);
+  border-top:2px solid var(--inchiostro);padding-top:var(--s-5);
+}
+.formato .genere{
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);
+  margin-bottom:var(--s-3);
+}
+.formato h3{font-size:var(--t-6);line-height:1.16;margin-bottom:var(--s-3)}
+.formato p{margin:0;font-size:var(--t-3);line-height:1.58;color:var(--grigio-1)}
+.formato .durata{
+  margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px solid var(--filo);
+  font-family:var(--sans);font-size:var(--t-1);letter-spacing:.09em;
+  text-transform:uppercase;color:var(--grigio-2);
+}
 
-/* ---------- progetti ---------- */
-.progetti{border-top:1px solid var(--inchiostro)}
-.progetto{padding:24px 0;border-bottom:1px solid var(--filo)}
-.progetto:last-child{border-bottom:1px solid var(--inchiostro)}
-.progetto .capo-p{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;justify-content:space-between}
-.progetto h3{font-size:1.375rem;line-height:1.2}
-.progetto .genere{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ciano-forte);white-space:nowrap}
-.progetto .dove{font-size:13px;color:var(--grigio-2);margin:6px 0 0}
+/* ============================================================
+   9. PROGETTI — scheda con lastra verticale
+   ::before è il primo elemento della griglia; i figli reali stanno in col. 2.
+   ============================================================ */
+.progetti{border-top:5px solid var(--inchiostro)}
+.progetto{
+  display:grid;grid-template-columns:5px minmax(0,1fr);gap:0 var(--s-5);
+  padding:var(--s-5) 0 var(--s-6);border-bottom:1px solid var(--filo);
+}
+.progetto::before{
+  content:"";grid-column:1;grid-row:1/-1;
+  background:var(--lastra,var(--ciano-forte));
+}
+.progetto > *{grid-column:2}
+.progetto:nth-of-type(4n+1){--lastra:var(--ciano)}
+.progetto:nth-of-type(4n+2){--lastra:var(--magenta)}
+.progetto:nth-of-type(4n+3){--lastra:var(--giallo)}
+.progetto:nth-of-type(4n+4){--lastra:var(--nero-lastra)}
+.progetto:last-child{border-bottom:2px solid var(--inchiostro)}
+.progetto .capo-p{
+  display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-5);
+  align-items:baseline;justify-content:space-between;
+}
+.progetto h3{font-size:var(--t-7);line-height:1.14;letter-spacing:-.018em;max-width:26ch}
+.progetto .genere{
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ciano-forte);
+  white-space:nowrap;
+}
+.progetto .dove{
+  font-family:var(--sans);font-size:var(--t-1);letter-spacing:.03em;
+  color:var(--grigio-2);margin:var(--s-3) 0 0;
+}
 .progetto .dove a{color:var(--ciano-forte);text-decoration:none;border-bottom:1px solid var(--filo)}
 .progetto .dove a:hover{border-bottom-color:var(--ciano-forte)}
-.progetto p.testo{margin:12px 0 0;font-size:15.5px;line-height:1.55;color:var(--grigio-1);max-width:78ch}
+.progetto p.testo{
+  margin:var(--s-3) 0 0;font-size:var(--t-4);line-height:1.62;
+  color:var(--grigio-1);max-width:var(--misura);
+}
 .progetto p.testo a{color:var(--ciano-forte);text-decoration:none;border-bottom:1px solid var(--filo)}
 .progetto p.testo a:hover{border-bottom-color:var(--ciano-forte)}
 
-/* ---------- scritti ---------- */
-.scritti{margin:0;padding:0;list-style:none;border-top:1px solid var(--inchiostro)}
-.scritti li{padding:20px 0;border-bottom:1px solid var(--filo);display:grid;grid-template-columns:1fr 180px;gap:8px 28px;align-items:baseline}
-.scritti li:last-child{border-bottom:1px solid var(--inchiostro)}
-.scritti .titolo{font-size:1.0625rem;line-height:1.4;font-weight:600}
-.scritti .sede{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);text-align:right}
-.scritti .glossa{grid-column:1/-1;margin:0;font-size:15px;line-height:1.5;color:var(--grigio-1);max-width:74ch}
-
-.gruppo-titolo{
-  font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta);
-  margin:34px 0 12px;
+/* ============================================================
+   10. SCRITTI E ARCHIVIO
+   L'anno resta appiccicato in alto mentre si scorre: position:sticky,
+   nessun JavaScript.
+   ============================================================ */
+.scritti{margin:0;padding:0;list-style:none;border-top:2px solid var(--inchiostro)}
+.scritti li{
+  padding:var(--s-5) 0;border-bottom:1px solid var(--filo-tenue);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,180px);
+  gap:var(--s-2) var(--s-6);align-items:baseline;
 }
-.gruppo-scritti > .gruppo-titolo:first-child{margin-top:0}
+.scritti li:last-child{border-bottom:1px solid var(--filo-forte)}
+.scritti .titolo{font-size:var(--t-5);line-height:1.32;font-weight:600;letter-spacing:-.012em}
+.scritti .sede{
+  font-family:var(--sans);font-size:var(--t-1);letter-spacing:.09em;
+  text-transform:uppercase;color:var(--grigio-2);text-align:right;
+}
+.scritti .glossa{
+  grid-column:1/-1;margin:0;font-size:var(--t-3);line-height:1.58;
+  color:var(--grigio-1);max-width:var(--misura);
+}
 .scritti .titolo a{color:inherit;text-decoration:none;border-bottom:1px solid var(--filo-forte)}
 .scritti .titolo a:hover{color:var(--ciano-forte);border-bottom-color:var(--ciano-forte)}
 .scritti .titolo em{font-style:italic}
 
-/* ---------- profilo ---------- */
-.profilo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 44px;border-top:1px solid var(--inchiostro);padding-top:26px}
-.blocco h3{font-size:1.0625rem;margin-bottom:12px;color:var(--ciano-forte)}
+.gruppo-titolo{
+  position:sticky;top:0;z-index:2;
+  background:var(--carta);
+  font-size:var(--t-10);font-weight:600;letter-spacing:-.03em;
+  font-variant-numeric:lining-nums tabular-nums;
+  color:var(--inchiostro);text-transform:none;
+  margin:var(--s-8) 0 0;padding:var(--s-3) 0 var(--s-3);
+  border-bottom:5px solid var(--magenta);
+}
+.gruppo-scritti > .gruppo-titolo:first-child{margin-top:0}
+.gruppo-scritti + .gruppo-scritti{margin-top:0}
+
+/* ============================================================
+   11. PROFILO
+   ============================================================ */
+.profilo{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:var(--s-7) var(--s-8);
+  border-top:5px solid var(--inchiostro);padding-top:var(--s-5);
+}
+.blocco h3{
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:var(--s-4);color:var(--ciano-forte);
+}
 .blocco ul{margin:0;padding:0;list-style:none}
-.blocco li{font-size:15px;line-height:1.5;color:var(--grigio-1);padding:8px 0;border-bottom:1px solid var(--filo)}
+.blocco li{
+  font-size:var(--t-3);line-height:1.55;color:var(--grigio-1);
+  padding:var(--s-3) 0;border-bottom:1px solid var(--filo-tenue);
+}
 .blocco li:last-child{border-bottom:0}
 .blocco li strong{color:var(--inchiostro);font-weight:600}
 
+/* ============================================================
+   12. ARTICOLI D'ARCHIVIO (testo lungo)
+   ============================================================ */
+.foglio > h2,.unica h2{
+  font-size:clamp(23px,2.8vw,29px);line-height:1.14;
+  margin:var(--s-8) 0 var(--s-4);max-width:30ch;
+}
+.unica h3{font-size:var(--t-6);margin:var(--s-7) 0 var(--s-3);max-width:34ch}
+.unica ul,.unica ol{margin:0 0 1.05em;padding-left:1.3em}
+.unica li{margin:0 0 .5em}
+.unica figure{margin:var(--s-7) 0}
+.unica figure img{max-width:100%;height:auto;filter:grayscale(1) contrast(1.08)}
+.unica figcaption{
+  font-family:var(--sans);font-size:var(--t-1);line-height:1.5;
+  color:var(--grigio-2);margin-top:var(--s-3);max-width:52ch;
+}
+.unica a{color:var(--ciano-forte);text-decoration:none;border-bottom:1px solid var(--filo-forte)}
+.unica a:hover{border-bottom-color:var(--ciano-forte)}
+
+/* ============================================================
+   13. PIEDE E SERVIZI
+   ============================================================ */
 footer{
-  margin-top:clamp(56px,8vw,88px);padding-top:16px;border-top:6px solid var(--inchiostro);
-  display:flex;flex-wrap:wrap;gap:6px 28px;justify-content:space-between;
-  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio-1);
+  margin-top:var(--s-9);padding-top:var(--s-4);
+  border-top:5px solid var(--inchiostro);
+  display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-6);justify-content:space-between;
+  font-family:var(--sans);font-size:var(--t-1);font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--grigio-1);
 }
 footer a{color:var(--ciano-forte);text-decoration:none}
+footer a:hover{border-bottom:1px solid var(--ciano-forte)}
 
-a:focus-visible{outline:2px solid var(--ciano);outline-offset:3px}
-
-.su{display:flex;justify-content:flex-end;margin-top:22px}
+.su{display:flex;justify-content:flex-end;margin-top:var(--s-5)}
 .su a{
-  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 4px;
-  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio-2);
+  display:inline-flex;align-items:center;gap:var(--s-2);min-height:44px;padding:var(--s-3) 0;
+  font-family:var(--sans);font-size:var(--t-1);font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--grigio-2);
   text-decoration:none;border-bottom:1px solid transparent;
 }
 .su a:hover{color:var(--ciano-forte);border-bottom-color:var(--ciano-forte)}
-.su svg{width:13px;height:13px;flex:none}
+.su svg{width:12px;height:12px;flex:none}
 
-/* ---------- adattamento ---------- */
+a:focus-visible,.porta:focus-visible,.voce:focus-visible{
+  outline:2px solid var(--ciano);outline-offset:3px;
+}
+::selection{background:color-mix(in oklab,var(--ciano) 22%,transparent)}
+
+/* ============================================================
+   14. ADATTAMENTO — il mobile non è il desktop stretto
+   ============================================================ */
 @media (max-width:1080px){
+  :root{--rail:96px}
   .colonne{columns:2}
-  .voce{grid-template-columns:64px 1fr;gap:22px}
-  .voce-glossa{grid-column:2;font-size:14px}
+  .formati{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-6)}
+  .cappello{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 148px;gap:var(--s-5) var(--s-6)}
+  .voce{grid-template-columns:56px minmax(0,1fr);gap:0 var(--s-5)}
+  .voce-glossa{grid-column:2;margin-top:var(--s-2)}
   .scheda-testa h3{max-width:none}
 }
 @media (max-width:820px){
-  .cappello{grid-template-columns:1fr 1fr;gap:26px}
-  .ritratto{grid-row:1;grid-column:2;justify-self:end;max-width:150px}
-  .cappello .sommario{grid-column:1}
-  .blocco-contatti{grid-column:1/-1}
+  :root{--t-11:44px;--t-10:38px;--t-9:31px}
+  .cappello{grid-template-columns:minmax(0,1fr) 128px;gap:var(--s-5)}
+  .ritratto{grid-row:1;grid-column:2;justify-self:end;max-width:128px}
+  .cappello .sommario{grid-column:1;grid-row:1;max-width:none}
+  .blocco-contatti{grid-column:1/-1;grid-row:2;flex-direction:row;flex-wrap:wrap;gap:var(--s-3) var(--s-6);align-items:baseline}
   .passi,.profilo{grid-template-columns:1fr}
-  .formati{grid-template-columns:1fr;gap:26px}
-  .cifre{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .passo{padding:var(--s-5) 0}
+  .passo:nth-of-type(even){padding-left:0}
+  .formati{grid-template-columns:1fr;gap:var(--s-6)}
+  .cifre{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-5) var(--s-6)}
+  .colonne{columns:1}
+  .colonne p{max-width:var(--misura)}
 }
 @media (max-width:660px){
-  body{font-size:16.5px}
-  .colonne{columns:1}
-  .capo,.corpo{grid-template-columns:1fr;gap:10px}
-  .capo-num{font-size:30px}
-  .voce{grid-template-columns:1fr;gap:6px;padding:16px 0}
-  .voce-num{font-size:26px}
-  .cappello{grid-template-columns:1fr}
-  .ritratto{grid-row:auto;grid-column:1;justify-self:start;max-width:128px}
-  .scritti li{grid-template-columns:1fr}
-  .scritti .sede{text-align:left}
-  .testata{font-size:10.5px;letter-spacing:.12em}
+  body{font-size:17px;padding-bottom:var(--s-8)}
+  :root{--s-9:64px;--s-8:48px;--s-7:36px}
+  /* il rail scompare e i numeri di sezione tornano in linea */
+  .capo,.corpo{grid-template-columns:1fr;gap:0}
+  .capo-num{
+    border-top:0;padding-top:0;font-size:var(--t-2);letter-spacing:.16em;
+    margin-bottom:var(--s-3);display:inline-block;
+    border-bottom:4px solid currentColor;padding-bottom:var(--s-1);
+  }
+  .corpo{margin-top:var(--s-5)}
+  .nome{font-size:clamp(2.2rem,10.5vw,3rem);margin-top:var(--s-6);max-width:none}
+  .cappello{grid-template-columns:1fr;gap:var(--s-5);padding-top:var(--s-4)}
+  .cappello .sommario{font-size:var(--t-5);max-width:none}
+  .ritratto{grid-row:auto;grid-column:1;justify-self:start;max-width:104px}
+  /* le porte sul telefono: lastra e titolo sulla stessa riga, glossa sotto */
+  .porta{
+    grid-template-columns:16px minmax(0,1fr);gap:var(--s-1) var(--s-4);
+    padding:var(--s-5) 0;
+  }
+  .porta::before{width:16px;height:16px;margin-top:.35em}
+  .porta-titolo{font-size:var(--t-6);grid-column:2}
+  .porta-testo{font-size:var(--t-3);grid-column:2;max-width:none}
+  .voce{grid-template-columns:1fr;gap:var(--s-2);padding:var(--s-4) 0}
+  .voce-num{font-size:var(--t-2);border-top:0;border-bottom:4px solid currentColor;padding:0 0 var(--s-1);width:fit-content}
+  .cifre{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-5) var(--s-4)}
+  .cifra .valore{font-size:32px}
+  .scritti li{grid-template-columns:1fr;gap:var(--s-1)}
+  .scritti .sede{text-align:left;order:-1;margin-bottom:var(--s-1)}
+  .gruppo-titolo{font-size:32px}
+  .testata{font-size:11px;letter-spacing:.1em;gap:var(--s-1) var(--s-4)}
+  .navsito{gap:0 var(--s-4);font-size:12px}
+  .progetto{grid-template-columns:3px minmax(0,1fr);gap:0 var(--s-4)}
+  .progetto h3{font-size:var(--t-6)}
+  blockquote{max-width:none;font-size:21px}
 }
-.navsito{display:flex;flex-wrap:wrap;gap:0 18px;margin:14px 0 0;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
-.navsito a{color:var(--grigio-1);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
-.navsito a:hover{color:var(--ciano)}
-.navsito a.qui{color:var(--inchiostro);border-bottom-color:var(--magenta)}
-.titolo-pagina{font-size:clamp(30px,5vw,46px);font-weight:600;letter-spacing:-.02em;line-height:1.05;margin:34px 0 10px}
-.occhiello-pagina{font-size:18px;color:var(--grigio-1);max-width:62ch;margin:0 0 26px}
-.nome-piccolo{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:18px 0 0}
-.nome-piccolo a{color:var(--inchiostro);text-decoration:none}
-.porta{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:20px 0;border-top:1px solid var(--filo);text-decoration:none;color:inherit}
-@media(min-width:820px){.porta{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:0 34px;align-items:start}}
-.porta:hover .porta-titolo{color:var(--ciano)}
-.porta-titolo{font-size:23px;font-weight:600;letter-spacing:-.015em;line-height:1.15}
-.porta-testo{font-size:16px;color:var(--grigio-1);max-width:64ch}
-.chiusura{margin:44px 0 0;font-size:16px;color:var(--grigio-1);max-width:70ch}
+
+/* ============================================================
+   15. AGGIUNTE ALLA DIREZIONE A (Danilo, 9 settembre 2026)
+   Tre cose che si vedono solo sul sito vero:
+   — le pagine senza sezioni numerate non devono tenere il rail vuoto;
+   — il titolino della home sta fuori da .indice;
+   — l'intestazione di gruppo porta titolo e occhiello in colonna 2.
+   ============================================================ */
+.corpo.senza-rail{grid-template-columns:minmax(0,1fr)}
+.capo > div{min-width:0}
+.titolo-blocco{
+  font-family:var(--sans);font-size:var(--t-1);font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--grigio-1);
+  padding:var(--s-2) 0;border-top:2px solid var(--inchiostro);
+}
+.foglio > .titolo-blocco{margin-top:var(--s-7)}

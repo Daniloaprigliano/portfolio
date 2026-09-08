@@ -1,31 +1,168 @@
-/* Archivio degli articoli. */
-:root{--carta:#F3F2F2;--carta-alt:#EAE9E9;--inchiostro:#201E1D;--grigio-1:#605D5D;--grigio-2:#7D7979;--ciano:#0A7597;--magenta:#C4005F;--filo:rgba(32,30,29,.16)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--carta:#16151A;--carta-alt:#1D1C22;--inchiostro:#ECEAE7;--grigio-1:#B4B0AC;--grigio-2:#948F8B;--ciano:#5CC6E8;--magenta:#FF74AC;--filo:rgba(236,234,231,.18)}}
-:root[data-theme="dark"]{--carta:#16151A;--carta-alt:#1D1C22;--inchiostro:#ECEAE7;--grigio-1:#B4B0AC;--grigio-2:#948F8B;--ciano:#5CC6E8;--magenta:#FF74AC;--filo:rgba(236,234,231,.18)}
+/* Sito di Danilo Aprigliano — foglio di stile unico.
+   DIREZIONE A: quotidiano asimmetrico.
+   Sostituisce stile.css. Nessun nome di classe rimosso.
+   Aggiunte, da mirrorare nell'HTML solo se vuoi: le classi opzionali
+   .porta.docente / .storico / .filologo / .sviluppatore e le stesse su .sezione,
+   .progetto, .cifra. Senza di esse funziona tutto: il colore di lastra è
+   assegnato per posizione con :nth-of-type. */
+
+/* ============================================================
+   1. TOKEN
+   ============================================================ */
+:root{
+  /* — paletta: tema chiaro — */
+  --carta:#F3F2F2;
+  --carta-alt:#EAE9E9;
+  --carta-3:#E4E3E2;        /* aggiunto: fondo delle fasce dati */
+  --inchiostro:#201E1D;
+  --grigio-1:#605D5D;
+  --grigio-2:#7D7979;
+  --grigio-3:#9B9797;
+  --ciano:#0A7597;
+  --ciano-forte:#006786;
+  --magenta:#C4005F;
+  --giallo:#EDBB00;
+  --giallo-testo:#8A6B00;   /* aggiunto: il giallo non è mai testo, questo sì */
+  --nero-lastra:#201E1D;    /* aggiunto: la quarta lastra */
+  --filo:rgba(32,30,29,.16);
+  --filo-forte:rgba(32,30,29,.30);
+  --filo-tenue:rgba(32,30,29,.09);  /* aggiunto */
+
+  /* — tipografia — */
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
+
+  --t-1:12.5px;   /* chrome: testata, nav, date, occhielli */
+  --t-2:14.5px;   /* didascalie */
+  --t-3:15.5px;   /* glosse, testi secondari */
+  --t-4:17px;     /* corpo */
+  --t-5:19px;     /* corpo forte, occhielli di pagina */
+  --t-6:21.5px;   /* sommario */
+  --t-7:25px;     /* titoli di scheda */
+  --t-8:30px;     /* titoli di porta e di sezione piccoli */
+  --t-9:37px;     /* h2 */
+  --t-10:46px;    /* cifre, anni d'archivio */
+  --t-11:58px;    /* titolo di pagina */
+
+  /* — spaziature — */
+  --s-1:4px;  --s-2:8px;  --s-3:12px; --s-4:16px; --s-5:24px;
+  --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+
+  /* — misura del rigo — */
+  --misura:66ch;
+  --rail:132px;             /* la colonna di sinistra, ora piena */
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --carta:#16151A;
+    --carta-alt:#1D1C22;
+    --carta-3:#232228;
+    --inchiostro:#ECEAE7;
+    --grigio-1:#B4B0AC;
+    --grigio-2:#948F8B;
+    --grigio-3:#78736F;
+    --ciano:#5CC6E8;
+    --ciano-forte:#8AD8F2;
+    --magenta:#FF74AC;
+    --giallo:#F0C942;
+    --giallo-testo:#EBC64B;
+    --nero-lastra:#ECEAE7;
+    --filo:rgba(236,234,231,.18);
+    --filo-forte:rgba(236,234,231,.34);
+    --filo-tenue:rgba(236,234,231,.10);
+  }
+}
+:root[data-theme="dark"]{
+  --carta:#16151A;
+  --carta-alt:#1D1C22;
+  --carta-3:#232228;
+  --inchiostro:#ECEAE7;
+  --grigio-1:#B4B0AC;
+  --grigio-2:#948F8B;
+  --grigio-3:#78736F;
+  --ciano:#5CC6E8;
+  --ciano-forte:#8AD8F2;
+  --magenta:#FF74AC;
+  --giallo:#F0C942;
+  --giallo-testo:#EBC64B;
+  --nero-lastra:#ECEAE7;
+  --filo:rgba(236,234,231,.18);
+  --filo-forte:rgba(236,234,231,.34);
+  --filo-tenue:rgba(236,234,231,.10);
+}
+
+/* le quattro lastre, assegnate per posizione: nessuna modifica all'HTML */
+.porta:nth-of-type(1),.sezione:nth-of-type(1){--lastra:var(--ciano)}
+.porta:nth-of-type(2),.sezione:nth-of-type(2){--lastra:var(--magenta)}
+.porta:nth-of-type(3),.sezione:nth-of-type(3){--lastra:var(--giallo)}
+.porta:nth-of-type(4),.sezione:nth-of-type(4){--lastra:var(--nero-lastra)}
+.porta:nth-of-type(5),.sezione:nth-of-type(5){--lastra:var(--magenta)}
+.porta:nth-of-type(6),.sezione:nth-of-type(6){--lastra:var(--grigio-2)}
+/* modificatori espliciti, se preferisci scriverli in pagina */
+.docente{--lastra:var(--ciano)}
+.storico{--lastra:var(--magenta)}
+.filologo{--lastra:var(--giallo)}
+.sviluppatore{--lastra:var(--nero-lastra)}
+
+
 *,*::before,*::after{box-sizing:border-box}
-body{background:var(--carta);color:var(--inchiostro);font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:17px;line-height:1.6;margin:0;padding:0 clamp(16px,4vw,40px) 80px;-webkit-font-smoothing:antialiased;text-wrap:pretty}
-.foglio{max-width:720px;margin:0 auto;padding-top:clamp(20px,4vw,32px)}
-.largo{max-width:900px}
-a{color:var(--ciano)}
-.testata{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:3px solid var(--inchiostro);padding-bottom:10px;margin-bottom:38px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio-1)}
+
+/* L'archivio e gli articoli seguono la misura quieta: colonna unica,
+   filetti quasi invisibili, corpo un punto più grande. */
+body{
+  background:var(--carta);color:var(--inchiostro);
+  font-family:var(--serif);font-size:18px;line-height:1.68;
+  margin:0;padding:0 clamp(22px,6vw,64px) var(--s-9);
+  -webkit-font-smoothing:antialiased;text-wrap:pretty;
+}
+.foglio{max-width:720px;margin:0 auto;padding-top:var(--s-5)}
+.foglio.largo{max-width:760px}
+a{color:var(--ciano-forte)}
+
+.testata{
+  display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-4);
+  border-bottom:1px solid var(--filo);padding-bottom:var(--s-3);margin-bottom:var(--s-7);
+  font-family:var(--sans);font-size:var(--t-1);font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--grigio-2);
+}
 .testata a{color:inherit;text-decoration:none}
-.testata a:hover{color:var(--ciano)}
-h1{font-size:clamp(30px,5vw,42px);font-weight:600;letter-spacing:-.02em;line-height:1.08;margin:0 0 10px;text-wrap:balance}
-.data{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);margin:0 0 34px}
-article p{margin:0 0 18px}
-article h2,article h3{font-weight:600;letter-spacing:-.01em;line-height:1.2;margin:34px 0 12px}
-article h2{font-size:24px}article h3{font-size:20px}
-article img{max-width:100%;height:auto;display:block;margin:26px auto;border:1px solid var(--filo)}
-article blockquote{margin:26px 0;padding-left:20px;border-left:3px solid var(--magenta);color:var(--grigio-1);font-style:italic}
-article ul,article ol{margin:0 0 18px;padding-left:22px}
-article li{margin-bottom:8px}
+.testata a:hover{color:var(--ciano-forte)}
+
+h1{font-size:clamp(30px,4.6vw,46px);font-weight:600;letter-spacing:-.024em;line-height:1.06;margin:0 0 var(--s-3);text-wrap:balance}
+.data{font-family:var(--sans);font-size:var(--t-1);letter-spacing:.13em;text-transform:uppercase;color:var(--grigio-2);margin:0 0 var(--s-7)}
+.occhiello{font-size:var(--t-5);color:var(--grigio-1);margin:0 0 var(--s-7);max-width:56ch}
+
+article p{margin:0 0 1.15em}
+article h2,article h3{font-weight:600;letter-spacing:-.014em;line-height:1.2;margin:var(--s-7) 0 var(--s-3)}
+article h2{font-size:26px}
+article h3{font-size:21px}
 article pre,article code{font-family:inherit;white-space:pre-wrap;font-size:inherit;background:none;padding:0}
-.piede{margin-top:56px;padding-top:16px;border-top:1px solid var(--filo);font-size:14px;color:var(--grigio-2)}
-.piede a{color:var(--ciano)}
-.anno{margin:44px 0 10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta)}
-.voce{padding:14px 0;border-top:1px solid var(--filo)}
-.voce a{font-size:20px;font-weight:600;text-decoration:none;color:var(--inchiostro);letter-spacing:-.01em}
-.voce a:hover{color:var(--ciano)}
-.voce .quando{font-size:13px;color:var(--grigio-2);margin-top:4px}
-.voce .estratto{font-size:15px;color:var(--grigio-1);margin-top:6px}
-.occhiello{font-size:15px;color:var(--grigio-1);margin:0 0 30px}
+article img{max-width:100%;height:auto;display:block;margin:var(--s-7) auto;filter:grayscale(.95) contrast(1.05)}
+article blockquote{margin:var(--s-7) 0;padding-left:var(--s-5);border-left:2px solid var(--magenta);color:var(--grigio-1);font-style:italic}
+article ul,article ol{margin:0 0 1.15em;padding-left:1.2em}
+article li{margin-bottom:.5em}
+
+.piede{
+  margin-top:var(--s-8);padding-top:var(--s-4);border-top:1px solid var(--filo);
+  font-family:var(--sans);font-size:var(--t-1);letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);
+}
+
+/* indice dell'archivio: l'anno resta in alto mentre si scorre */
+.anno{
+  position:sticky;top:0;z-index:2;background:var(--carta);
+  margin:var(--s-8) 0 0;padding:var(--s-3) 0;
+  font-size:38px;font-weight:600;letter-spacing:-.03em;color:var(--inchiostro);
+  font-variant-numeric:lining-nums tabular-nums;
+  border-bottom:4px solid var(--magenta);
+}
+.voce{padding:var(--s-6) 0;border-top:1px solid var(--filo-tenue);display:block}
+.voce a{font-size:23px;font-weight:600;text-decoration:none;color:var(--inchiostro);letter-spacing:-.014em;line-height:1.24;display:inline-block}
+.voce a:hover{color:var(--ciano-forte)}
+.voce .quando{font-family:var(--sans);font-size:var(--t-1);letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);margin-top:var(--s-2)}
+.voce .estratto{font-size:var(--t-3);color:var(--grigio-1);margin-top:var(--s-2);line-height:1.6}
+
+@media (max-width:660px){
+  body{font-size:17.5px}
+  .anno{font-size:30px}
+  .voce a{font-size:21px}
+}
