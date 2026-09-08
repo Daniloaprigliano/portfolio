@@ -148,8 +148,8 @@ em{font-style:italic}
    il rosso della rubrica resta l'unico colore della pagina */
 .ritratto{
   width:64px;height:64px;max-width:64px;aspect-ratio:1/1;
-  border-radius:0;object-fit:cover;justify-self:start;
-  background:var(--carta-alt);
+  border-radius:50%;object-fit:cover;justify-self:start;
+  background:none;
   filter:grayscale(1) contrast(1.06);
 }
 @media (prefers-color-scheme: dark){
