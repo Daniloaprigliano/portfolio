@@ -676,3 +676,91 @@ a:focus-visible,.porta:focus-visible,.voce:focus-visible{
   .ritratto{grid-column:1;grid-row:2;max-width:120px;justify-self:start}
   .blocco-contatti{grid-row:3;flex-direction:column;gap:var(--s-2)}
 }
+
+/* ============================================================
+   17. LA PAGINA DEL CURRICULUM
+   Un curriculum si legge saltando: si cerca un anno, un titolo,
+   un numero. Perciò il numero sta fuori dal rigo, in colonna, e
+   ogni voce è una riga sola finché non la si guarda davvero.
+   ============================================================ */
+.anagrafica-cv{
+  font-family:var(--sans);font-size:var(--t-2);color:var(--grigio-1);
+  margin:0 0 var(--s-6);padding-bottom:var(--s-3);
+  border-bottom:1px solid var(--filo-forte,currentColor);
+  border-bottom-color:var(--grigio-3);
+}
+.anagrafica-cv a{color:inherit}
+.scarica-cv{
+  font-weight:600;color:var(--inchiostro)!important;
+  border-bottom:2px solid var(--ciano);text-decoration:none;
+}
+h2.sezione-cv{
+  font-family:var(--sans);font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  font-size:var(--t-1);color:var(--grigio-1);
+  margin:var(--s-8) 0 var(--s-4);padding-bottom:var(--s-2);
+  border-bottom:1px solid var(--grigio-3);
+}
+h2.sezione-cv:first-of-type{margin-top:0}
+.paragrafo-cv{max-width:var(--misura);margin:0 0 var(--s-4);font-size:var(--t-3);line-height:1.6}
+ul.voci-cv{list-style:none;margin:0;padding:0}
+li.sottotitolo-cv{
+  font-family:var(--sans);font-size:var(--t-2);font-weight:600;color:var(--grigio-1);
+  margin:var(--s-6) 0 var(--s-3);
+}
+li.voce-cv{
+  position:relative;padding-left:52px;margin:0 0 var(--s-5);
+  max-width:calc(var(--misura) + 52px);
+}
+.numero-cv{
+  font-family:var(--sans);font-size:var(--t-2);font-variant-numeric:tabular-nums;
+  color:var(--grigio-2);
+}
+li.voce-cv > .numero-cv{position:absolute;left:0;top:2px}
+.titolo-cv{display:block;font-weight:600;line-height:1.35;font-size:var(--t-4)}
+.dove-cv{display:block;font-size:var(--t-3);color:var(--grigio-1);margin-top:2px}
+.quando-cv{
+  display:block;font-family:var(--sans);font-size:var(--t-1);color:var(--grigio-2);
+  margin-top:var(--s-1);
+}
+ul.dettagli-cv{margin:var(--s-3) 0 0;padding-left:var(--s-4);font-size:var(--t-3);line-height:1.55}
+ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
+@media (max-width:660px){
+  li.voce-cv{padding-left:0}
+  li.voce-cv > .numero-cv{position:static;display:inline-block;margin-right:var(--s-2)}
+  .titolo-cv{display:inline}
+}
+
+/* per la stampa: il curriculum deve poter uscire dalla stampante
+   come esce dal PDF, senza la chrome del sito */
+@media print{
+  .testata,.navsito,.nome-piccolo,.filo-6,footer,.chiusura{display:none!important}
+  body,.foglio{background:#fff;color:#000;max-width:none;padding:0}
+  .titolo-pagina{font-size:34px;margin:0 0 6px}
+  .occhiello-pagina{font-size:11.5px;color:#444}
+  h2.sezione-cv{margin-top:22px;page-break-after:avoid}
+  li.voce-cv{page-break-inside:avoid;margin-bottom:12px}
+  .scarica-cv{display:none}
+  a{color:#000;text-decoration:none}
+}
+
+/* i collegamenti dentro il curriculum e negli occhielli seguono la regola
+   del sito: niente sottolineatura di sistema, un filetto che si accende */
+.chiusura a,
+.occhiello-pagina a,
+.paragrafo-cv a,
+.dettagli-cv a,
+.titolo-cv a,
+.dove-cv a{color:var(--ciano-forte);text-decoration:none;border-bottom:1px solid var(--filo)}
+.chiusura a:hover,
+.occhiello-pagina a:hover,
+.paragrafo-cv a:hover,
+.dettagli-cv a:hover,
+.titolo-cv a:hover,
+.dove-cv a:hover{border-bottom-color:var(--ciano-forte)}
+.link-cv{
+  margin:var(--s-3) 0 0;font-family:var(--sans);font-size:var(--t-1);
+  letter-spacing:.03em;color:var(--grigio-2);
+}
+.link-cv a{color:var(--ciano-forte);text-decoration:none;border-bottom:1px solid var(--filo)}
+.link-cv a:hover{border-bottom-color:var(--ciano-forte)}
+.lingua-voce{font-size:.78em;letter-spacing:.08em;color:var(--grigio-2);vertical-align:.08em}
