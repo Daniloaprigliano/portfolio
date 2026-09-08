@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Titolo della pagina — Danilo Aprigliano</title>
+<meta name="description" content="Una riga che dice di che cosa parla la pagina.">
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="stile.css">
+</head>
+<!--
+  MODELLO PER LE PAGINE DI SERVIZIO
+  ---------------------------------
+  Per creare una pagina nuova (un progetto didattico, una scheda, un materiale
+  per una classe):
+
+  1. copia questo file dentro una cartella con il nome che vuoi nell'indirizzo,
+     rinominandolo index.html — per esempio  la-guerra-fredda/index.html
+     diventa  daniloaprigliano.it/la-guerra-fredda/
+  2. nei percorsi (stile.css, favicon.svg, i link del menù) metti ../ davanti,
+     perché la pagina sta una cartella più in basso;
+  3. togli il meta robots noindex se vuoi che la pagina finisca su Google;
+  4. scrivi il contenuto al posto dei blocchi d'esempio qui sotto.
+
+  Le classi che servono quasi sempre:
+    .titolo-pagina  .occhiello-pagina  .filo-1  .filo-t
+    .progetti > .progetto  (scheda: .capo-p > h3 + .genere, .dove, .testo)
+    .colonne  (testo su due colonne)   .chiusura  (nota finale)
+-->
+<body>
+<div class="foglio" lang="it">
+
+  <div class="filo-6"></div>
+  <div class="testata">
+    <span>Milano</span>
+    <span class="centro">Docente · public historian · sviluppatore web</span>
+    <span>daniloaprigliano.it</span>
+  </div>
+  <div class="filo-1"></div>
+
+  <div class="nome-piccolo"><a href="./">Danilo Aprigliano</a></div>
+  <nav class="navsito" aria-label="Sezioni del sito">
+    <a href="./">Ritratto</a><a href="ia-a-scuola/">IA a scuola</a><a href="public-history/">Public history</a><a href="scrittura/">Scrittura</a><a href="web/">Web</a><a href="impegno/">Impegno civile</a><a href="profilo/">Profilo</a><a href="articoli/">Archivio</a>
+  </nav>
+
+  <h1 class="titolo-pagina">Titolo della pagina</h1>
+  <p class="occhiello-pagina">Una o due righe che dicono di che cosa si tratta e a chi serve. Se è un materiale per una classe, dillo qui.</p>
+  <div class="filo-1"></div>
+
+  <section class="sezione">
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <div class="colonne">
+          <p>Il testo lungo va qui, in paragrafi normali. Su schermo largo si dispone su due colonne da solo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione">
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <div class="progetti">
+          <div class="progetto">
+            <div class="capo-p"><h3>Titolo della scheda</h3><span class="genere">quando</span></div>
+            <p class="dove">dove · con chi · <a href="https://esempio.it">un link</a></p>
+            <p class="testo">Che cos'è, com'è fatto, perché conta. Una scheda per ogni cosa che merita un titolo suo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="chiusura">Nota di chiusura, se serve.</p>
+
+  <footer>
+    <span>Danilo Aprigliano · Milano</span>
+    <span><a href="mailto:danilo@daniloaprigliano.it">danilo@daniloaprigliano.it</a></span>
+    <span><a href="articoli/">Archivio degli articoli</a></span>
+    <span><a href="https://ilpuntocieco.it">«Il punto cieco»</a></span>
+    <span><a href="en/">English</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
