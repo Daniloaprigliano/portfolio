@@ -199,3 +199,40 @@ li:has(> .copertina){position:relative;padding-right:118px}
   li:has(> .copertina){padding-right:0}
   .copertina{position:static;display:block;width:96px;margin:0 0 var(--s-3)}
 }
+
+/* ============================================================
+   LE MARCHE DI PAGINA E GLI SCHEMI
+   Una marca incisa per ogni pagina, in testata; e, dove il sito
+   dal vivo non si può mostrare, uno schema al tratto al posto
+   della schermata. Tutto in SVG, che prende il colore del testo.
+   ============================================================ */
+.marca-testata{
+  float:right;margin:var(--s-2) 0 var(--s-5) var(--s-7);
+  color:var(--grigio-2);opacity:.9;
+}
+.marca-testata svg{display:block}
+
+.schermata-schema .schema{
+  width:100%;height:auto;display:block;
+  border:1px solid var(--filo);
+  padding:var(--s-4) var(--s-3);
+  color:var(--grigio-1);
+  box-sizing:border-box;
+}
+.progetto:hover .schermata-schema .schema{color:var(--rubrica)}
+
+@media (max-width:720px){
+  .marca-testata{margin:0 0 var(--s-4) var(--s-5)}
+  .marca-testata svg{width:48px;height:48px}
+}
+
+/* lo schema come blocco, dove la scheda non ha colonna di destra */
+.schema-blocco{margin:var(--s-5) 0 var(--s-2);max-width:440px}
+.schema-blocco .schema{
+  width:100%;height:auto;display:block;box-sizing:border-box;
+  border:1px solid var(--filo);padding:var(--s-4) var(--s-3);color:var(--grigio-1);
+}
+.schema-blocco figcaption{
+  margin-top:var(--s-2);
+  font-family:var(--mono);font-size:var(--t-mono-s);color:var(--grigio-2);letter-spacing:.02em;
+}
