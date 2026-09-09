@@ -338,3 +338,40 @@ li:has(> .copertina){position:relative;padding-right:118px}
   .porta{transition:transform .25s ease, border-color .25s ease}
   .porta:hover{transform:translateX(3px)}
 }
+
+/* ============================================================
+   LA HOME: le marche accanto alle note, e le quattro cifre
+   Ogni nota porta il segno della pagina a cui conduce, così
+   l'indice si legge anche con gli occhi; le cifre dicono in
+   quattro numeri quello che il testo dice in dieci righe.
+   ============================================================ */
+.marca-nota{
+  position:absolute;left:0;top:calc(var(--s-6) + 30px);
+  width:56px;height:56px;
+  color:var(--grigio-2);opacity:.75;
+  transition:color .25s ease, opacity .25s ease;
+}
+.porta:hover .marca-nota{color:var(--rubrica);opacity:1}
+
+.cifre-home{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  margin:var(--s-8) 0 var(--s-9);
+  padding-left:0;
+  gap:var(--s-6) var(--s-7);
+}
+.cifre-home .cifra{max-width:none;align-items:baseline}
+.cifre-home .valore{font-size:var(--t-7);white-space:nowrap}
+.cifre-home .didascalia{max-width:20ch}
+
+@media (max-width:1100px){
+  .cifre-home{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  .marca-nota{position:static;display:block;width:44px;height:44px;margin:var(--s-3) 0 var(--s-3)}
+  /* sul telefono le cifre stanno in colonna, con il numero sopra:
+     affiancate, il numero e la sua didascalia si toccavano */
+  .cifre-home{grid-template-columns:repeat(2,minmax(0,1fr));padding-left:0;gap:var(--s-5) var(--s-6)}
+  .cifre-home .cifra{flex-direction:column;gap:var(--s-1)}
+  .cifre-home .valore{font-size:var(--t-6)}
+  .cifre-home .didascalia{max-width:none}
+}
