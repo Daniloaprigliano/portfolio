@@ -39,9 +39,64 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="stile.css">
+<link rel="stylesheet" href="stile-home.css">
 <link rel="alternate" hreflang="en" href="en/">
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<symbol id="orn-rosetta" viewBox="-36 -36 72 72">
+  <g fill="none" stroke="currentColor" stroke-width="1.1">
+    <path d="M0.00 -9.00 Q-7.50 -16.50 0.00 -30.00 Q7.50 -16.50 0.00 -9.00 Z M4.50 -7.79 Q1.75 -18.04 15.00 -25.98 Q14.75 -10.54 4.50 -7.79 Z M7.79 -4.50 Q10.54 -14.75 25.98 -15.00 Q18.04 -1.75 7.79 -4.50 Z M9.00 -0.00 Q16.50 -7.50 30.00 -0.00 Q16.50 7.50 9.00 -0.00 Z M7.79 4.50 Q18.04 1.75 25.98 15.00 Q10.54 14.75 7.79 4.50 Z M4.50 7.79 Q14.75 10.54 15.00 25.98 Q1.75 18.04 4.50 7.79 Z M0.00 9.00 Q7.50 16.50 0.00 30.00 Q-7.50 16.50 0.00 9.00 Z M-4.50 7.79 Q-1.75 18.04 -15.00 25.98 Q-14.75 10.54 -4.50 7.79 Z M-7.79 4.50 Q-10.54 14.75 -25.98 15.00 Q-18.04 1.75 -7.79 4.50 Z M-9.00 0.00 Q-16.50 7.50 -30.00 0.00 Q-16.50 -7.50 -9.00 0.00 Z M-7.79 -4.50 Q-18.04 -1.75 -25.98 -15.00 Q-10.54 -14.75 -7.79 -4.50 Z M-4.50 -7.79 Q-14.75 -10.54 -15.00 -25.98 Q-1.75 -18.04 -4.50 -7.79 Z"/><circle r="8.5"/><circle r="4"/>
+    <path d="M0 -4 L4 0 L0 4 L-4 0 Z" fill="currentColor" stroke="none"/>
+  </g>
+</symbol>
+<symbol id="orn-fregio" viewBox="0 -13 624 26" preserveAspectRatio="none">
+  <path d="M0 -11 H624.00 M0 11 H624.00" fill="none" stroke="currentColor" stroke-width=".9"/>
+  <path d="M13.00 -5.50 L18.50 0 L13.00 5.50 L7.50 0 Z M65.00 -5.50 L70.50 0 L65.00 5.50 L59.50 0 Z M117.00 -5.50 L122.50 0 L117.00 5.50 L111.50 0 Z M169.00 -5.50 L174.50 0 L169.00 5.50 L163.50 0 Z M221.00 -5.50 L226.50 0 L221.00 5.50 L215.50 0 Z M273.00 -5.50 L278.50 0 L273.00 5.50 L267.50 0 Z M325.00 -5.50 L330.50 0 L325.00 5.50 L319.50 0 Z M377.00 -5.50 L382.50 0 L377.00 5.50 L371.50 0 Z M429.00 -5.50 L434.50 0 L429.00 5.50 L423.50 0 Z M481.00 -5.50 L486.50 0 L481.00 5.50 L475.50 0 Z M533.00 -5.50 L538.50 0 L533.00 5.50 L527.50 0 Z M585.00 -5.50 L590.50 0 L585.00 5.50 L579.50 0 Z" fill="currentColor"/>
+  <path d="M39.00 -5.50 L44.50 0 L39.00 5.50 L33.50 0 Z M91.00 -5.50 L96.50 0 L91.00 5.50 L85.50 0 Z M143.00 -5.50 L148.50 0 L143.00 5.50 L137.50 0 Z M195.00 -5.50 L200.50 0 L195.00 5.50 L189.50 0 Z M247.00 -5.50 L252.50 0 L247.00 5.50 L241.50 0 Z M299.00 -5.50 L304.50 0 L299.00 5.50 L293.50 0 Z M351.00 -5.50 L356.50 0 L351.00 5.50 L345.50 0 Z M403.00 -5.50 L408.50 0 L403.00 5.50 L397.50 0 Z M455.00 -5.50 L460.50 0 L455.00 5.50 L449.50 0 Z M507.00 -5.50 L512.50 0 L507.00 5.50 L501.50 0 Z M559.00 -5.50 L564.50 0 L559.00 5.50 L553.50 0 Z M611.00 -5.50 L616.50 0 L611.00 5.50 L605.50 0 Z" fill="none" stroke="currentColor" stroke-width=".9"/>
+</symbol>
+<symbol id="orn-tratteggio" viewBox="0 0 760 26" preserveAspectRatio="none">
+  <g fill="none" stroke="currentColor" stroke-width=".8" opacity=".55">
+    <path d="M0.00 0 V26.00 M0.01 0 V26.00 M0.06 0 V26.00 M0.14 0 V26.00 M0.27 0 V26.00 M0.43 0 V26.00 M0.65 0 V26.00 M0.91 0 V26.00 M1.22 0 V26.00 M1.58 0 V26.00 M1.99 0 V26.00 M2.46 0 V26.00 M2.98 0 V26.00 M3.55 0 V26.00 M4.18 0 V26.00 M4.87 0 V26.00 M5.61 0 V26.00 M6.41 0 V26.00 M7.27 0 V26.00 M8.19 0 V26.00 M9.16 0 V26.00 M10.20 0 V26.00 M11.30 0 V26.00 M12.46 0 V26.00 M13.69 0 V26.00 M14.97 0 V26.00 M16.32 0 V26.00 M17.73 0 V26.00 M19.21 0 V26.00 M20.75 0 V26.00 M22.36 0 V26.00 M24.03 0 V26.00 M25.77 0 V26.00 M27.58 0 V26.00 M29.45 0 V26.00 M31.39 0 V26.00 M33.39 0 V26.00 M35.47 0 V26.00 M37.61 0 V26.00 M39.82 0 V26.00 M42.11 0 V26.00 M44.46 0 V26.00 M46.88 0 V26.00 M49.37 0 V26.00 M51.93 0 V26.00 M54.56 0 V26.00 M57.26 0 V26.00 M60.04 0 V26.00 M62.88 0 V26.00 M65.80 0 V26.00 M68.79 0 V26.00 M71.86 0 V26.00 M74.99 0 V26.00 M78.20 0 V26.00 M81.48 0 V26.00 M84.84 0 V26.00 M88.27 0 V26.00 M91.78 0 V26.00 M95.36 0 V26.00 M99.01 0 V26.00 M102.74 0 V26.00 M106.54 0 V26.00 M110.42 0 V26.00 M114.38 0 V26.00 M118.41 0 V26.00 M122.52 0 V26.00 M126.71 0 V26.00 M130.97 0 V26.00 M135.31 0 V26.00 M139.72 0 V26.00 M144.22 0 V26.00 M148.79 0 V26.00 M153.44 0 V26.00 M158.17 0 V26.00 M162.97 0 V26.00 M167.86 0 V26.00 M172.82 0 V26.00 M177.86 0 V26.00 M182.98 0 V26.00 M188.18 0 V26.00 M193.46 0 V26.00 M198.82 0 V26.00 M204.27 0 V26.00 M209.79 0 V26.00 M215.39 0 V26.00 M221.07 0 V26.00 M226.83 0 V26.00 M232.67 0 V26.00 M238.60 0 V26.00 M244.60 0 V26.00 M250.69 0 V26.00 M256.86 0 V26.00 M263.11 0 V26.00 M269.44 0 V26.00 M275.86 0 V26.00 M282.36 0 V26.00 M288.94 0 V26.00 M295.60 0 V26.00 M302.34 0 V26.00 M309.17 0 V26.00 M316.08 0 V26.00 M323.08 0 V26.00 M330.16 0 V26.00 M337.32 0 V26.00 M344.57 0 V26.00 M351.90 0 V26.00 M359.32 0 V26.00 M366.82 0 V26.00 M374.40 0 V26.00 M382.07 0 V26.00 M389.82 0 V26.00 M397.66 0 V26.00 M405.59 0 V26.00 M413.60 0 V26.00 M421.69 0 V26.00 M429.87 0 V26.00 M438.14 0 V26.00 M446.49 0 V26.00 M454.93 0 V26.00 M463.45 0 V26.00 M472.07 0 V26.00 M480.76 0 V26.00 M489.55 0 V26.00 M498.42 0 V26.00 M507.38 0 V26.00 M516.42 0 V26.00 M525.56 0 V26.00 M534.78 0 V26.00 M544.08 0 V26.00 M553.48 0 V26.00 M562.96 0 V26.00 M572.53 0 V26.00 M582.19 0 V26.00 M591.94 0 V26.00 M601.78 0 V26.00 M611.70 0 V26.00 M621.71 0 V26.00 M631.81 0 V26.00 M642.00 0 V26.00 M652.28 0 V26.00 M662.65 0 V26.00 M673.11 0 V26.00 M683.66 0 V26.00 M694.29 0 V26.00 M705.02 0 V26.00 M715.84 0 V26.00 M726.74 0 V26.00 M737.74 0 V26.00 M748.82 0 V26.00 M760.00 0 V26.00"/>
+  </g>
+</symbol>
+<symbol id="orn-vignetta" viewBox="-38 -38 76 76">
+  <g stroke="currentColor" fill="none" stroke-linecap="round">
+    <path d="M-24.48 -23.60 H24.48" stroke-width="0.46"/>
+    <path d="M-26.74 -21.00 H26.74" stroke-width="0.49"/>
+    <path d="M-28.59 -18.40 H28.59" stroke-width="0.52"/>
+    <path d="M-30.11 -15.80 H30.11" stroke-width="0.55"/>
+    <path d="M-31.33 -13.20 H31.33" stroke-width="0.58"/>
+    <path d="M-32.31 -10.60 H32.31" stroke-width="0.61"/>
+    <path d="M-33.05 -8.00 H33.05" stroke-width="0.64"/>
+    <path d="M-33.57 -5.40 H33.57" stroke-width="0.67"/>
+    <path d="M-33.88 -2.80 H33.88" stroke-width="0.69"/>
+    <path d="M-34.00 -0.20 H34.00" stroke-width="0.72"/>
+    <path d="M-33.92 2.40 H33.92" stroke-width="0.75"/>
+    <path d="M-33.63 5.00 H33.63" stroke-width="0.78"/>
+    <path d="M-33.14 7.60 H33.14" stroke-width="0.81"/>
+    <path d="M-32.43 10.20 H32.43" stroke-width="0.84"/>
+    <path d="M-31.50 12.80 H31.50" stroke-width="0.87"/>
+    <path d="M-30.31 15.40 H30.31" stroke-width="0.89"/>
+    <path d="M-28.84 18.00 H28.84" stroke-width="0.92"/>
+    <path d="M-27.05 20.60 H27.05" stroke-width="0.95"/>
+    <path d="M-24.85 23.20 H24.85" stroke-width="0.98"/>
+    <path d="M-22.14 25.80 H22.14" stroke-width="1.01"/>
+    <path d="M-18.69 28.40 H18.69" stroke-width="1.04"/>
+    <path d="M-13.96 31.00 H13.96" stroke-width="1.07"/>
+    <path d="M-5.20 33.60 H5.20" stroke-width="1.10"/>
+  </g>
+  <circle r="35.5" fill="none" stroke="currentColor" stroke-width="1"/>
+  <path d="M0 -9 L9 0 L0 9 L-9 0 Z" fill="var(--carta,#FBFAF8)" stroke="currentColor" stroke-width="1"/>
+</symbol>
+<symbol id="orn-culdelampe" viewBox="-52 -6 104 56">
+  <g fill="currentColor">
+    <path d="M-33 0 l5 5 l-5 5 l-5 -5 Z M-11 0 l5 5 l-5 5 l-5 -5 Z M11 0 l5 5 l-5 5 l-5 -5 Z M33 0 l5 5 l-5 5 l-5 -5 Z"/>
+    <path d="M-22 16 l5 5 l-5 5 l-5 -5 Z M0 16 l5 5 l-5 5 l-5 -5 Z M22 16 l5 5 l-5 5 l-5 -5 Z"/>
+    <path d="M-11 32 l5 5 l-5 5 l-5 -5 Z M11 32 l5 5 l-5 5 l-5 -5 Z"/>
+  </g>
+</symbol>
+</svg>
 <div class="foglio" lang="it">
 
   <div class="filo-6"></div>
@@ -52,35 +107,46 @@
   </div>
 
   <div class="testata-nome">
-    <img class="ritratto" src="media/ritratto.png" width="64" height="64"
-         alt="Ritratto di Danilo Aprigliano davanti a una libreria">
     <h1 class="nome">Danilo Aprigliano<span class="qualifiche">docente · public historian · filologo · sviluppatore</span></h1>
   </div>
 
   <nav class="navsito" aria-label="Sezioni del sito"><a href="" class="qui">ritratto</a><a href="ia-a-scuola/">ia a scuola</a><a href="public-history/">public history</a><a href="scrittura/">scrittura</a><a href="web/">web</a><a href="impegno/">impegno civile</a><a href="profilo/">profilo</a><a href="tutto/">tutto</a><a href="curriculum/">curriculum</a><a href="articoli/">archivio</a></nav>
 
   <div class="cappello">
-    <p class="sommario">Insegno italiano e storia in un liceo di Milano e formo i docenti all’uso didattico dell’intelligenza artificiale<sup class="rimando"><a href="#n1">1</a></sup>. Ho un master in public history<sup class="rimando"><a href="#n2">2</a></sup> e un dottorato in filologia romanza<sup class="rimando"><a href="#n3">3</a></sup>, e scrivo siti e applicazioni web<sup class="rimando"><a href="#n4">4</a></sup>. Sono quattro mestieri che fanno un lavoro solo: mettere le persone in condizione di capire un testo – che sia un giornale clandestino del 1944, una fonte d’archivio o la risposta di una macchina. La scuola come infrastruttura civile è il tema su cui lavoro anche fuori dall’aula<sup class="rimando"><a href="#n5">5</a></sup>; il percorso per esteso, con le date, sta nel profilo<sup class="rimando"><a href="#n6">6</a></sup>.</p>
+    <p class="sommario">Insegno italiano e storia in un liceo di Milano; ho un dottorato in filologia romanza e un master in public history. Nel 2025 ho condotto per un istituto comprensivo milanese un percorso in sette tappe sull’uso didattico dell’intelligenza artificiale<sup class="rimando"><a href="#n1">1</a></sup>; con una classe quinta ho ricostruito e messo in rete la storia dei quindici martiri di Piazzale Loreto<sup class="rimando"><a href="#n2">2</a></sup>. Tengo dal 2013 l’archivio del «Ribelle», il foglio clandestino delle Fiamme Verdi, e da quelle carte è venuto il capitolo uscito per Marsilio<sup class="rimando"><a href="#n3">3</a></sup>; i siti di archivi e riviste che ho progettato e che mantengo sono nove<sup class="rimando"><a href="#n4">4</a></sup>. Quattro mestieri, un lavoro solo: mettere le persone in condizione di capire un testo, che sia un giornale clandestino del 1944, una fonte d’archivio o la risposta di una macchina. La scuola come infrastruttura civile<sup class="rimando"><a href="#n5">5</a></sup> è il tema su cui lavoro anche fuori dall’aula; il percorso con le date sta nel profilo<sup class="rimando"><a href="#n6">6</a></sup>.</p>
+    <figure class="figura-ritratto">
+      <img src="media/ritratto.webp" width="216" height="216"
+           alt="Ritratto di Danilo Aprigliano davanti a una libreria">
+      <figcaption><svg class="orn-rosa" width="22" height="22" aria-hidden="true"><use href="#orn-rosetta" width="22" height="22"/></svg>Danilo Aprigliano<br>Milano, 2026</figcaption>
+    </figure>
     <div class="blocco-contatti">
       <span class="etichetta">Contatti</span>
       <a href="mailto:danilo@daniloaprigliano.it">danilo@daniloaprigliano.it</a>
       <a href="https://www.ilpuntocieco.it/">«Il punto cieco»</a>
       <a href="https://unimi.academia.edu/DaniloAprigliano">Academia</a>
     </div>
-    <p class="margine">I numeri in apice rimandano alle note qui sotto: sono le sei pagine del sito. Le tre pagine di servizio – tutto, curriculum, archivio – stanno nella riga in alto e in fondo.</p>
+  </div>
+
+
+  <div class="stacco" aria-hidden="true">
+    <svg class="orn-filo" width="100%" height="22" preserveAspectRatio="none"><use href="#orn-fregio" width="100%" height="22"/></svg>
   </div>
 
   <div class="indice">
     <div class="porte-titolo"><span class="rub">Le note</span><span>sei voci, una per pagina</span></div>
-    <a class="porta" id="n1" href="ia-a-scuola/" data-mestiere="docente"><span class="porta-titolo">all’uso didattico dell’intelligenza artificiale</span><span class="porta-testo">Formo i docenti a usarla in classe. Nel 2025 ho tenuto per un istituto comprensivo di Milano un percorso PNRR in sette tappe, dal questionario d’ingresso ai laboratori disciplinari fino alla stesura della <em>policy</em> d’istituto: la pagina racconta com’era fatto, con i numeri. <span class="rimando-pagina">IA a scuola</span></span></a>
-    <a class="porta" id="n2" href="public-history/" data-mestiere="storico"><span class="porta-titolo">un master in public history</span><span class="porta-testo">Siti, archivi e mostre digitali che portano una storia a chi non la cerca: i quindici martiri di Piazzale Loreto ricostruiti con una classe quinta, le cinque esposizioni della Fondazione Feltrinelli, il giornale clandestino delle Fiamme Verdi. <span class="rimando-pagina">Public history</span></span></a>
-    <a class="porta" id="n3" href="scrittura/" data-mestiere="filologo"><span class="porta-titolo">un dottorato in filologia romanza</span><span class="porta-testo">Due curatele, il capitolo sulle Fiamme Verdi bresciane uscito per Marsilio, gli studi su Watriquet de Couvin, le puntate scritte per i podcast di Gli Ascoltabili e «Il punto cieco», la testata che tengo in sei rubriche. <span class="rimando-pagina">Scrittura</span></span></a>
-    <a class="porta" id="n4" href="web/" data-mestiere="sviluppatore"><span class="porta-titolo">siti e applicazioni web</span><span class="porta-testo">Nove schede: i siti d’archivio per associazioni e riviste, e l’applicazione che ho scritto per intero e uso ogni giorno per tenere insieme fonti, agenda e rassegna stampa. È la competenza che rende diverso il modo in cui insegno l’intelligenza artificiale. <span class="rimando-pagina">Web</span></span></a>
+    <a class="porta" id="n1" href="ia-a-scuola/" data-mestiere="docente"><span class="porta-titolo">sull’uso didattico dell’intelligenza artificiale</span><span class="porta-testo">Formo i docenti a usarla in classe: questionario d’ingresso, laboratori disciplinari, stesura della <em>policy</em> d’istituto. La pagina racconta com’era fatto il percorso, con i numeri. <span class="rimando-pagina">IA a scuola</span></span></a>
+    <a class="porta" id="n2" href="public-history/" data-mestiere="storico"><span class="porta-titolo">i quindici martiri di Piazzale Loreto</span><span class="porta-testo">Siti, archivi e mostre digitali che portano una storia a chi non la cerca: il sito e il podcast costruiti con la quinta, le cinque esposizioni della Fondazione Feltrinelli, il giornale clandestino delle Fiamme Verdi. <span class="rimando-pagina">Public history</span></span></a>
+    <a class="porta" id="n3" href="scrittura/" data-mestiere="filologo"><span class="porta-titolo">il capitolo uscito per Marsilio</span><span class="porta-testo">Il saggio sulle Fiamme Verdi bresciane, due curatele, gli studi su Watriquet de Couvin, le puntate scritte per i podcast di Gli Ascoltabili e «Il punto cieco», la testata che tengo in sei rubriche. <span class="rimando-pagina">Scrittura</span></span></a>
+    <a class="porta" id="n4" href="web/" data-mestiere="sviluppatore"><span class="porta-titolo">i siti di archivi e riviste</span><span class="porta-testo">Nove schede: i siti d’archivio per associazioni e riviste, e l’applicazione che ho scritto per intero e uso ogni giorno per tenere insieme fonti, agenda e rassegna stampa. È la competenza che rende diverso il modo in cui insegno l’intelligenza artificiale. <span class="rimando-pagina">Web</span></span></a>
     <a class="porta" id="n5" href="impegno/"><span class="porta-titolo">La scuola come infrastruttura civile</span><span class="porta-testo">Nel consiglio direttivo e nel comitato scientifico del Circolo e Centro studi «Emilio Caldara», nel percorso «Hey Milano», referente per le scuole della FIVL. Da lì è nato «Oltre il muro e i frammenti», sulla disuguaglianza educativa milanese quartiere per quartiere. <span class="rimando-pagina">Impegno civile</span></span></a>
     <a class="porta" id="n6" href="profilo/"><span class="porta-titolo">il percorso per esteso</span><span class="porta-testo">Dottorato, master, abilitazione A-12 e A-22, quindici anni di insegnamento, le collaborazioni universitarie e quelle editoriali: il profilo li dice in breve, con le date. <span class="rimando-pagina">Profilo</span></span></a>
   </div>
 
   <p class="chiusura">Le pagine di servizio non hanno una nota perché non sono un mestiere: <a href="tutto/">Tutto</a> è l’indice cronologico di ogni cosa che ho fatto, il <a href="curriculum/">curriculum</a> è la versione numerata con le date, che si scarica anche in PDF, e l’<a href="articoli/">archivio</a> raccoglie gli articoli pubblicati qui dal 2012, ai loro indirizzi di sempre. Chi legge in inglese trova la <a href="en/">versione inglese</a> delle pagine principali.</p>
+
+  <div class="finale" aria-hidden="true">
+    <svg width="104" height="56"><use href="#orn-culdelampe" width="104" height="56"/></svg>
+  </div>
 
   <footer>
     <span class="colofone">Danilo Aprigliano · Milano · <a href="mailto:danilo@daniloaprigliano.it">danilo@daniloaprigliano.it</a><br>Composto a Milano nel 2026, in Vollkorn e Space Mono. Un foglio di stile solo, nessuno script, nessun cookie.</span>

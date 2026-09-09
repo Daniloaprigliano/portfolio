@@ -1,0 +1,201 @@
+/* ============================================================
+   HOME – prova del 9 settembre 2026
+   Blocco sperimentale, da appendere in coda a stile.css.
+   Non modifica nessuna regola esistente: le sovrascrive.
+   1. il ritratto passa dalla testata alla colonna del cappello
+   2. le note salgono di un corpo
+   ============================================================ */
+
+/* 1. il ritratto in apertura ------------------------------- */
+.testata-nome{grid-template-columns:minmax(0,1fr)}
+.testata-nome .ritratto{display:none}
+.testata-nome .nome{grid-column:1}
+
+.cappello{grid-template-columns:var(--margine) minmax(0,1fr) 216px}
+.figura-ritratto{
+  grid-column:3;grid-row:1;margin:0;
+  display:flex;flex-direction:column;gap:var(--s-3);
+}
+.figura-ritratto img{
+  width:216px;height:216px;object-fit:cover;
+  border-radius:50%;
+  filter:grayscale(1) contrast(1.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .figura-ritratto img{filter:grayscale(1) contrast(1.02) brightness(.9)}
+}
+:root[data-theme="dark"] .figura-ritratto img{filter:grayscale(1) contrast(1.02) brightness(.9)}
+.figura-ritratto figcaption{
+  font-family:var(--mono);font-size:var(--t-mono-s);line-height:1.6;
+  color:var(--grigio-2);letter-spacing:.02em;
+  border-top:1px solid var(--filo-tenue);padding-top:var(--s-2);
+}
+
+/* 2. le note, un corpo più su ------------------------------ */
+.porta-testo{font-size:var(--t-4);line-height:1.62}
+.porta{padding-top:var(--s-6);padding-bottom:var(--s-6)}
+
+/* 3. la fascia di documenti (solo variante B) -------------- */
+.documenti{
+  margin-top:var(--s-8);
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:var(--s-6) var(--s-7);
+}
+.documenti .rubrica-fascia{
+  grid-column:1/-1;
+  font-family:var(--mono);font-size:var(--t-mono);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);
+  padding:var(--s-3) 0;border-top:3px solid var(--inchiostro);
+  display:flex;justify-content:space-between;gap:var(--s-6);
+}
+.documenti .rubrica-fascia .rub{color:var(--rubrica)}
+.documenti figure{margin:0;display:flex;flex-direction:column;gap:var(--s-3)}
+.documenti img{
+  width:100%;height:172px;object-fit:cover;
+  filter:grayscale(1) contrast(1.04);
+  background:var(--filo-tenue);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .documenti img{filter:grayscale(1) contrast(1) brightness(.88)}
+}
+:root[data-theme="dark"] .documenti img{filter:grayscale(1) contrast(1) brightness(.88)}
+.documenti figcaption{
+  font-size:var(--t-2);line-height:1.55;color:var(--grigio-1);
+}
+.documenti figcaption .fonte{
+  display:block;margin-top:var(--s-2);
+  font-family:var(--mono);font-size:var(--t-mono-s);color:var(--grigio-2);
+}
+.documenti a{border:0;color:inherit}
+.documenti a:hover figcaption{color:var(--rubrica)}
+.documenti a:hover img{filter:grayscale(0) contrast(1.02)}
+
+@media (max-width:900px){
+  .cappello{grid-template-columns:var(--margine) minmax(0,1fr)}
+  .cappello .sommario{grid-column:2;grid-row:1}
+  .figura-ritratto{grid-column:2;grid-row:2;flex-direction:row;gap:var(--s-5);align-items:center}
+  .figura-ritratto img{width:132px;height:132px}
+  .cappello .blocco-contatti{grid-column:2;grid-row:3}
+  .documenti{grid-template-columns:minmax(0,1fr)}
+  .documenti img{height:200px}
+}
+@media (max-width:620px){
+  /* sul telefono il ritratto viene prima del testo: è la prima cosa
+     che si vede dopo il nome, e il testo comincia subito sotto */
+  .cappello{grid-template-columns:minmax(0,1fr)}
+  .figura-ritratto{
+    grid-column:1;grid-row:1;
+    flex-direction:row;align-items:center;gap:var(--s-5);
+  }
+  .figura-ritratto img{width:112px;height:112px}
+  .figura-ritratto figcaption{border-top:0;padding-top:0}
+  .cappello::before{grid-column:1;grid-row:2;padding-top:0}
+  .cappello .sommario{grid-column:1;grid-row:3}
+  .cappello .blocco-contatti{grid-column:1;grid-row:4}
+}
+
+/* la testata di un giornale si mostra intera, non ritagliata */
+.documenti .doc-testata img{object-fit:contain;padding:var(--s-5) 0;background:transparent}
+
+/* ============================================================
+   ORNAMENTI
+   Fregi disegnati per questo sito, in SVG: ereditano il colore
+   del testo, quindi valgono in chiaro e in scuro senza copie.
+   ============================================================ */
+.stacco{margin:var(--s-9) 0 var(--s-8);color:var(--grigio-2);opacity:.75}
+.stacco .orn-filo{display:block;width:100%}
+.figura-ritratto figcaption .orn-rosa{
+  display:block;margin-bottom:var(--s-3);color:var(--rubrica);opacity:.85;
+}
+.finale{
+  display:flex;justify-content:center;
+  margin:var(--s-9) 0 var(--s-8);color:var(--grigio-2);opacity:.7;
+}
+
+/* ============================================================
+   MARCHI E DOCUMENTI ACCANTO ALLE VOCI
+   Solo dove la voce nomina davvero l'ente o la carta.
+   Stanno nella colonna di margine, in bianco e nero come le
+   fotografie: non sono decorazione, sono il riferimento.
+   ============================================================ */
+.marchio-sezione{
+  display:block;width:calc(var(--margine) - 8px);height:auto;margin-top:var(--s-4);
+  color:var(--grigio-1);opacity:.85;
+}
+.progetto{position:relative}
+.marchio-scheda,.doc-scheda{
+  position:absolute;left:0;top:calc(var(--s-6) + 30px);
+  width:calc(var(--margine) - 12px);height:auto;
+  filter:grayscale(1) contrast(1.05);opacity:.9;
+}
+.doc-scheda{top:calc(var(--s-6) + 32px)}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .marchio-scheda,
+  :root:not([data-theme="light"]) .doc-scheda{filter:grayscale(1) invert(1) contrast(.95);opacity:.8}
+}
+:root[data-theme="dark"] .marchio-scheda,
+:root[data-theme="dark"] .doc-scheda{filter:grayscale(1) invert(1) contrast(.95);opacity:.8}
+@media (max-width:720px){
+  .marchio-scheda,.doc-scheda{position:static;width:120px;margin-bottom:var(--s-3)}
+  .marchio-sezione{width:96px}
+}
+
+/* ============================================================
+   SCHERMATE DEI SITI
+   In terza colonna, a destra del testo: si vedono senza
+   interrompere la lettura. In bianco e nero come le fotografie,
+   a colori quando ci si passa sopra.
+   ============================================================ */
+/* la scheda che ospita una schermata lascia libera la colonna di destra:
+   senza questo, il titolo e la riga dei dati ci passano sotto */
+.progetto:has(.schermata){padding-right:280px}
+/* browser senza :has(): l'immagine scende sotto il testo invece di
+   sovrapporsi. Meglio una figura in colonna che una pagina rotta. */
+@supports not (selector(:has(*))){
+  .schermata{position:static;width:100%;max-width:420px;margin:var(--s-5) 0 0}
+  .copertina{position:static;display:block;width:96px;margin:0 0 var(--s-3)}
+}
+.schermata{
+  position:absolute;right:0;top:var(--s-6);
+  width:248px;margin:0;
+  display:flex;flex-direction:column;gap:var(--s-2);
+}
+.schermata img{
+  width:100%;height:auto;display:block;
+  border:1px solid var(--filo);
+  filter:grayscale(1) contrast(1.03);
+  transition:filter .25s;
+}
+.progetto:hover .schermata img{filter:grayscale(0) contrast(1)}
+.schermata figcaption{
+  font-family:var(--mono);font-size:var(--t-mono-s);color:var(--grigio-2);
+  letter-spacing:.02em;overflow-wrap:anywhere;
+}
+.schermata-doc img{border:0;padding:var(--s-3) 0;filter:grayscale(1) contrast(1.1)}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .schermata img{filter:grayscale(1) contrast(.96) brightness(.86)}
+  :root:not([data-theme="light"]) .schermata-doc img{filter:grayscale(1) invert(1) contrast(.95)}
+}
+:root[data-theme="dark"] .schermata img{filter:grayscale(1) contrast(.96) brightness(.86)}
+:root[data-theme="dark"] .schermata-doc img{filter:grayscale(1) invert(1) contrast(.95)}
+@media (max-width:1180px){
+  .progetto:has(.schermata){padding-right:0}
+  .schermata{position:static;width:100%;max-width:420px;margin:var(--s-5) 0 0}
+}
+
+/* copertine dei libri, accanto alla voce bibliografica */
+li:has(> .copertina){position:relative;padding-right:118px}
+.copertina{
+  position:absolute;right:0;top:2px;width:88px;height:auto;
+  border:1px solid var(--filo);
+  filter:grayscale(1) contrast(1.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .copertina{filter:grayscale(1) contrast(.95) brightness(.88)}
+}
+:root[data-theme="dark"] .copertina{filter:grayscale(1) contrast(.95) brightness(.88)}
+.schermata-foto img{border:0}
+@media (max-width:620px){
+  li:has(> .copertina){padding-right:0}
+  .copertina{position:static;display:block;width:96px;margin:0 0 var(--s-3)}
+}
