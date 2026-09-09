@@ -236,3 +236,105 @@ li:has(> .copertina){position:relative;padding-right:118px}
   margin-top:var(--s-2);
   font-family:var(--mono);font-size:var(--t-mono-s);color:var(--grigio-2);letter-spacing:.02em;
 }
+
+/* ============================================================
+   EMBLEMI E FIGURE — terzo giro
+   Un segno per ogni scheda, un emblema per ogni rubrica, e le
+   figure grandi dove una cosa si capisce meglio disegnata.
+   ============================================================ */
+.emblema-scheda{
+  position:absolute;left:0;top:calc(var(--s-6) + 24px);
+  width:calc(var(--margine) - 6px);height:82px;
+  color:var(--grigio-2);opacity:.9;
+}
+.progetto:hover .emblema-scheda{color:var(--rubrica)}
+
+/* accanto ai titoli di gruppo: la riga diventa una fascia con il segno
+   a destra. .gruppo-titolo è sticky, quindi niente float qui dentro. */
+.gruppo-titolo{display:flex;align-items:center;justify-content:space-between;gap:var(--s-5)}
+.emblema-gruppo{width:74px;height:62px;flex:none;color:var(--grigio-2);opacity:.85}
+/* nelle rubriche del profilo il segno sta a destra e il testo gli scorre accanto */
+.emblema-rubrica{
+  float:right;width:92px;height:76px;
+  margin:0 0 var(--s-3) var(--s-5);
+  color:var(--grigio-2);opacity:.85;
+}
+
+/* la figura larga: la linea del tempo del curriculum */
+.schema-largo{margin:var(--s-6) 0 var(--s-8);max-width:none}
+.schema-largo .schema{
+  width:100%;height:auto;display:block;box-sizing:border-box;
+  border:1px solid var(--filo);padding:var(--s-5) var(--s-4);
+  color:var(--grigio-1);
+}
+.schema-largo figcaption{
+  margin-top:var(--s-2);
+  font-family:var(--mono);font-size:var(--t-mono-s);color:var(--grigio-2);letter-spacing:.02em;
+}
+
+@media (max-width:720px){
+  .emblema-scheda{position:static;width:74px;margin-bottom:var(--s-3)}
+  .emblema-gruppo,.emblema-rubrica{width:48px;height:40px;margin-left:var(--s-4)}
+  .schema-largo .schema{padding:var(--s-3) var(--s-2)}
+}
+
+/* ============================================================
+   IL MOVIMENTO
+   Nessuno script: sono animazioni CSS, brevi, che accompagnano
+   la prima lettura e poi spariscono. Tutto sta dentro
+   prefers-reduced-motion: no-preference, così chi ha chiesto al
+   sistema di ridurre le animazioni – e chi usa un browser che non
+   le sostiene – vede la pagina ferma e completa.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference){
+  @keyframes sale{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  @keyframes appare{from{opacity:0}to{opacity:1}}
+  @keyframes scrive{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  @keyframes capolettera{from{opacity:0;transform:translateY(6px) scale(.94)}to{opacity:1;transform:none}}
+
+  .foglio > .testata,
+  .foglio > .testata-nome,
+  .foglio > .navsito,
+  .cappello .sommario,
+  .figura-ritratto,
+  .cappello .blocco-contatti,
+  .porte-titolo,
+  .porta,
+  .chiusura{
+    animation:sale .62s cubic-bezier(.22,.61,.36,1) both;
+  }
+  .foglio > .testata{animation-delay:.02s}
+  .foglio > .testata-nome{animation-delay:.08s}
+  .foglio > .navsito{animation-delay:.14s}
+  .cappello .sommario{animation-delay:.20s}
+  .figura-ritratto{animation-delay:.28s}
+  .cappello .blocco-contatti{animation-delay:.34s}
+  .porte-titolo{animation-delay:.44s}
+  /* le sei note entrano una dopo l'altra, come si sfoglia un apparato */
+  .porta:nth-of-type(1){animation-delay:.50s}
+  .porta:nth-of-type(2){animation-delay:.56s}
+  .porta:nth-of-type(3){animation-delay:.62s}
+  .porta:nth-of-type(4){animation-delay:.68s}
+  .porta:nth-of-type(5){animation-delay:.74s}
+  .porta:nth-of-type(6){animation-delay:.80s}
+  .chiusura{animation-delay:.88s}
+
+  /* il capolettera si posa un istante dopo il testo */
+  .cappello .sommario::first-letter{animation:capolettera .7s .30s cubic-bezier(.22,.61,.36,1) both}
+
+  /* il fregio si scrive da sinistra a destra, come una riga di piombo */
+  .stacco .orn-filo{animation:scrive .9s .40s cubic-bezier(.4,0,.2,1) both}
+  .finale{animation:appare 1s .95s ease both}
+
+  /* la rosetta accanto al ritratto respira appena, una volta sola */
+  @keyframes rosetta{0%{opacity:0;transform:rotate(-25deg) scale(.6)}100%{opacity:.85;transform:none}}
+  .figura-ritratto figcaption .orn-rosa{animation:rosetta .8s .55s cubic-bezier(.22,.61,.36,1) both}
+
+  /* nelle pagine interne: la marca e le figure entrano quando le si raggiunge */
+  .marca-testata{animation:sale .6s .1s cubic-bezier(.22,.61,.36,1) both}
+  .schema-blocco,.schema-largo,.schermata{animation:appare .7s ease both}
+
+  /* al passaggio del mouse la nota si avvicina di un soffio */
+  .porta{transition:transform .25s ease, border-color .25s ease}
+  .porta:hover{transform:translateX(3px)}
+}
