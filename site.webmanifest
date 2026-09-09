@@ -1,0 +1,16 @@
+{
+  "name": "Danilo Aprigliano",
+  "short_name": "Aprigliano",
+  "description": "Docente di italiano e storia, public historian, filologo romanzo, sviluppatore web. Milano.",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF8",
+  "theme_color": "#FBFAF8",
+  "icons": [
+    { "src": "icona-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icona-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icona-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

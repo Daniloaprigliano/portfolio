@@ -13,7 +13,7 @@
   --inchiostro:#14120F;
   --grigio-1:#57524A;
   --grigio-2:#736C60;
-  --grigio-3:#8F887B;
+  --grigio-3:#797267;  /* 4.56:1 su carta: regge anche a corpo piccolo */
   --rubrica:#A81E12;
   --rubrica-forte:#8C1810;
   /* i nomi vecchi restano definiti perché non si rompa nulla */
@@ -51,7 +51,7 @@
     --inchiostro:#EDE8DE;
     --grigio-1:#B0A899;
     --grigio-2:#8B8375;
-    --grigio-3:#736C60;
+    --grigio-3:#8B8375;
     --rubrica:#F0705F;
     --rubrica-forte:#F58C7D;
     --ciano:#F0705F;
@@ -70,7 +70,7 @@
   --inchiostro:#EDE8DE;
   --grigio-1:#B0A899;
   --grigio-2:#8B8375;
-  --grigio-3:#736C60;
+  --grigio-3:#8B8375;
   --rubrica:#F0705F;
   --rubrica-forte:#F58C7D;
   --ciano:#F0705F;
@@ -93,6 +93,7 @@ body{
   font-family:var(--serif);font-size:18px;line-height:1.7;
   margin:0;padding:0 clamp(22px,6vw,64px) var(--s-9);
   -webkit-font-smoothing:antialiased;text-wrap:pretty;
+  overflow-wrap:break-word;
 }
 .foglio{max-width:700px;margin:0 auto;padding-top:var(--s-5)}
 .foglio.largo{max-width:760px}

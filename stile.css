@@ -25,7 +25,7 @@
   --inchiostro:#14120F;
   --grigio-1:#57524A;
   --grigio-2:#736C60;
-  --grigio-3:#8F887B;
+  --grigio-3:#797267;  /* 4.56:1 su carta: regge anche a corpo piccolo */
   /* rubrica: l'unico colore del sito */
   --rubrica:#A81E12;
   --rubrica-forte:#8C1810;
@@ -68,7 +68,7 @@
     --inchiostro:#EDE8DE;
     --grigio-1:#B0A899;
     --grigio-2:#8B8375;
-    --grigio-3:#736C60;
+    --grigio-3:#8B8375;
     --rubrica:#F0705F;
     --rubrica-forte:#F58C7D;
     --ciano:#F0705F;
@@ -86,7 +86,7 @@
   --inchiostro:#EDE8DE;
   --grigio-1:#B0A899;
   --grigio-2:#8B8375;
-  --grigio-3:#736C60;
+  --grigio-3:#8B8375;
   --rubrica:#F0705F;
   --rubrica-forte:#F58C7D;
   --ciano:#F0705F;
@@ -108,6 +108,9 @@ body{
   margin:0;padding:0 clamp(20px,5vw,64px) var(--s-10);
   -webkit-font-smoothing:antialiased;
   text-wrap:pretty;
+  /* un indirizzo web lungo e' una parola sola: senza questo sfonda la
+     pagina e il telefono rimpicciolisce tutto per farcelo stare */
+  overflow-wrap:break-word;
 }
 .foglio{max-width:1080px;margin:0 auto;padding-top:var(--s-5)}
 h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.018em;line-height:1.12;margin:0;text-wrap:balance}
@@ -413,8 +416,9 @@ blockquote .fonte{
   line-height:1.7;
 }
 .progetto .dove{
-  display:inline;margin:0;
+  display:inline;margin:0;max-width:var(--misura);
   font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--grigio-1);
+  overflow-wrap:anywhere;
 }
 .progetto p.testo{
   margin:var(--s-3) 0 0;
@@ -612,7 +616,10 @@ footer a:hover{border-bottom-color:currentColor}
     --s-10:64px;--s-9:48px;--s-8:36px;
   }
   body{font-size:17.5px;padding-bottom:var(--s-9)}
+  /* i quattro mestieri stanno gia' sotto il nome e nel colofone: in
+     testata, sul telefono, occupano due righe e non dicono nulla di nuovo */
   .testata{gap:var(--s-1) var(--s-4);font-size:11.5px;letter-spacing:.08em}
+  .testata .centro{display:none}
   .testata-nome{grid-template-columns:48px minmax(0,1fr);gap:0 var(--s-4)}
   .ritratto{width:48px;height:48px;max-width:48px}
   .navsito{gap:0 var(--s-5);font-size:12px}
@@ -735,6 +742,8 @@ ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
   margin:var(--s-3) 0 0;font-family:var(--mono);font-size:var(--t-mono-s);
   letter-spacing:.03em;color:var(--grigio-2);overflow-wrap:anywhere;
 }
+/* dovunque si citi un indirizzo per esteso */
+.dettagli-cv a,.scheda-ente a,.dove a,.glossa a,.chiusa a{overflow-wrap:anywhere}
 
 @media (max-width:700px){
   li.voce-cv{padding-left:0}
@@ -754,7 +763,17 @@ ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
   .titolo-pagina{font-size:24pt;margin:0 0 6px}
   .occhiello-pagina{font-size:9pt;color:#444;max-width:none}
   h2.sezione-cv{margin-top:18px;border-top-color:#000;page-break-after:avoid}
+  /* una voce lunga puo' spezzarsi fra un punto e l'altro: se resta tutta
+     intera lascia mezze pagine bianche. Il titolo, pero', non si stacca
+     mai da quello che introduce. */
   li.voce-cv{page-break-inside:avoid;margin-bottom:10px}
+  /* solo le voci lunghe possono spezzarsi: quelle brevi restano intere,
+     e non si lascia mezza pagina bianca per far stare un elenco di sei punti */
+  li.voce-cv:has(ul.dettagli-cv li:nth-child(6)){page-break-inside:auto}
+  .titolo-cv,.dove-cv,.quando-cv,li.sottotitolo-cv{page-break-after:avoid}
+  ul.dettagli-cv li{page-break-inside:avoid}
+  .solo-schermo{display:none}
+  .link-cv::before{content:"In rete: "}
   .numero-cv,.scarica-cv,.sottotitolo-cv{color:#000!important}
   .scarica-cv{display:none}
   a{color:#000;border:0!important}
