@@ -789,3 +789,8 @@ ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
   font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
 .sostieni .sostieni-link a:first-child{background:var(--rubrica);color:var(--carta)}
 .sostieni .sostieni-link a:hover{background:var(--rubrica);color:var(--carta)}
+
+/* Menu a dodici voci: su schermo largo sta in una riga sola */
+@media (min-width:1000px){
+  .navsito{gap:var(--s-1) 18px;justify-content:space-between}
+}
