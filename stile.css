@@ -794,3 +794,4 @@ ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
 @media (min-width:1000px){
   .navsito{gap:var(--s-1) 18px;justify-content:space-between}
 }
+.sostieni.sostieni-alto{margin:var(--s-6) 0 0}
