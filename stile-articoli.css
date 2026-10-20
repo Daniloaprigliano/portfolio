@@ -189,3 +189,11 @@ article a:hover{border-bottom-color:currentColor}
   .voce a{font-size:20px}
   .occhiello{font-size:19px}
 }
+
+/* riquadro per le offerte libere (Ko-fi, PayPal) */
+.sostieni{margin:2.6em 0 1.6em;padding:1.1em 1.4em;border:1.5px solid var(--rubrica)}
+.sostieni p{margin:0 0 .6em}
+.sostieni .sostieni-link{display:flex;flex-wrap:wrap;gap:.6em;margin:.9em 0 0}
+.sostieni .sostieni-link a{display:inline-block;padding:.45em 1.1em;border-radius:999px;border:1.5px solid var(--rubrica);color:var(--rubrica);
+  font-family:"Space Mono",monospace;font-size:.78em;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.sostieni .sostieni-link a:first-child{background:var(--rubrica);color:var(--carta)}

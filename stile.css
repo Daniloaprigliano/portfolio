@@ -778,3 +778,14 @@ ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
   .scarica-cv{display:none}
   a{color:#000;border:0!important}
 }
+
+/* ============================================================
+   SOSTIENI — riquadro per le offerte libere (Ko-fi, PayPal)
+   ============================================================ */
+.sostieni{margin:var(--s-8) 0 var(--s-6);padding:var(--s-5) var(--s-6);border:1.5px solid var(--rubrica);max-width:var(--misura)}
+.sostieni p{margin:0 0 var(--s-3);font-size:var(--t-3);line-height:1.6}
+.sostieni .sostieni-link{display:flex;flex-wrap:wrap;gap:var(--s-3);margin:var(--s-4) 0 0}
+.sostieni .sostieni-link a{display:inline-block;padding:8px 18px;border-radius:999px;border:1.5px solid var(--rubrica);color:var(--rubrica);
+  font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.sostieni .sostieni-link a:first-child{background:var(--rubrica);color:var(--carta)}
+.sostieni .sostieni-link a:hover{background:var(--rubrica);color:var(--carta)}
