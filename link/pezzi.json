@@ -1,0 +1,51 @@
+{
+  "_come_si_usa": "Un pezzo nuovo: una voce in più, in qualunque punto dell'elenco. Data nel formato AAAA-MM-GG. 'evidenza': true lo fissa in cima; i pezzi fissati non si ripetono fra gli ultimi. 'genere' è facoltativo (racconto, intervista...). Il titolo va senza virgolette esterne. Poi: python3 link/componi.py",
+  "pezzi": [
+    {
+      "titolo": "Nessuno dice «emergenza boomer»: come la «Gen Z» è diventata una categoria penale",
+      "testata": "Gli Stati Generali",
+      "data": "2026-10-24",
+      "url": "https://www.glistatigenerali.com/attualita/italia/nessuno-dice-emergenza-boomer-come-la-gen-z-e-diventata-una-categoria-penale/",
+      "evidenza": true
+    },
+    {
+      "titolo": "La malattia infantile del centro",
+      "testata": "Il punto cieco",
+      "data": "2026-07-24",
+      "url": "https://www.ilpuntocieco.it/p/la-malattia-infantile-del-centro"
+    },
+    {
+      "titolo": "La scuola non è un unicorno",
+      "testata": "Il punto cieco",
+      "data": "2026-07-05",
+      "url": "https://www.ilpuntocieco.it/p/la-scuola-non-e-un-unicorno"
+    },
+    {
+      "titolo": "«Aboliamo la maturità» – anatomia di una polemica stagionale",
+      "testata": "Il punto cieco",
+      "data": "2026-06-21",
+      "url": "https://www.ilpuntocieco.it/p/aboliamo-la-maturita-anatomia-di",
+      "evidenza": true
+    },
+    {
+      "titolo": "Spegnere la notte",
+      "testata": "Il punto cieco",
+      "data": "2026-06-14",
+      "url": "https://www.ilpuntocieco.it/p/spegnere-la-notte"
+    },
+    {
+      "titolo": "Ne straparla chi non ne sa",
+      "testata": "Il punto cieco",
+      "data": "2026-06-06",
+      "url": "https://www.ilpuntocieco.it/p/ne-straparla-chi-non-ne-sa"
+    },
+    {
+      "titolo": "L’impero dei significati",
+      "testata": "Nazione indiana",
+      "data": "2023-03-03",
+      "url": "https://www.nazioneindiana.com/2023/03/03/limpero-dei-significati/",
+      "genere": "racconto",
+      "evidenza": true
+    }
+  ]
+}
