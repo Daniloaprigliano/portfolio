@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Un sistema personale costruito su misura: agenda, posta, finanze, studio, scrittura e lettura in un’unica applicazione, con un assistente che ci lavora dentro. Progettato e realizzato da Danilo Aprigliano.">
+<link rel="canonical" href="https://daniloaprigliano.it/cruscotto/">
+
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#FBFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#100F0D" media="(prefers-color-scheme: dark)">
+
+<meta property="og:site_name" content="Danilo Aprigliano">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Un cruscotto su misura – Danilo Aprigliano">
+<meta property="og:description" content="Agenda, posta, finanze, studio, scrittura e lettura in un’unica applicazione, costruita attorno a chi la usa.">
+<meta property="og:url" content="https://daniloaprigliano.it/cruscotto/">
+<meta property="og:image" content="https://daniloaprigliano.it/media/cruscotto/copertina.jpg">
+<meta property="og:image:alt" content="La prima pagina del cruscotto: il brief del mattino e la linea del tempo della giornata.">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="color-scheme" content="light dark">
+<meta name="author" content="Danilo Aprigliano">
+<title>Un cruscotto su misura – Danilo Aprigliano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="../stile.css">
+<link rel="stylesheet" href="../stile-home.css">
+<style>
+  .schermo{margin:var(--s-7) 0 var(--s-6);padding:0}
+  .schermo img{display:block;width:100%;height:auto;border:1px solid var(--filo)}
+  .schermo figcaption{margin-top:var(--s-2);font-family:var(--mono);font-size:var(--t-mono-s);line-height:1.5;color:var(--grigio-1)}
+  .video-demo{display:block;width:100%;height:auto;margin:var(--s-7) 0 var(--s-3);border:1px solid var(--filo);background:#000}
+  .funzioni{margin:var(--s-6) 0 0;padding:0;list-style:none;border:0;max-width:var(--misura)}
+  .funzioni li{padding:var(--s-3) 0;border:0;border-top:1px solid var(--filo);font-size:var(--t-2);line-height:1.62;color:var(--grigio-1)}
+  .funzioni li:last-child{border-bottom:1px solid var(--filo)}
+  .funzioni strong{font-weight:600;color:var(--inchiostro)}
+  .indice-aree{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-5);margin:var(--s-6) 0 0;padding:0;list-style:none;font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.06em;text-transform:uppercase}
+  .indice-aree li{border:0;padding:0}
+  .indice-aree a{color:var(--rubrica)}
+  .contatti{display:flex;flex-wrap:wrap;gap:var(--s-3) var(--s-4);margin:var(--s-6) 0 var(--s-2)}
+  .contatti a{display:inline-block;padding:10px 18px;border:1.5px solid var(--rubrica);border-radius:999px;font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--rubrica)}
+  .contatti a.pieno{background:var(--rubrica);color:var(--carta)}
+  .contatti a:hover{background:var(--rubrica);color:var(--carta)}
+</style>
+</head>
+<body>
+<div class="foglio" lang="it">
+
+  <div class="filo-6"></div>
+  <div class="testata">
+    <span>Milano</span>
+    <span class="centro">Docente · public historian · filologo · sviluppatore</span>
+    <span>daniloaprigliano.it</span>
+  </div>
+  <div class="filo-1"></div>
+  <div class="nome-piccolo"><a href="../">Danilo Aprigliano</a></div>
+  <nav class="navsito" aria-label="Sezioni del sito"><a href="../">Ritratto</a><a href="../ia-a-scuola/">IA a scuola</a><a href="../lezioni/">Lezioni</a><a href="../materiali/">Materiali</a><a href="../public-history/">Public history</a><a href="../scrittura/">Scrittura</a><a href="../web/">Web</a><a href="../impegno/">Impegno civile</a><a href="../profilo/">Profilo</a><a href="../tutto/">Tutto</a><a href="../curriculum/">Curriculum</a><a href="../articoli/">Archivio</a></nav>
+
+  <h1 class="titolo-pagina">Un cruscotto su misura</h1>
+  <p class="occhiello-pagina">Agenda, posta, finanze, lavoro, scrittura e lettura in un’unica applicazione, con un assistente che ci lavora dentro. L’ho progettata e scritta per me; ora la costruisco, su misura, per chi me la chiede.</p>
+  <div class="contatti"><a class="pieno" href="mailto:danilo@daniloaprigliano.it?subject=Un%20cruscotto%20su%20misura">Scrivimi per parlarne</a><a href="#funzioni">Tutte le funzioni</a></div>
+  <div class="filo-1"></div>
+
+  <section class="sezione" id="video">
+    <div class="capo">
+      <span class="capo-num">01</span>
+      <div>
+        <h2>Che cos’è</h2>
+        <p class="occhio">Tre minuti per vedere come funziona. Nel video i dati sono inventati; l’applicazione è quella che uso ogni giorno.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <div class="colonne">
+          <p>Per anni ho tenuto la mia giornata sparsa fra una decina di programmi: il calendario, due caselle di posta, il registro, un foglio per i conti, le note, i libri. Ogni programma sapeva una cosa e nessuno sapeva le altre. Perciò ne ho costruito uno che le sa tutte.</p>
+          <p>Il cruscotto è un’applicazione web privata. Legge i miei calendari, la mia posta, i miei conti e i miei archivi, li incrocia e mi restituisce una pagina sola. Dentro lavora un assistente basato su Claude, che legge, scrive e prepara il lavoro al posto mio; le decisioni restano a me.</p>
+        </div>
+        <video class="video-demo" controls preload="none" width="1920" height="1080" poster="../media/cruscotto/copertina.jpg">
+          <source src="../media/cruscotto/cruscotto-su-misura.mp4" type="video/mp4">
+          <a href="../media/cruscotto/cruscotto-su-misura.mp4">Scarica il video (MP4, 11 MB)</a>
+        </video>
+        <p class="chiusa">Il cruscotto in tre minuti. La voce è la mia, clonata e generata dal cruscotto stesso.</p>
+
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="su-misura">
+    <div class="capo">
+      <span class="capo-num">02</span>
+      <div>
+        <h2>Che cosa vuol dire su misura</h2>
+        <p class="occhio">Il mio cruscotto ha un pannello per la scuola perché insegno. Il tuo avrà quello che serve al tuo lavoro.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <div class="colonne">
+          <p>Questo sistema non si scarica e non si configura da un menu. Ogni parte è nata da un bisogno preciso, e funziona perché è stata costruita su quel bisogno. Proprio per questo lo propongo come lavoro su commissione: parto dalla tua giornata e costruisco le parti che ti servono.</p>
+          <p>Un avvocato avrà le pratiche e le scadenze al posto del registro. Uno studio professionale avrà i clienti e le fatture. Una famiglia avrà i conti di casa, la scuola dei figli, le visite mediche. Uno studente avrà gli esami, i libri annotati e gli appunti delle lezioni. Le parti comuni, cioè agenda, posta, note e assistente, restano le stesse.</p>
+        </div>
+        <div class="colonne" style="margin-top:var(--s-5)">
+          <p>Anche l’aspetto si decide insieme. Quello che vedi nel video e nelle schermate è il mio: una prima pagina che somiglia a un quotidiano, i caratteri con le grazie, il rosso scuro. Il tuo può avere altri colori, altri caratteri, un’altra disposizione, un tema scuro, più o meno cose in prima pagina.</p>
+          <p>Lo stesso vale per le impostazioni: che cosa compare all’apertura, quali avvisi arrivano e a che ora, quali fonti entrano nella rassegna, quanto fa da solo l’assistente e che cosa deve chiederti prima.</p>
+        </div>
+        <ol class="tappe">
+          <li><strong>Un primo colloquio.</strong> Mi racconti una tua giornata vera: quali programmi apri, che cosa ricopi a mano, che cosa dimentichi. Da lì si capisce che cosa costruire.</li>
+          <li><strong>Un progetto e un preventivo.</strong> Ti propongo le parti da realizzare, in ordine di utilità, con tempi e costi scritti.</li>
+          <li><strong>La costruzione, a tappe.</strong> Si comincia dalla parte che ti serve di più e la usi subito; le altre si aggiungono una alla volta.</li>
+          <li><strong>I dati restano tuoi.</strong> Il sistema gira su un tuo spazio e legge i tuoi account con credenziali tue. Io non conservo niente.</li>
+          <li><strong>La manutenzione.</strong> I servizi a cui il sistema si collega cambiano: tenerlo in funzione, e farlo crescere, è parte del lavoro.</li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="funzioni">
+    <div class="capo">
+      <span class="capo-num">03</span>
+      <div>
+        <h2>Tutte le funzioni</h2>
+        <p class="occhio">L’elenco completo di ciò che il mio cruscotto fa oggi: 124 funzioni in 12 aree. Un sistema su misura ne prende una parte, e ne aggiunge di proprie.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <div class="colonne">
+          <p>Le schermate vengono dalla versione dimostrativa, con dati inventati, e mostrano la mia interfaccia: forme, colori e disposizione si rifanno per ogni sistema.</p>
+        </div>
+        <ul class="indice-aree">
+          <li><a href="#agenda">La giornata e l’agenda</a></li>
+          <li><a href="#posta">Posta e messaggi</a></li>
+          <li><a href="#scuola">La scuola</a></li>
+          <li><a href="#finanze">Le finanze</a></li>
+          <li><a href="#salute">La salute</a></li>
+          <li><a href="#diario">Diario e giornale di bordo</a></li>
+          <li><a href="#note">Note e registrazioni</a></li>
+          <li><a href="#scrittoio">Lo scrittoio</a></li>
+          <li><a href="#biblioteca">Biblioteca e lettore</a></li>
+          <li><a href="#notizie">Le notizie</a></li>
+          <li><a href="#progetti">Progetti, persone, lavagna</a></li>
+          <li><a href="#assistente">L’assistente e la sala macchine</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="agenda">
+    <div class="capo">
+      <span class="capo-num">04</span>
+      <div>
+        <h2>La giornata e l’agenda</h2>
+        <p class="occhio">Impegni, cose da fare e scadenze in un posto solo, con un assistente che li tiene in ordine.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/giornata.webp" width="1440" height="810" alt="«La mia giornata»: l’agenda con gli orari a sinistra, i dati della salute e i movimenti del giorno a destra" loading="lazy"><figcaption>«La mia giornata»: agenda, salute e movimenti di oggi in una schermata.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>La mia giornata.</strong> Una schermata per il giorno in corso, in quattro gruppi: agenda, diario, salute, soldi. Si sfoglia all’indietro come un’agenda di carta.</li>
+          <li><strong>Brief del mattino e della sera.</strong> Un testo breve, scritto ogni giorno dal sistema, che dice che cosa conta oggi e che cosa è rimasto aperto.</li>
+          <li><strong>Attività con ambiti, priorità e sotto-attività.</strong> Ogni voce ha un giorno, un ambito e una priorità; si rimanda, si delega o si lascia cadere con un tocco.</li>
+          <li><strong>Aggiunta in linguaggio naturale.</strong> Si scrive o si detta «paga la TARI venerdì» e l’intelligenza artificiale crea la voce giusta. Legge anche una foto, e da un solo messaggio ricava più voci.</li>
+          <li><strong>Linea del tempo.</strong> La giornata disegnata ora per ora, con gli impegni e le attività che hanno un orario.</li>
+          <li><strong>Calendario unico.</strong> I calendari Google, le attività, le lezioni e gli appuntamenti in una sola vista, a giorno, settimana o mese. Lo stesso evento su due calendari compare una volta.</li>
+          <li><strong>La borsa del giorno.</strong> Per gli impegni di oggi e di domani, l’elenco delle cose da portare.</li>
+          <li><strong>Niente si arena.</strong> Le scadenze vecchie tornano a galla una alla volta, e per ciascuna si decide: fatta, spostata, in attesa di qualcuno, abbandonata.</li>
+          <li><strong>Il custode.</strong> Un controllo automatico che riconosce i doppioni, le voci incoerenti e l’arretrato. Chiude da solo i casi certi e propone gli altri.</li>
+          <li><strong>Revisione notturna.</strong> Ogni notte il sistema rilegge le attività aperte e segnala quelle che sembrano già fatte.</li>
+          <li><strong>Promemoria e notifiche.</strong> I promemoria dell’iPhone entrano in agenda; gli avvisi arrivano come notifiche sul telefono.</li>
+          <li><strong>Widget su iPhone.</strong> Dalla schermata del telefono si vedono le scadenze e si aggiunge un’attività senza aprire l’applicazione.</li>
+          <li><strong>Ricerca e domande.</strong> Si cerca in tutto l’archivio, oppure si chiede: «che cosa ho di urgente?», «riassumimi la settimana».</li>
+        </ul>
+        <figure class="schermo"><img src="../media/cruscotto/calendario.webp" width="1440" height="810" alt="Il calendario a quattro giorni con lezioni, appuntamenti e lezioni private" loading="lazy"><figcaption>Il calendario raccoglie più calendari e le attività con un orario.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="posta">
+    <div class="capo">
+      <span class="capo-num">05</span>
+      <div>
+        <h2>Posta e messaggi</h2>
+        <p class="occhio">Più caselle in una, e il conto delle risposte che si devono a qualcuno.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/posta.webp" width="1440" height="810" alt="Il client di posta con l’elenco delle conversazioni a sinistra e un messaggio aperto a destra" loading="lazy"><figcaption>La posta di più caselle in un’unica finestra.</figcaption></figure>
+        <figure class="schermo"><img src="../media/cruscotto/whatsapp.webp" width="1440" height="810" alt="Il riquadro «In attesa di risposta» con due conversazioni WhatsApp rimaste senza risposta" loading="lazy"><figcaption>Le conversazioni WhatsApp che aspettano una risposta, con il riassunto di ciò che è stato chiesto.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Più caselle insieme.</strong> Posta personale, di lavoro e di altri incarichi in un unico elenco, ciascuna con il suo segno. Si risponde dalla casella giusta, con la firma giusta.</li>
+          <li><strong>Posta certificata.</strong> Anche la casella PEC si legge e si scrive da qui, con ricevute e allegati.</li>
+          <li><strong>Categorie automatiche.</strong> Principale, newsletter, notifiche: il sistema smista da sé e impara dai mittenti.</li>
+          <li><strong>Da rispondere.</strong> L’elenco delle mail che aspettano una risposta, con i giorni di attesa. Una conversazione si può segnare perché torni finché non le si risponde.</li>
+          <li><strong>Dalla mail all’agenda.</strong> La posta che richiede un’azione diventa da sola un’attività, con il collegamento al messaggio.</li>
+          <li><strong>Bozze scritte dall’assistente.</strong> Si dice in due parole che cosa rispondere, e l’intelligenza artificiale prepara il testo; poi lo si rivede o lo si fa continuare.</li>
+          <li><strong>Riassunto delle conversazioni.</strong> Una conversazione lunga si riassume in poche righe.</li>
+          <li><strong>Posticipo, invio programmato, conversazioni fissate.</strong> Una mail si rimanda a un altro giorno, si programma per un’ora precisa, si tiene in cima.</li>
+          <li><strong>Allegati.</strong> Anteprima di PDF, immagini e fogli di calcolo senza scaricarli.</li>
+          <li><strong>Esportazioni.</strong> Una conversazione si salva come nota o come PDF, si manda al Kindle, si condivide con un link a scadenza.</li>
+          <li><strong>Newsletter.</strong> Le newsletter si leggono in un lettore pulito, fuori dalla posta in arrivo.</li>
+          <li><strong>Archivio di WhatsApp.</strong> Le chat e i gruppi restano consultabili e ricercabili; i messaggi vocali arrivano già trascritti.</li>
+          <li><strong>Risposte in sospeso su WhatsApp.</strong> Una conversazione rimasta senza risposta diventa un’attività, con il riassunto di ciò che è stato chiesto e il collegamento alla chat.</li>
+          <li><strong>Messaggi inviati dall’assistente.</strong> Su richiesta l’assistente prepara un messaggio o un file per WhatsApp; parte solo dopo la conferma.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="scuola">
+    <div class="capo">
+      <span class="capo-num">06</span>
+      <div>
+        <h2>La scuola</h2>
+        <p class="occhio">La parte costruita per il mio lavoro di insegnante. Per un altro mestiere, al suo posto ci sarebbe il pannello di quel mestiere.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/scuola.webp" width="1440" height="810" alt="Il pannello della scuola con lo stato del registro, le classi, l’orario del giorno e i prossimi impegni" loading="lazy"><figcaption>Il pannello della scuola: registro, classi, orario e impegni.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Orario.</strong> L’orario settimanale con le ore libere e quelle a disposizione; un tocco su un’ora apre la sua scheda.</li>
+          <li><strong>Registro delle lezioni.</strong> Ogni ora svolta si registra dal pannello, con argomenti e compiti.</li>
+          <li><strong>Lezioni non registrate.</strong> Il sistema confronta l’orario con il registro e dice quali ore mancano.</li>
+          <li><strong>Promemoria all’inizio dell’ora.</strong> Una notifica ricorda di registrare la lezione appena comincia.</li>
+          <li><strong>Diario di bordo.</strong> Il resoconto della giornata a scuola si compila da solo a partire dal registro.</li>
+          <li><strong>Programmazione a parole.</strong> Si scrive «in terza, martedì verifica su Dante» e il sistema crea lezioni, verifiche e promemoria.</li>
+          <li><strong>Lezioni suggerite.</strong> Dal programma e da ciò che si è già fatto il sistema propone la lezione successiva, che si conferma con un tocco.</li>
+          <li><strong>Programma preventivo.</strong> Il piano dell’anno per classe, con il conto delle ore che restano.</li>
+          <li><strong>Compiti.</strong> I compiti assegnati stanno sulla lezione, con la data di consegna e la lista di quelli da ritirare.</li>
+          <li><strong>Preparazione delle lezioni.</strong> Per ogni classe e giorno, i materiali e lo stato «pronta»; la sera prima arriva un avviso.</li>
+          <li><strong>Classi e posti.</strong> Gli elenchi degli studenti e le piantine dell’aula.</li>
+          <li><strong>Il filo del discorso.</strong> Per ogni classe, il racconto delle ultime lezioni: dove si è arrivati e che cosa viene dopo.</li>
+          <li><strong>Consuntivo della classe.</strong> Il riepilogo del lavoro svolto, pronto da copiare.</li>
+          <li><strong>Registrazione della lezione.</strong> L’ora si può registrare; dalla trascrizione il sistema compila la voce del registro.</li>
+          <li><strong>Circolari e documenti.</strong> Le circolari si archiviano da sole, e i documenti della scuola si leggono dal pannello.</li>
+          <li><strong>Colloqui e calendario scolastico.</strong> I colloqui prenotati dai genitori entrano in agenda; vacanze e giorni di lezione sono già nel calendario.</li>
+          <li><strong>Lezioni private.</strong> Studenti, lezioni, materiali e pagamenti, con il conto di ciò che resta da incassare.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="finanze">
+    <div class="capo">
+      <span class="capo-num">07</span>
+      <div>
+        <h2>Le finanze</h2>
+        <p class="occhio">Un pannello che guarda avanti: dice quando il conto scenderà, che cosa entrerà dopo e quanto si può spendere oggi.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/finanze.webp" width="1440" height="810" alt="Il pannello delle finanze: la quota giornaliera spendibile, i saldi dei conti, entrate e uscite previste a trenta giorni" loading="lazy"><figcaption>Le finanze si aprono su una risposta: quanto puoi spendere al giorno.</figcaption></figure>
+        <figure class="schermo"><img src="../media/cruscotto/finanze-calcolo.webp" width="1440" height="810" alt="Il dettaglio del calcolo della quota giornaliera: liquidità, entrate attese, uscite previste, riserva" loading="lazy"><figcaption>Ogni numero mostra da dove viene, voce per voce.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Tutti i conti.</strong> I saldi di più banche e portafogli, letti in automatico dove la banca lo permette e scritti a mano altrove. Ogni saldo dichiara di quando è.</li>
+          <li><strong>Movimenti classificati.</strong> Ogni movimento riceve una categoria. I giri fra conti propri e le rate non vengono contati come spese.</li>
+          <li><strong>Quota giornaliera.</strong> Una cifra sola: quanto si può spendere al giorno fino alla prossima entrata, lasciando intatta una riserva.</li>
+          <li><strong>Proiezione di cassa.</strong> Il saldo previsto a trenta, sessanta e novanta giorni, con il punto più basso e il giorno in cui cade.</li>
+          <li><strong>Impegni fissi.</strong> Affitto, bollette, abbonamenti e rate vengono riconosciuti dai movimenti e messi in calendario.</li>
+          <li><strong>Entrate attese.</strong> Stipendio, compensi e rimborsi, ciascuno con il suo grado di certezza: misurato, stimato, dichiarato.</li>
+          <li><strong>Budget.</strong> Un tetto per categoria, con lo storico dei mesi e l’indicazione di dove rallentare.</li>
+          <li><strong>Debiti e rate.</strong> Il piano di ogni finanziamento, con il residuo e la data di chiusura.</li>
+          <li><strong>Investimenti e patrimonio.</strong> Un registro degli investimenti e il conto del patrimonio netto, tenuti separati dai soldi spendibili.</li>
+          <li><strong>Pagamenti da approvare.</strong> L’assistente prepara un bonifico; parte solo dopo l’approvazione con un PIN.</li>
+          <li><strong>Avvisi di pagamento.</strong> Tasse e multe si registrano con la scadenza e restano in vista finché non sono pagate.</li>
+          <li><strong>Avvisi.</strong> Una notifica quando un budget è superato o il saldo previsto scende sotto la riserva.</li>
+          <li><strong>Da sistemare.</strong> Storni, doppioni e movimenti dubbi vengono segnalati, e la correzione fatta una volta diventa una regola.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="salute">
+    <div class="capo">
+      <span class="capo-num">08</span>
+      <div>
+        <h2>La salute</h2>
+        <p class="occhio">I dati dell’orologio e le misure prese a mano, senza giudizi.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/salute-corpo.webp" width="1440" height="810" alt="Il pannello «Il corpo»: sonno, passi, esercizio e frequenza a riposo delle ultime due settimane" loading="lazy"><figcaption>Sonno, passi, esercizio e battito a riposo, da Apple Salute.</figcaption></figure>
+        <figure class="schermo"><img src="../media/cruscotto/salute-pressione.webp" width="1440" height="810" alt="Il grafico delle misure della pressione nelle ultime settimane" loading="lazy"><figcaption>Le misure della pressione, con il riepilogo da portare al medico.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Il corpo.</strong> Sonno, passi, esercizio, frequenza cardiaca a riposo e allenamenti arrivano dall’orologio, giorno per giorno.</li>
+          <li><strong>Stato d’animo.</strong> La valutazione registrata sul telefono compare accanto alla giornata.</li>
+          <li><strong>Pressione.</strong> Le misure si registrano in pochi secondi e diventano un grafico, con un riepilogo da portare al medico.</li>
+          <li><strong>Terapia.</strong> I farmaci in corso e la spunta di quelli presi, mattina e sera.</li>
+          <li><strong>Ricette e appuntamenti.</strong> Le prescrizioni con la scadenza e le visite da prenotare o già fissate.</li>
+          <li><strong>Abitudini.</strong> Le abitudini che si vogliono mantenere, con la serie dei giorni consecutivi.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="diario">
+    <div class="capo">
+      <span class="capo-num">09</span>
+      <div>
+        <h2>Diario e giornale di bordo</h2>
+        <p class="occhio">Quello che è successo, ricostruito dal sistema, e quello che si vuole ricordare, scritto a mano.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/diario.webp" width="1440" height="810" alt="Il diario con le voci degli ultimi giorni: note del giorno e voci personali" loading="lazy"><figcaption>Il diario: il giornale di bordo e le voci personali, giorno per giorno.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Giornale di bordo.</strong> A fine giornata il sistema incrocia agenda, posta, luoghi e lavoro svolto, e scrive un resoconto in prosa.</li>
+          <li><strong>Nota del giorno.</strong> Una pagina per giorno, da completare a mano o a voce.</li>
+          <li><strong>Diario personale.</strong> Voci distinte per genere: riflessioni, letture, concerti, sogni.</li>
+          <li><strong>Luoghi.</strong> Le soste della giornata, dal telefono, con una mappa e i luoghi abituali riconosciuti per nome.</li>
+          <li><strong>Foto del giorno.</strong> Le fotografie scattate quel giorno accanto alla pagina del diario.</li>
+          <li><strong>Retrospettive.</strong> Il punto della settimana o del mese, scritto a partire dalle giornate.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="note">
+    <div class="capo">
+      <span class="capo-num">10</span>
+      <div>
+        <h2>Note e registrazioni</h2>
+        <p class="occhio">Appunti, idee, riunioni: scritti, dettati o registrati.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/note.webp" width="1440" height="810" alt="L’archivio delle note, con la ricerca e le etichette" loading="lazy"><figcaption>Le note, con ricerca ed etichette.</figcaption></figure>
+        <figure class="schermo"><img src="../media/cruscotto/registrazioni.webp" width="1440" height="810" alt="Il pannello delle registrazioni: contesto, presenti e il pulsante per registrare dal vivo" loading="lazy"><figcaption>Una riunione si registra da qui; il sistema la trascrive e ne ricava il resoconto.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Note.</strong> Appunti con etichette, ricerca nel testo, note fissate in prima pagina.</li>
+          <li><strong>Collegamenti.</strong> Una nota si aggancia a un progetto, a un evento, a una persona, e la si ritrova da lì.</li>
+          <li><strong>L’assistente nelle note.</strong> Riordina, riassume o prosegue un appunto.</li>
+          <li><strong>Condivisione ed esportazione.</strong> Un link a scadenza, una copia in Markdown o testo, l’invio al Kindle, l’ascolto ad alta voce.</li>
+          <li><strong>Dettatura ovunque.</strong> Accanto a ogni campo c’è un microfono: si parla, e il testo arriva già ripulito.</li>
+          <li><strong>Registrazione di riunioni e telefonate.</strong> Dal vivo, online o in forma mista, anche a schermo spento.</li>
+          <li><strong>Trascrizione e resoconto.</strong> Dalla registrazione il sistema ricava la trascrizione, un resoconto, le decisioni prese e le cose da fare, che diventano attività.</li>
+          <li><strong>Appunti durante la riunione.</strong> Contesto, presenti e note con l’ora, che guidano il resoconto.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="scrittoio">
+    <div class="capo">
+      <span class="capo-num">11</span>
+      <div>
+        <h2>Lo scrittoio</h2>
+        <p class="occhio">Un’applicazione per scrivere testi lunghi, con le norme editoriali a portata di mano.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/scrittoio.webp" width="1440" height="810" alt="Una bozza nello scrittoio con le osservazioni del redattore a margine" loading="lazy"><figcaption>Una bozza riletta dal redattore: le osservazioni stanno a margine, paragrafo per paragrafo.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Bozze per forma e destinazione.</strong> Articolo, saggio, intervento, racconto: ogni testo ha la sua destinazione, la scadenza e lo stato.</li>
+          <li><strong>Contatori editoriali.</strong> Parole, battute, cartelle e tempo di lettura.</li>
+          <li><strong>Norme editoriali.</strong> Un comando applica virgolette, apostrofi, trattini e spazi secondo le norme tipografiche italiane.</li>
+          <li><strong>Rilettura del redattore.</strong> Un redattore artificiale annota a margine: l’attacco, gli esempi, la chiusa. Dove serve propone una riscrittura, che si accetta o si scarta.</li>
+          <li><strong>Note a piè di pagina.</strong> Numerate per posizione, come in un programma di scrittura.</li>
+          <li><strong>Versioni.</strong> Ogni salvataggio resta, e una versione precedente si rilegge o si ripristina.</li>
+          <li><strong>Trova e sostituisci.</strong> Nel testo intero, con le opzioni consuete.</li>
+          <li><strong>Condivisione per commenti.</strong> Un link per chi deve leggere: i suoi commenti arrivano a margine.</li>
+          <li><strong>Esportazione.</strong> In Markdown, verso Google Documenti, al Kindle.</li>
+          <li><strong>Scrittura senza distrazioni.</strong> Una modalità a pagina piena. Lo scrittoio si installa come applicazione a sé.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="biblioteca">
+    <div class="capo">
+      <span class="capo-num">12</span>
+      <div>
+        <h2>Biblioteca e lettore</h2>
+        <p class="occhio">I libri digitali in un catalogo, e un lettore che annota come si fa sulla carta.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/biblioteca.webp" width="1440" height="810" alt="Lo scaffale della biblioteca con le copertine dei volumi" loading="lazy"><figcaption>Il catalogo, in elenco o per copertine.</figcaption></figure>
+        <figure class="schermo"><img src="../media/cruscotto/lettore.webp" width="1440" height="810" alt="Una pagina dei Promessi sposi con un passo evidenziato e il pannello dei segni: forme e significati" loading="lazy"><figcaption>Si seleziona un passo e si sceglie il segno: otto forme, cinque significati.</figcaption></figure>
+        <figure class="schermo"><img src="../media/cruscotto/quaderno.webp" width="1440" height="810" alt="Il lettore con il quaderno aperto: tre passi annotati, ciascuno con il suo significato" loading="lazy"><figcaption>Tutti i segni finiscono nel quaderno, che si cerca e si esporta.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Catalogo.</strong> Libri in formato epub e PDF, con ricerca per titolo, autore, curatore, editore; tre viste e più ordinamenti.</li>
+          <li><strong>Schede automatiche.</strong> Per ogni volume il sistema cerca quarta di copertina, notizia sull’autore e copertina, e dichiara quanto è sicuro del risultato.</li>
+          <li><strong>Lettore.</strong> Si legge nel browser, su computer, tavoletta e telefono, e si riprende dal punto in cui si era rimasti.</li>
+          <li><strong>Annotazioni.</strong> Evidenziatore, sottolineatura semplice, doppia e ondulata, riquadro, cerchio, barra a margine, glossa.</li>
+          <li><strong>Significati.</strong> Ogni segno dice che cos’è: passo importante, esempio, definizione, dubbio, da portare in classe. La legenda si adatta.</li>
+          <li><strong>Segni a margine e tratti a mano.</strong> Punto interrogativo, esclamativo, «NB», «cfr.»; con la penna si scrive sul margine, e il tratto resta agganciato alla sua parola.</li>
+          <li><strong>Il quaderno.</strong> Tutte le annotazioni di un libro, o di tutti i libri, in un elenco che si cerca, si ordina, si esporta.</li>
+          <li><strong>Il foglio.</strong> Una pagina di appunti accanto al testo, con i fili che legano ogni appunto al suo passo.</li>
+          <li><strong>Ripasso.</strong> Le annotazioni tornano come domande, per ripassare un libro studiato.</li>
+          <li><strong>Spiegazioni.</strong> Su un passo selezionato si chiede una spiegazione, una definizione, una voce di enciclopedia.</li>
+          <li><strong>Ascolto.</strong> Il libro si ascolta con una voce naturale, anche a schermo spento.</li>
+          <li><strong>L’assistente legge il libro.</strong> Su richiesta l’assistente legge un capitolo con le annotazioni e aggiunge le sue, in uno strato separato.</li>
+          <li><strong>Verso altri dispositivi.</strong> Un volume si manda al Kindle o si apre in un’altra applicazione di lettura.</li>
+          <li><strong>La raccolta.</strong> Pagine web, articoli e documenti si salvano con un’estensione del browser e si leggono con lo stesso lettore.</li>
+          <li><strong>Ospiti.</strong> Un libro si può aprire a un’altra persona, con una password sua.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="notizie">
+    <div class="capo">
+      <span class="capo-num">13</span>
+      <div>
+        <h2>Le notizie</h2>
+        <p class="occhio">Una rassegna stampa scritta ogni giorno per una persona sola, sulle fonti e sui temi che sceglie lei.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/rassegna.webp" width="1440" height="810" alt="La rassegna stampa del mattino: un’introduzione e le sezioni Italia, Europa, Milano e Lombardia, con il rimando alle testate" loading="lazy"><figcaption>La rassegna del mattino: sezioni, fonti citate, ascolto.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Rassegna del mattino e della sera.</strong> Due volte al giorno il sistema legge le fonti e scrive un riassunto in prosa, diviso per sezioni, con il rimando a ogni articolo citato.</li>
+          <li><strong>Fonti a scelta.</strong> Quotidiani, riviste, siti e newsletter, italiani e stranieri: l’elenco lo decidi tu, e si cambia quando vuoi.</li>
+          <li><strong>Sezioni a scelta.</strong> Italia, Europa, la tua città, il tuo settore, un tema che segui: ogni sezione ha le sue fonti e la sua lunghezza.</li>
+          <li><strong>Orari a scelta.</strong> La rassegna esce quando ti serve, con una notifica quando è pronta.</li>
+          <li><strong>Rassegne tematiche.</strong> Per un argomento o un territorio da seguire da vicino, una rassegna a parte: gli articoli archiviati, le parole chiave, le persone citate.</li>
+          <li><strong>Edizione del fine settimana.</strong> Il sabato e la domenica un’edizione sola, con un approfondimento costruito sui testi della settimana.</li>
+          <li><strong>Sintesi di periodo.</strong> Su richiesta, il riassunto di una settimana o di un mese di notizie, tema per tema.</li>
+          <li><strong>Archivio.</strong> Ogni edizione resta e si rilegge per data. Una notizia del giorno prima è dichiarata come tale.</li>
+          <li><strong>Ascolto.</strong> La rassegna si ascolta con una voce naturale, alla velocità che preferisci, anche in macchina e a schermo spento.</li>
+          <li><strong>Condivisione.</strong> Un’edizione si condivide con un link o si manda al Kindle.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="progetti">
+    <div class="capo">
+      <span class="capo-num">14</span>
+      <div>
+        <h2>Progetti, persone, lavagna</h2>
+        <p class="occhio">Quello che tiene insieme il resto.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/progetti.webp" width="1440" height="810" alt="Il pannello dei progetti con le tappe in arrivo e le attività agganciate da sole" loading="lazy"><figcaption>I progetti: tappe, attività agganciate e proposte da confermare.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Progetti.</strong> Ogni progetto raccoglie attività, appuntamenti, note, mail e documenti. Le tappe stanno su una linea del tempo.</li>
+          <li><strong>Agganci automatici.</strong> Un’attività o una mail che riguarda un progetto gli viene proposta, e si conferma con un tocco.</li>
+          <li><strong>Stato del progetto.</strong> Su richiesta l’assistente scrive il punto della situazione.</li>
+          <li><strong>Persone.</strong> Un archivio di contatti con ruolo, ambito e ultimo contatto; per ciascuno, le mail, gli impegni e i messaggi scambiati.</li>
+          <li><strong>Chi non sento da tempo.</strong> Il sistema ricorda le persone con cui il contatto si è diradato.</li>
+          <li><strong>Lavagna.</strong> Una tela senza bordi per scrivere a mano, disporre note e forme, incollare link che diventano anteprime. Si condivide con un indirizzo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="assistente">
+    <div class="capo">
+      <span class="capo-num">15</span>
+      <div>
+        <h2>L’assistente e la sala macchine</h2>
+        <p class="occhio">L’intelligenza artificiale lavora dentro il sistema, e il sistema dice quanto costa.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <figure class="schermo"><img src="../media/cruscotto/aggiungi-ai.webp" width="1440" height="810" alt="La finestra «Aggiungi con AI»: la frase «paga la TARI venerdì» interpretata come attività con data, ambito e priorità" loading="lazy"><figcaption>Una frase diventa un’attività, che si conferma prima di crearla.</figcaption></figure>
+        <figure class="schermo"><img src="../media/cruscotto/sala-macchine.webp" width="1440" height="810" alt="La sala macchine: i servizi da controllare e la spesa del mese per l’intelligenza artificiale, voce per voce" loading="lazy"><figcaption>La sala macchine: che cosa funziona, e quanto si sta spendendo.</figcaption></figure>
+        <ul class="funzioni">
+          <li><strong>Un assistente che entra da una porta sola.</strong> Claude legge e scrive nel cruscotto: cerca una mail, prepara una risposta, crea un’attività, aggiorna un progetto, propone un pagamento.</li>
+          <li><strong>Conferma prima di agire.</strong> Ciò che esce verso altri, una mail, un messaggio, un bonifico, aspetta sempre un sì.</li>
+          <li><strong>Voce.</strong> Il sistema legge ad alta voce testi, rassegne e libri; può farlo con una voce clonata dalla propria.</li>
+          <li><strong>Sala macchine.</strong> Una pagina dice quali servizi funzionano e quali no, in parole comprensibili.</li>
+          <li><strong>Costi misurati.</strong> La spesa per l’intelligenza artificiale si legge funzione per funzione. I lavori semplici vanno ai modelli gratuiti, quelli che richiedono scrittura ai migliori.</li>
+          <li><strong>Accesso protetto.</strong> Il cruscotto si apre con una password, e ogni dispositivo si autorizza a parte.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="come-e-fatto">
+    <div class="capo">
+      <span class="capo-num">16</span>
+      <div>
+        <h2>Com’è fatto</h2>
+        <p class="occhio">Per chi vuole sapere che cosa c’è sotto.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <div class="colonne">
+          <p>Il cruscotto è un’applicazione web che gira su infrastruttura <em>serverless</em>: non c’è un server da tenere acceso né un programma da installare. Si apre dal browser, su computer e telefono, e sul telefono si aggiunge alla schermata iniziale come un’applicazione.</p>
+          <p>Si collega ai servizi che già usi, cioè calendari, posta, banca, archivi di documenti, attraverso le loro interfacce ufficiali, con le autorizzazioni che dai tu e che puoi revocare. L’intelligenza artificiale è quella di Anthropic e, per i lavori più semplici, di altri fornitori scelti per costo e riservatezza.</p>
+          <p>L’ho progettato e scritto per intero, lavorando con Claude Code. Mi occupo di sviluppo web da più di quindici anni e formo i docenti all’uso dell’intelligenza artificiale: questo sistema è il punto in cui i due mestieri si incontrano.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sezione" id="contatti">
+    <div class="capo">
+      <span class="capo-num">17</span>
+      <div>
+        <h2>Per cominciare</h2>
+        
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:26px">
+      <div></div>
+      <div class="interno">
+        <div class="colonne">
+          <p>Scrivimi a <a href="mailto:danilo@daniloaprigliano.it?subject=Un%20cruscotto%20su%20misura">danilo@daniloaprigliano.it</a> e raccontami in poche righe che lavoro fai e che cosa vorresti avere sotto gli occhi ogni mattina. Il primo colloquio è gratuito e non impegna a niente.</p>
+        </div>
+        <div class="contatti" style="margin-top:var(--s-5)"><a class="pieno" href="mailto:danilo@daniloaprigliano.it?subject=Un%20cruscotto%20su%20misura">Scrivimi una mail</a></div>
+      </div>
+    </div>
+  </section>
+
+  <p class="chiusura">Altro che appartiene a questa pagina, anche se sta altrove: gli altri lavori di <a href="../web/">sviluppo web</a>, la <a href="../ia-a-scuola/">formazione dei docenti sull’intelligenza artificiale</a>, il <a href="../profilo/">profilo</a> completo e il <a href="../curriculum/">curriculum</a>.</p>
+
+  <footer>
+    <span class="colofone">Danilo Aprigliano · Milano · <a href="mailto:danilo@daniloaprigliano.it">danilo@daniloaprigliano.it</a><br>Composto a Milano nel 2026, in Vollkorn e Space Mono. Un foglio di stile solo, nessuno script, nessun cookie.</span>
+    <span class="servizi"><a href="../tutto/">Tutto</a> · <a href="../curriculum/">Curriculum</a> · <a href="../articoli/">Archivio</a> · <a href="../materiali/#sostieni">Sostieni</a><br><a href="https://www.ilpuntocieco.it/">«Il punto cieco»</a> · <a href="../en/">English</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
