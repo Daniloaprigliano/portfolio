@@ -179,19 +179,24 @@ em{font-style:italic}
 /* la navigazione: parole, mai sigle. Regge le etichette inglesi
    perche' va a capo e non tronca nulla */
 .navsito{
-  display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-6);
+  display:block;
   margin:var(--s-5) 0 0;
   border-bottom:1px solid var(--inchiostro);
   font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;
   text-transform:lowercase;
 }
+/* due righe: sopra quello che faccio, sotto i documenti e gli indici */
+.navsito .nav-riga{display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-6)}
+.navsito .nav-due{border-top:1px solid var(--filo);font-size:11px;gap:0 var(--s-6)}
 .navsito a{
   color:var(--grigio-1);padding:var(--s-2) 0 6px;
   border-bottom:2px solid transparent;min-height:36px;
   display:inline-flex;align-items:center;
 }
+.navsito .nav-uno a{color:var(--inchiostro)}
+.navsito .nav-due a{color:var(--grigio-2);min-height:30px;padding:5px 0 4px}
 .navsito a:hover{color:var(--inchiostro);border-bottom-color:var(--filo-forte)}
-.navsito a.qui{color:var(--rubrica);border-bottom-color:var(--rubrica)}
+.navsito a.qui,.navsito .nav-riga a.qui{color:var(--rubrica);border-bottom-color:var(--rubrica)}
 
 /* ============================================================
    3. IL TESTO DELLA HOME
@@ -622,7 +627,8 @@ footer a:hover{border-bottom-color:currentColor}
   .testata .centro{display:none}
   .testata-nome{grid-template-columns:48px minmax(0,1fr);gap:0 var(--s-4)}
   .ritratto{width:48px;height:48px;max-width:48px}
-  .navsito{gap:0 var(--s-5);font-size:12px}
+  .navsito{font-size:12px}
+  .navsito .nav-riga{gap:0 var(--s-5)}
 
   /* il margine sparisce: le etichette salgono sopra il testo */
   .cappello{grid-template-columns:minmax(0,1fr);gap:var(--s-5)}
@@ -790,9 +796,9 @@ ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
 .sostieni .sostieni-link a:first-child{background:var(--rubrica);color:var(--carta)}
 .sostieni .sostieni-link a:hover{background:var(--rubrica);color:var(--carta)}
 
-/* Menu a dodici voci: su schermo largo sta in una riga sola */
+/* Menu su due righe: la prima, a schermo largo, occupa tutta la giustezza */
 @media (min-width:1000px){
-  .navsito{gap:var(--s-1) 18px;justify-content:space-between}
+  .navsito .nav-uno{gap:var(--s-1) 18px;justify-content:space-between}
 }
 .sostieni.sostieni-alto{margin:var(--s-6) 0 0}
 
