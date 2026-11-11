@@ -1,0 +1,218 @@
+<!doctype html><html><head>
+<meta name="author" content="Danilo Aprigliano">
+<meta name="copyright" content="© 2026 Danilo Aprigliano – CC BY-NC-ND 4.0">
+<meta name="robots" content="noai, noimageai">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Laboratorio IA in aula</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: un quaderno di lavoro proiettabile — testata, due schede, un banco di prova per pagina */
+:root{
+  --paper:#F2F3EF; --sheet:#FBFBF8; --ink:#17202B; --soft:#4B5563; --line:#D5D9D2;
+  --lapis:#2B4C9B; --lapis-soft:#E3E9F6; --ochre:#9A6B12; --ochre-soft:#F4EAD3;
+  --ban:#A3282B; --ban-soft:#F6E1E1; --high:#B4561A; --high-soft:#F7E6D8; --mid:#2B4C9B; --mid-soft:#E3E9F6; --low:#2F6B4F; --low-soft:#DFEEE6;
+  --display:'Literata', Georgia, serif; --body:'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12161D; --sheet:#1A2029; --ink:#E9ECEF; --soft:#A9B2BD; --line:#2E3642;
+  --lapis:#8FA9E6; --lapis-soft:#22304D; --ochre:#E0B867; --ochre-soft:#3A2F17;
+  --ban:#F08B8D; --ban-soft:#3B1E20; --high:#F0A06C; --high-soft:#3A2618; --mid:#8FA9E6; --mid-soft:#22304D; --low:#7FCBA5; --low-soft:#183126; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12161D; --sheet:#1A2029; --ink:#E9ECEF; --soft:#A9B2BD; --line:#2E3642;
+  --lapis:#8FA9E6; --lapis-soft:#22304D; --ochre:#E0B867; --ochre-soft:#3A2F17;
+  --ban:#F08B8D; --ban-soft:#3B1E20; --high:#F0A06C; --high-soft:#3A2618; --mid:#8FA9E6; --mid-soft:#22304D; --low:#7FCBA5; --low-soft:#183126; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:16px}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:600}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.1;margin:.2em 0 0;text-wrap:balance}
+nav{display:flex;gap:6px;background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:4px}
+nav a{padding:10px 18px;border-radius:999px;color:var(--soft);text-decoration:none;font-weight:600;font-size:16px}
+nav a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+nav a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--lapis);outline-offset:2px}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(24px,3vw,34px);margin:0;text-wrap:balance}
+.lead{color:var(--soft);max-width:68ch;margin:6px 0 0}
+.grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0}
+.presets{display:flex;flex-wrap:wrap;gap:8px}
+button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:var(--sheet);color:var(--ink);padding:10px 14px;font-weight:600}
+button.primary{background:var(--lapis);border-color:var(--lapis);color:var(--sheet)}
+button[aria-pressed="true"]{border-color:var(--lapis);background:var(--lapis-soft)}
+.text{font-family:var(--display);font-size:clamp(26px,3.4vw,40px);line-height:1.35;min-height:3.2em;margin:18px 0}
+.text .new{color:var(--lapis);border-bottom:3px solid var(--lapis)}
+.cursor{display:inline-block;width:.5em;border-bottom:3px dashed var(--soft);margin-left:.15em}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:9.5em minmax(0,1fr) 4.2em;align-items:center;gap:10px;font-size:18px}
+.bar .w{font-family:var(--display);font-size:20px;overflow-wrap:anywhere}
+.bar .track{height:22px;background:var(--paper);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar .fill{height:100%;background:var(--lapis);transition:width .35s ease}
+.bar.chosen .fill{background:var(--ochre)}
+.bar .p{text-align:right;font-variant-numeric:tabular-nums;color:var(--soft)}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:18px}
+label{font-weight:600}
+input[type=range]{width:min(260px,100%);accent-color:var(--lapis)}
+.note{font-size:15px;color:var(--soft);margin-top:14px}
+.side h3{font-family:var(--display);font-size:22px;margin:0 0 8px}
+.side p{margin:0 0 12px;max-width:60ch}
+.tag{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--ochre-soft);color:var(--ochre)}
+/* AI Act */
+.pyr{display:flex;flex-direction:column;align-items:center;gap:6px}
+.lvl{width:var(--w);max-width:100%;border:0;border-radius:8px;padding:14px 10px;text-align:center;font-weight:600;font-size:17px;line-height:1.25}
+.lvl small{display:block;font-weight:400;font-size:14px;opacity:.85}
+.l-ban{background:var(--ban-soft);color:var(--ban)} .l-high{background:var(--high-soft);color:var(--high)} .l-mid{background:var(--mid-soft);color:var(--mid)} .l-low{background:var(--low-soft);color:var(--low)}
+.lvl[aria-pressed="true"]{outline:3px solid currentColor;outline-offset:2px}
+.detail{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.detail h3{font-family:var(--display);font-size:24px;margin:0 0 6px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.case{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.case p{margin:0}
+.case .q{font-family:var(--display);font-size:20px;line-height:1.35}
+.case .pick{display:flex;flex-wrap:wrap;gap:6px}
+.case .pick button{font-size:14px;padding:6px 10px}
+.verdict{border-radius:8px;padding:10px 12px;font-size:16px}
+.verdict b{display:block;margin-bottom:2px}
+.score{font-variant-numeric:tabular-nums;color:var(--soft);font-weight:600}
+footer{font-size:14px;color:var(--soft);border-top:1px solid var(--line);padding-top:14px}
+footer a{color:var(--lapis)}
+@media (prefers-reduced-motion:reduce){.bar .fill{transition:none}}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <div class="eyebrow">Laboratorio didattico per le materie umanistiche · I.S. «Carlo Cattaneo»</div>
+    <h1>Due prove da fare insieme</h1>
+  </div>
+  <nav aria-label="Schede">
+    <a href="#parola" id="tab-parola">La parola dopo</a>
+    <a href="#ai-act" id="tab-aiact">L’AI Act a scuola</a>
+  </nav>
+</header>
+
+<section id="v-parola" aria-labelledby="h-parola">
+  <h2 id="h-parola">Come sceglie la parola successiva</h2>
+  <p class="lead">Un modello linguistico non cerca la risposta: assegna una probabilità a ogni parola che potrebbe venire dopo, e ne sceglie una. Proviamo con due frasi.</p>
+  <div class="grid" style="margin-top:20px">
+    <div class="sheet">
+      <div class="presets" role="group" aria-label="Frase di partenza">
+        <button id="p-dante" aria-pressed="true">Un verso che ha letto mille volte</button>
+        <button id="p-arch" aria-pressed="false">Una domanda senza risposta</button>
+      </div>
+      <p class="text" id="txt" aria-live="polite"></p>
+      <div class="bars" id="bars"></div>
+      <div class="controls">
+        <button class="primary" id="next">Scegli la parola</button>
+        <button id="reset">Ricomincia</button>
+        <label for="temp">Temperatura <span id="tval" class="score">1,0</span></label>
+        <input type="range" id="temp" min="0.2" max="2" step="0.1" value="1">
+      </div>
+      <p class="note">Probabilità illustrative, costruite per la lezione: mostrano il meccanismo, non misurano un modello reale.</p>
+    </div>
+    <div class="sheet side" id="side"></div>
+  </div>
+</section>
+
+<section id="v-aiact" aria-labelledby="h-aiact" hidden>
+  <h2 id="h-aiact">L’AI Act a scuola: dove sta ogni uso?</h2>
+  <p class="lead">Il regolamento europeo classifica i sistemi per livello di rischio. Toccate un livello per leggerlo; poi classificate i casi qui sotto, prima di scoprire la risposta.</p>
+  <div class="grid" style="margin-top:20px">
+    <div class="sheet">
+      <div class="pyr" role="group" aria-label="Livelli di rischio">
+        <button class="lvl l-ban" style="--w:34%" data-l="ban">Vietato<small>rischio inaccettabile</small></button>
+        <button class="lvl l-high" style="--w:56%" data-l="high">Alto rischio<small>obblighi stringenti</small></button>
+        <button class="lvl l-mid" style="--w:78%" data-l="mid">Trasparenza<small>bisogna dirlo</small></button>
+        <button class="lvl l-low" style="--w:100%" data-l="low">Rischio minimo<small>nessun obbligo specifico</small></button>
+      </div>
+    </div>
+    <div class="sheet side"><div id="lvl-detail"></div></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-top:28px">
+    <h2 style="font-size:clamp(22px,2.6vw,28px)">Otto casi di scuola</h2>
+    <span class="score" id="score"></span>
+  </div>
+  <div class="cases" id="cases" style="margin-top:14px"></div>
+</section>
+
+<footer>
+  Fonti: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=it" target="_blank" rel="noopener">Regolamento (UE) 2024/1689 (AI Act)</a>; <a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/ita" target="_blank" rel="noopener">Regolamento (UE) 2026/1744 («Omnibus digitale sull’IA»)</a>, in vigore dal 27 luglio 2026; legge 23 settembre 2025, n. 132; Linee guida ministeriali, D.M. 9 agosto 2025, n. 166. Le schede semplificano a scopo didattico: fa fede il testo dei regolamenti.
+</footer>
+</div>
+
+<script>
+(function(){
+const S={
+ dante:{start:"Nel mezzo del cammin di nostra",steps:[
+  [["vita",.90],["strada",.03],["età",.03],["terra",.02],["notte",.02]],
+  [["mi",.82],["io",.07],["ci",.05],["si",.03],["ti",.03]],
+  [["ritrovai",.88],["trovai",.06],["persi",.03],["fermai",.03]],
+  [["per",.84],["in",.10],["dentro",.04],["sola",.02]],
+  [["una",.93],["la",.04],["un’",.03]],
+  [["selva",.95],["foresta",.03],["valle",.02]],
+  [["oscura",.94],["oscura,",.03],["scura",.03]]
+ ],side:{tag:"Frase molto frequente",title:"Quando il testo è ovunque",body:["Questo verso compare in migliaia di testi su cui il modello è stato addestrato. Una parola domina tutte le altre, e la risposta sembra «sapere» Dante.","Alzate la temperatura: le parole meno probabili guadagnano terreno. Con la temperatura alta il modello «inventa» di più; con quella bassa ripete quasi sempre la stessa cosa."]}},
+ arch:{start:"La lettera è conservata all’Archivio di Stato di Milano, nel fondo",steps:[
+  [["Sforzesco",.28],["Atti di governo",.20],["Visconteo",.16],["Famiglie",.14],["Comuni",.12],["Autografi",.10]],
+  [["cartella",.36],["busta",.30],["registro",.20],["filza",.14]],
+  [["1452",.18],["37",.17],["124",.17],["8",.16],["215",.16],["3",.16]],
+  [[",",.55],["(",.25],["e",.20]],
+  [["documento",.40],["fascicolo",.35],["carta",.25]]
+ ],side:{tag:"Frase che nessuno ha scritto",title:"Quando la risposta non c’è",body:["Il modello non ha mai visto questa lettera. Le probabilità sono piatte: molte parole valgono quasi lo stesso, e quella scelta è un tiro di dado.","Eppure la frase finale suona sicura, con fondo e numero di cartella. È così che nascono segnature, citazioni e saggi inesistenti: plausibile non vuol dire vero."]}}
+};
+let cur="dante",step=0,picked=[];
+const $=id=>document.getElementById(id);
+const fmt=n=>(n*100).toLocaleString("it-IT",{maximumFractionDigits:0})+"%";
+function dist(raw){const T=parseFloat($("temp").value);const w=raw.map(([t,p])=>[t,Math.pow(p,1/T)]);const s=w.reduce((a,b)=>a+b[1],0);return w.map(([t,v])=>[t,v/s]);}
+function render(){
+ const d=S[cur];
+ $("txt").innerHTML="";const base=document.createTextNode(d.start+" ");$("txt").appendChild(base);
+ picked.forEach((w,i)=>{const sp=document.createElement("span");sp.textContent=w;if(i===picked.length-1)sp.className="new";$("txt").appendChild(sp);$("txt").appendChild(document.createTextNode(" "));});
+ const c=document.createElement("span");c.className="cursor";c.setAttribute("aria-hidden","true");$("txt").appendChild(c);
+ const bars=$("bars");bars.innerHTML="";
+ if(step<d.steps.length){dist(d.steps[step]).forEach(([t,p])=>{const r=document.createElement("div");r.className="bar";r.innerHTML='<span class="w"></span><span class="track"><span class="fill"></span></span><span class="p"></span>';r.querySelector(".w").textContent=t;r.querySelector(".fill").style.width=(p*100)+"%";r.querySelector(".p").textContent=fmt(p);bars.appendChild(r);});$("next").disabled=false;}
+ else{const p=document.createElement("p");p.className="note";p.textContent="Fine della frase. Ricominciate e cambiate la temperatura: escono frasi diverse?";bars.appendChild(p);$("next").disabled=true;}
+ const sd=d.side;$("side").innerHTML='<span class="tag"></span><h3 style="margin-top:12px"></h3>'+sd.body.map(()=>"<p></p>").join("");$("side").querySelector(".tag").textContent=sd.tag;$("side").querySelector("h3").textContent=sd.title;$("side").querySelectorAll("p").forEach((p,i)=>p.textContent=sd.body[i]);
+ $("p-dante").setAttribute("aria-pressed",cur==="dante");$("p-arch").setAttribute("aria-pressed",cur==="arch");
+}
+function next(){const d=S[cur];if(step>=d.steps.length)return;const pr=dist(d.steps[step]);let r=Math.random(),acc=0,ch=pr[pr.length-1][0];for(const [t,p] of pr){acc+=p;if(r<=acc){ch=t;break;}}picked.push(ch);step++;render();}
+$("next").onclick=next;$("reset").onclick=()=>{step=0;picked=[];render();};
+$("p-dante").onclick=()=>{cur="dante";step=0;picked=[];render();};
+$("p-arch").onclick=()=>{cur="arch";step=0;picked=[];render();};
+$("temp").oninput=()=>{$("tval").textContent=parseFloat($("temp").value).toLocaleString("it-IT",{minimumFractionDigits:1});render();};
+
+const L={
+ ban:{t:"Vietato",cls:"l-ban",d:"In vigore dal 2 febbraio 2025.",b:["Sono pratiche proibite in ogni caso. Per la scuola conta soprattutto una: i sistemi che riconoscono le emozioni delle persone nei luoghi di istruzione, salvo ragioni mediche o di sicurezza.","Dal 2 dicembre 2026 si aggiungono i sistemi che generano immagini intime non consensuali e materiale di abuso su minori."]},
+ high:{t:"Alto rischio",cls:"l-high",d:"Obblighi dal 2 dicembre 2027 (rinviati dal Regolamento 2026/1744).",b:["Nell’istruzione sono ad alto rischio i sistemi che decidono l’ammissione, valutano gli apprendimenti, stabiliscono il livello di istruzione adatto a una persona o sorvegliano gli studenti durante le prove.","Chi li usa deve garantire supervisione umana, dati adeguati, registri e informazione alle persone coinvolte. Il principio vale già oggi: un’IA non mette voti al posto nostro."]},
+ mid:{t:"Trasparenza",cls:"l-mid",d:"Obblighi dal 2 agosto 2026.",b:["Chi parla con un chatbot deve sapere che è una macchina. I contenuti generati vanno marcati come tali dai fornitori, e chi diffonde immagini, audio o video realistici generati con l’IA deve dichiararlo.","Per i sistemi già sul mercato prima di agosto 2026, la marcatura dei contenuti è dovuta dal 2 dicembre 2026."]},
+ low:{t:"Rischio minimo",cls:"l-low",d:"Nessun obbligo specifico dell’AI Act.",b:["È la grande maggioranza degli usi quotidiani: preparare esercizi, riassumere, tradurre, impostare una lezione.","Restano le altre regole: protezione dei dati degli studenti, consenso dei genitori sotto i 14 anni (legge 132/2025), supervisione del docente secondo le Linee guida del Ministero, e l’impegno a formare il personale (art. 4)."]}
+};
+function showLvl(k){document.querySelectorAll(".lvl").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===k));const l=L[k];const el=$("lvl-detail");el.innerHTML='<span class="tag"></span><h3 style="font-family:var(--display);font-size:26px;margin:12px 0 4px"></h3><p class="score" style="margin:0 0 12px"></p>'+l.b.map(()=>"<p></p>").join("");el.querySelector(".tag").textContent="Livello";el.querySelector("h3").textContent=l.t;el.querySelector(".score").textContent=l.d;el.querySelectorAll("p:not(.score)").forEach((p,i)=>p.textContent=l.b[i]);}
+document.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>showLvl(b.dataset.l));
+
+const C=[
+ ["Una webcam in aula segnala al docente gli studenti annoiati o distratti.","ban","Riconoscere le emozioni nei luoghi di istruzione è una pratica vietata dal febbraio 2025."],
+ ["Un software corregge le verifiche e propone il voto.","high","Valutare gli apprendimenti è un uso ad alto rischio: serve supervisione umana, e il voto resta del docente."],
+ ["Un sistema decide chi viene ammesso a un corso a numero chiuso.","high","Ammissione e accesso all’istruzione sono usi ad alto rischio."],
+ ["Durante una prova online, un sistema segnala chi guarda fuori dallo schermo.","high","Sorvegliare comportamenti vietati durante le prove è ad alto rischio; se leggesse le emozioni, sarebbe vietato."],
+ ["Il sito della scuola ha un chatbot che risponde alle famiglie.","mid","Obbligo di trasparenza: chi scrive deve sapere che sta parlando con un’IA."],
+ ["Per una lezione proietto un ritratto fotorealistico di Garibaldi generato con l’IA.","mid","Un’immagine realistica generata va dichiarata come tale: è anche un’occasione di educazione alle fonti."],
+ ["Preparo con ChatGPT dieci esercizi di analisi grammaticale.","low","Rischio minimo: nessun obbligo dell’AI Act, ma niente dati degli studenti e controllo del docente."],
+ ["Un sistema suggerisce a ogni studente di terza media l’indirizzo di scuola superiore.","high","Stabilire il livello o il percorso di istruzione adatto a una persona è un uso ad alto rischio."]
+];
+const lab={ban:"Vietato",high:"Alto rischio",mid:"Trasparenza",low:"Minimo"};
+let done=0,right=0;
+function updScore(){$("score").textContent=done?`${right} su ${done} indovinati`:"Scegliete un livello per ogni caso";}
+C.forEach(([q,a,why],i)=>{const c=document.createElement("article");c.className="case";c.innerHTML='<p class="q"></p><div class="pick" role="group"></div><div class="verdict" hidden></div>';c.querySelector(".q").textContent=q;c.querySelector(".pick").setAttribute("aria-label","Livello per il caso "+(i+1));
+ Object.keys(lab).forEach(k=>{const b=document.createElement("button");b.textContent=lab[k];b.onclick=()=>{if(!c.querySelector(".verdict").hidden)return;const ok=k===a;done++;if(ok)right++;b.setAttribute("aria-pressed","true");const v=c.querySelector(".verdict");v.hidden=false;v.className="verdict "+L[a].cls;v.innerHTML="<b></b><span></span>";v.querySelector("b").textContent=(ok?"Giusto: ":"Risposta: ")+L[a].t;v.querySelector("span").textContent=why;updScore();};c.querySelector(".pick").appendChild(b);});
+ $("cases").appendChild(c);});
+updScore();showLvl("ban");
+
+function route(){const a=location.hash==="#ai-act";$("v-parola").hidden=a;$("v-aiact").hidden=!a;$("tab-parola").setAttribute("aria-current",a?"false":"page");$("tab-aiact").setAttribute("aria-current",a?"page":"false");}
+window.addEventListener("hashchange",route);route();render();
+})();
+</script>
+
+<p style="font:12px/1.5 system-ui,sans-serif;color:#777;text-align:center;margin:24px 12px;position:relative;z-index:1">© 2026 Danilo Aprigliano · <a href="https://daniloaprigliano.it/materiali/" style="color:inherit">daniloaprigliano.it/materiali</a> · licenza <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it" style="color:inherit">CC BY-NC-ND 4.0</a></p>
+</body></html>

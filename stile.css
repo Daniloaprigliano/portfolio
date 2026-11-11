@@ -795,6 +795,7 @@ ul.dettagli-cv li{margin-bottom:var(--s-2);color:var(--grigio-1)}
   .navsito{gap:var(--s-1) 18px;justify-content:space-between}
 }
 .sostieni.sostieni-alto{margin:var(--s-6) 0 0}
+.sezione-mat + .sostieni-alto{margin:var(--s-9) 0 0 auto;max-width:640px}
 
 /* ============================================================
    PAGINA DEI LINK — /link/ e /en/link/

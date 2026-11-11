@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Free teaching materials for Latin, Italian and history: worksheets, handouts, tests and exercises prepared for my classes.">
+<meta name="description" content="Free teaching materials for Italian, history, Latin and AI: narrated animations, interactive pages, handouts and worksheets prepared for my classes.">
 <link rel="canonical" href="https://daniloaprigliano.it/en/materials/">
 
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:locale:alternate" content="it_IT">
 <meta property="og:title" content="Teaching materials – Danilo Aprigliano">
-<meta property="og:description" content="Free worksheets, handouts and tests for Latin, Italian and history.">
+<meta property="og:description" content="Narrated animations, interactive pages, handouts and worksheets for Italian, history, Latin and AI, free.">
 <meta property="og:url" content="https://daniloaprigliano.it/en/materials/">
 <meta property="og:image" content="https://daniloaprigliano.it/og.png">
 <meta property="og:image:alt" content="Danilo Aprigliano">
@@ -33,7 +33,45 @@
 <link rel="stylesheet" href="../../stile.css">
 <link rel="stylesheet" href="../../stile-home.css">
 <link rel="alternate" hreflang="it" href="../../materiali/">
-<style>.formato .durata a{color:var(--rubrica)}</style>
+<style>
+.formato .durata a,.mat .durata a{color:var(--rubrica)}
+.mat-conta{font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.06em;color:var(--grigio-2);margin:var(--s-4) 0 0}
+.mat-barra{margin-top:var(--s-6);display:flex;flex-direction:column;gap:var(--s-3)}
+.mat-riga{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2)}
+.mat-riga > span{font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);margin-right:var(--s-2);min-width:7em}
+.mat-riga input{position:absolute;opacity:0;pointer-events:none}
+.mat-riga label,.mat-riga a{font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.04em;border:1px solid var(--filo-forte);padding:6px 11px;color:var(--inchiostro);text-decoration:none;cursor:pointer;background:var(--carta)}
+.mat-riga a:hover,.mat-riga label:hover{border-color:var(--rubrica);color:var(--rubrica)}
+.mat-riga input:checked + label{background:var(--rubrica);border-color:var(--rubrica);color:var(--carta)}
+.mat-riga input:focus-visible + label{outline:2px solid var(--rubrica);outline-offset:2px}
+.mat-nota{font-size:var(--t-2);line-height:1.6;color:var(--grigio-1);max-width:72ch;margin:var(--s-5) 0 0}
+.mat-nota a{color:var(--rubrica)}
+.mats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-8) var(--s-7);padding-top:var(--s-6)}
+.mat .genere{font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.1em;text-transform:uppercase;color:var(--grigio-2);margin-bottom:var(--s-2)}
+.mat h3{font-size:var(--t-5);line-height:1.22;margin-bottom:var(--s-3)}
+.mat h3 a{color:inherit;text-decoration:none}
+.mat h3 a:hover{color:var(--rubrica)}
+.mat p{margin:0;font-size:var(--t-2);line-height:1.62;color:var(--grigio-1)}
+.mat .durata{margin-top:var(--s-3);font-family:var(--mono);font-size:var(--t-mono-s);letter-spacing:.07em;text-transform:uppercase}
+.mat-img{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--filo);background:var(--carta-alt);margin-bottom:var(--s-4)}
+.mat-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .35s ease}
+.mat-img:hover img{transform:scale(1.035)}
+.mat-tipo{position:absolute;left:10px;bottom:10px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;background:rgba(20,18,15,.82);color:#FBFAF8}
+.mat-anim .mat-tipo{background:#A81E12}
+.mat-anim .mat-img{border-color:var(--rubrica)}
+.mat-pdf .mat-img,.mat-testo .mat-img{background:#fff}
+.mat-pdf .mat-img img,.mat-testo .mat-img img{opacity:.92}
+body:has(#v-anim:checked) .mat:not([data-f="anim"]),
+body:has(#v-inter:checked) .mat:not([data-f="inter"]),
+body:has(#v-pdf:checked) .mat:not([data-f="pdf"]),
+body:has(#v-testo:checked) .mat:not([data-f="testo"]){display:none}
+body:has(#v-anim:checked) .sezione-mat:not(:has([data-f="anim"])),
+body:has(#v-inter:checked) .sezione-mat:not(:has([data-f="inter"])),
+body:has(#v-pdf:checked) .sezione-mat:not(:has([data-f="pdf"])),
+body:has(#v-testo:checked) .sezione-mat:not(:has([data-f="testo"])){display:none}
+@media (max-width:760px){.mats{grid-template-columns:1fr;gap:var(--s-7)}.mat-riga{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.mat-riga label,.mat-riga a{white-space:nowrap;flex:none}.mat-riga > span{display:none}}
+@media (prefers-reduced-motion:reduce){.mat-img img{transition:none}}
+</style>
 </head>
 <body>
 <div class="foglio" lang="en">
@@ -49,289 +87,471 @@
   <nav class="navsito" aria-label="Sections"><a href="../">Portrait</a><a href="../ia-a-scuola/">AI at school</a><a href="../lessons/">Lessons</a><a href="../materials/" class="qui">Materials</a><a href="../public-history/">Public history</a><a href="../scrittura/">Writing</a><a href="../web/">Web</a><a href="../impegno/">Civic work</a><a href="../profilo/">Profile</a><a href="../tutto/">Everything</a><a href="../../curriculum/">Curriculum <span class="lingua-voce">IT</span></a><a href="../../articoli/">Archive</a></nav>
 
   <h1 class="titolo-pagina">Teaching materials</h1>
-  <p class="occhiello-pagina">Worksheets, handouts, tests and exercises I prepared for my classes, free to download and use in class or for study. They may be printed and adapted, with credit. The materials themselves are in Italian.</p>
+  <p class="occhiello-pagina">Animations in my own voice, interactive pages, handouts and worksheets I prepared for my classes and for teacher-training courses. They open in the browser or can be downloaded, and are free to use in class. All materials are in Italian.</p>
   <div class="filo-1"></div>
-  <aside class="sostieni sostieni-alto"><p><strong>Everything here is free.</strong> If it is useful to you, you can support the work with a donation of your choice.</p><p class="sostieni-link"><a href="https://ko-fi.com/daniloaprigliano">Buy me a coffee on Ko-fi</a><a href="https://www.paypal.biz/DaniloAprigliano">Donate with PayPal</a></p></aside>
+  <p class="mat-conta">21 narrated animations · 7 interactive pages and slide decks · 10 PDFs · 7 reading sheets</p>
+  <div class="mat-barra">
+    <div class="mat-riga" role="radiogroup" aria-label="Show"><span>Show</span><input type="radio" name="vista" id="v-tutto" checked><label for="v-tutto">Everything</label><input type="radio" name="vista" id="v-anim"><label for="v-anim">Animations</label><input type="radio" name="vista" id="v-inter"><label for="v-inter">Interactive and slides</label><input type="radio" name="vista" id="v-pdf"><label for="v-pdf">PDF</label><input type="radio" name="vista" id="v-testo"><label for="v-testo">Reading sheets</label></div>
+    <nav class="mat-riga" aria-label="Subjects"><span>Subjects</span><a href="#letteratura">Literature</a><a href="#epica">Epic</a><a href="#narrativa">Narrative</a><a href="#grammatica">Grammar</a><a href="#scrittura">Writing and current affairs</a><a href="#storia-antica">Ancient history</a><a href="#storia">Medieval and modern history</a><a href="#latino">Latin</a><a href="#ia">Artificial intelligence for teachers</a></nav>
+  </div>
+  <p class="mat-nota">In the most recent animations the narrating voice is my own, reproduced with artificial intelligence; in the earlier ones it is synthetic. <strong>Licence.</strong> These materials are my own work, published under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons BY-NC-ND 4.0</a> licence: you may use and share them with credit, but not sell them or modify them for republication. Name and licence are printed on every page of the PDFs.</p>
 
-  <section class="sezione">
+  <section class="sezione sezione-mat" id="letteratura">
     <div class="capo">
       <span class="capo-num">01</span>
       <div>
-        <h2>Latino</h2>
-        <p class="occhio">The method I use in private lessons, on a single sheet.</p>
+        <h2>Literature</h2>
+        <p class="occhio">From the Romance origins to the thirteenth century, then language and translation.</p>
       </div>
     </div>
-    <div class="corpo" style="margin-top:26px">
+    <div class="corpo" style="margin-top:10px">
       <div></div>
       <div class="interno">
-        <div class="formati">
-          <div class="formato">
-            <div class="genere">Lower · upper secondary</div>
-            <h3>Latin in colour</h3>
-            <p>A four-step method for translating without guesswork: verb, subject, subordinate clauses, complements. Three worked examples from Caesar and Cicero and a sentence to try, with the solution.</p>
-            <div class="durata"><a href="../../materiali/latino-metodo-colori.pdf">PDF · 2 pages · download</a></div>
-          </div>
+        <div class="mats">
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/WRiVdm9KN6fJGkXmkYnLrF" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/chretien.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Third year · literature</div>
+            <h3><a href="https://claude.ai/artifact/WRiVdm9KN6fJGkXmkYnLrF" target="_blank" rel="noopener">Chrétien de Troyes and the knight of the cart</a></h3>
+            <p>A narrated animation in ten panels: from the <i>chanson de geste</i> to courtly romance, the Arthurian cycle and the <i>Lancelot</i>, from the cart to the Sword Bridge.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/WRiVdm9KN6fJGkXmkYnLrF" target="_blank" rel="noopener">about 4½ minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/X1HMLGpBas6LKBB5ipG3ei" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/roland.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Third year · literature</div>
+            <h3><a href="https://claude.ai/artifact/X1HMLGpBas6LKBB5ipG3ei" target="_blank" rel="noopener">The <i>Chanson de Roland</i></a></h3>
+            <p>A narrated animation in fourteen panels: the Oxford manuscript, Roncevaux between history and legend, Ganelon’s betrayal, the oliphant, the death of Roland.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/X1HMLGpBas6LKBB5ipG3ei" target="_blank" rel="noopener">about 5½ minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/8xJmsxdcZ3vgoXTwC7P9r8" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/trovatori.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Third year · literature</div>
+            <h3><a href="https://claude.ai/artifact/8xJmsxdcZ3vgoXTwC7P9r8" target="_blank" rel="noopener">From the troubadours to the Sicilians</a></h3>
+            <p>A narrated animation in ten panels: the courts of Provence, <i>fin’amor</i>, the Albigensian crusade and love poetry reaching the court of Frederick II. Below, William IX and Bernart de Ventadorn with facing translation.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/8xJmsxdcZ3vgoXTwC7P9r8" target="_blank" rel="noopener">about 4 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/89gJDwQvj4237YYuSqoaE4" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/giacomo.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Third year · literature</div>
+            <h3><a href="https://claude.ai/artifact/89gJDwQvj4237YYuSqoaE4" target="_blank" rel="noopener">Giacomo da Lentini and the sonnet</a></h3>
+            <p>A narrated animation in eleven panels on the «Notaro», the birth of the sonnet and the Sicilian poems copied into Tuscan. Below, two poems with paraphrase, the metre of the hendecasyllable and a syllable-counting workshop.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/89gJDwQvj4237YYuSqoaE4" target="_blank" rel="noopener">about 4 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/italiano-verifica-decadentismo.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/italiano-verifica-decadentismo.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">Final year · literature</div>
+            <h3><a href="../../materiali/italiano-verifica-decadentismo.pdf">Test on Decadentism</a></h3>
+            <p>Two compulsory questions and one optional, on Symbolism, aestheticism and Pascoli.</p>
+            <div class="durata"><a href="../../materiali/italiano-verifica-decadentismo.pdf">PDF · 1 page · download</a></div>
+          </article>
+          <article class="mat mat-testo" data-f="testo">
+            <a class="mat-img" href="../../storia-linguistica-dellitalia-repubblicana/" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/storia-linguistica.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Reading sheet</span></a>
+            <div class="genere">Upper secondary · language</div>
+            <h3><a href="../../storia-linguistica-dellitalia-repubblicana/">A linguistic history of republican Italy</a></h3>
+            <p>How Italian has changed from 1946 to today (in Italian).</p>
+            <div class="durata"><a href="../../storia-linguistica-dellitalia-repubblicana/">read the sheet</a></div>
+          </article>
+          <article class="mat mat-testo" data-f="testo">
+            <a class="mat-img" href="../../tradurre-la-poesia/" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/tradurre-poesia.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Reading sheet</span></a>
+            <div class="genere">Upper secondary · literature</div>
+            <h3><a href="../../tradurre-la-poesia/">Translating poetry</a></h3>
+            <p>What happens when a poem moves from one language to another (in Italian).</p>
+            <div class="durata"><a href="../../tradurre-la-poesia/">read the sheet</a></div>
+          </article>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="sezione">
+  <section class="sezione sezione-mat" id="epica">
     <div class="capo">
       <span class="capo-num">02</span>
       <div>
-        <h2>Italian</h2>
-        <p class="occhio">Writing, text analysis, literature.</p>
+        <h2>Epic</h2>
+        <p class="occhio">The <i>Iliad</i> and the <i>Odyssey</i> told panel by panel, before reading the texts.</p>
       </div>
     </div>
-    <div class="corpo" style="margin-top:26px">
+    <div class="corpo" style="margin-top:10px">
       <div></div>
       <div class="interno">
-        <div class="formati">
-          <div class="formato">
-            <div class="genere">Upper secondary · writing</div>
-            <h3>Inside the manosphere: informing and arguing</h3>
-            <p>A two-part writing exercise, informative and argumentative, based on a documentary about influencers and the manosphere. At the end, a guide to coherence, cohesion and connectives.</p>
-            <div class="durata"><a href="../../materiali/italiano-scrittura-manosfera-scheda-studenti.pdf">PDF · 5 pages · download</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">For teachers</div>
-            <h3>Inside the manosphere – teacher’s notes</h3>
-            <p>The same exercise from the teacher’s side: a hundred-minute plan, a marking grid out of ten and a note on assessing reasoning rather than opinions.</p>
-            <div class="durata"><a href="../../materiali/italiano-scrittura-manosfera-scheda-docente.pdf">PDF · 1 page · download</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Final year · literature</div>
-            <h3>Test on Decadentism</h3>
-            <p>Two compulsory questions and one optional, on Symbolism, aestheticism and Pascoli.</p>
-            <div class="durata"><a href="../../materiali/italiano-verifica-decadentismo.pdf">PDF · 1 page · download</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Lower secondary · writing</div>
-            <h3>Summarising</h3>
-            <p>How to write a concise, functional, objective summary, with a worked example on one of Aesop’s fables.</p>
-            <div class="durata"><a href="../../il-riassunto/">Read online</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Lower · upper secondary · writing</div>
-            <h3>Arguing</h3>
-            <p>The argumentative essay as a practice of respect: thesis, arguments, counter-arguments.</p>
-            <div class="durata"><a href="../../il-testo-argomentativo/">Read online</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">All levels · writing</div>
-            <h3>Writing well</h3>
-            <p>The essential rules for a clear text.</p>
-            <div class="durata"><a href="../../scrivere-bene/">Read online</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Lower secondary · writing</div>
-            <h3>Writing and imagination exercises</h3>
-            <p>Exercises to train creative writing.</p>
-            <div class="durata"><a href="../../un-esercizio-di-scrittura-e-di-fantasia-materiale-didattico/">Read online</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Upper secondary · language</div>
-            <h3>A linguistic history of republican Italy</h3>
-            <p>How Italian has changed since 1946.</p>
-            <div class="durata"><a href="../../storia-linguistica-dellitalia-repubblicana/">Read online</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Upper secondary · literature</div>
-            <h3>Translating poetry</h3>
-            <p>What happens when a poem moves from one language to another.</p>
-            <div class="durata"><a href="../../tradurre-la-poesia/">Read online</a></div>
-          </div>
+        <div class="mats">
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/3bikf4hdV9h2iaJowBCiFS" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/iliade-trama.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Second year · epic</div>
+            <h3><a href="https://claude.ai/artifact/3bikf4hdV9h2iaJowBCiFS" target="_blank" rel="noopener">The plot of the <i>Iliad</i></a></h3>
+            <p>A narrated animation in ten scenes: from the abduction of Helen to the quarrel over Briseis, from the death of Patroclus to the duel with Hector and Priam in Achilles’ tent. Below, a summary, a timeline and the characters.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/3bikf4hdV9h2iaJowBCiFS" target="_blank" rel="noopener">about 3 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/Ng9NfnyfmxFjPf9nZ9k7VX" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/crise.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Second year · epic</div>
+            <h3><a href="https://claude.ai/artifact/Ng9NfnyfmxFjPf9nZ9k7VX" target="_blank" rel="noopener">Chryses and the plague</a></h3>
+            <p>A narrated animation on the opening of book I: the priest Chryses, Agamemnon’s insult and the plague Apollo sends on the Achaean camp.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/Ng9NfnyfmxFjPf9nZ9k7VX" target="_blank" rel="noopener">animation with voice · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/SaBGCLqipSayYgKVrdn3q5" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/lite.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Second year · epic</div>
+            <h3><a href="https://claude.ai/artifact/SaBGCLqipSayYgKVrdn3q5" target="_blank" rel="noopener">The quarrel of Achilles and Agamemnon</a></h3>
+            <p>Fifteen red-figure panels on book I: Athena holding Achilles back, the sceptre thrown down, Thetis rising from the sea, the nod of Zeus. Below, the proem in Monti’s translation, a map of the characters, epithets and self-check exercises.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/SaBGCLqipSayYgKVrdn3q5" target="_blank" rel="noopener">about 9 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/GLvHTfczn82yEFp3FcYvtG" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/odisseo.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">Second year · epic</div>
+            <h3><a href="https://claude.ai/artifact/GLvHTfczn82yEFp3FcYvtG" target="_blank" rel="noopener">The return of Odysseus</a></h3>
+            <p>A narrated animation in fourteen red-figure panels: the plot of the <i>Odyssey</i> from the Trojan war to the homecoming in Ithaca, with <i>nostos</i>, cunning and the structure of the poem.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/GLvHTfczn82yEFp3FcYvtG" target="_blank" rel="noopener">about 7 minutes · watch</a></div>
+          </article>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="sezione">
+<aside class="sostieni sostieni-alto"><p><strong>Everything here is free.</strong> If it is useful to you, you can support the work with a donation of your choice.</p><p class="sostieni-link"><a href="https://ko-fi.com/daniloaprigliano">Buy me a coffee on Ko-fi</a><a href="https://www.paypal.biz/DaniloAprigliano">Donate with PayPal</a></p></aside>
+  <section class="sezione sezione-mat" id="narrativa">
     <div class="capo">
       <span class="capo-num">03</span>
       <div>
-        <h2>History</h2>
-        <p class="occhio">Handouts and worksheets written for class, with study questions.</p>
+        <h2>Narrative</h2>
+        <p class="occhio">How a story is built: patterns, time, space, characters.</p>
       </div>
     </div>
-    <div class="corpo" style="margin-top:26px">
+    <div class="corpo" style="margin-top:10px">
       <div></div>
       <div class="interno">
-        <div class="formati">
-          <div class="formato">
-            <div class="genere">Third year</div>
-            <h3>The early Middle Ages 768–1002 – handout</h3>
-            <p>From Charlemagne to the Ottonians: a summary handout with in-depth sections, links to Italian literature, a lesson plan for teachers and review questions.</p>
-            <div class="durata"><a href="../../materiali/storia-alto-medioevo-dispensa.pdf">PDF · 11 pages · download</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Third year</div>
-            <h3>After Charlemagne 843–962 – study sheet</h3>
-            <p>The second invasions, local lords and the Ottonians, with a table, glossary and study questions.</p>
-            <div class="durata"><a href="../../materiali/storia-dopo-carlo-magno-scheda.pdf">PDF · 3 pages · download</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Final year · civics</div>
-            <h3>Four years of war in Ukraine</h3>
-            <p>A historical and political dossier (updated April 2026): timeline, actors, international law and a brief for simulating a multilateral negotiation in class.</p>
-            <div class="durata"><a href="../../materiali/storia-dossier-ucraina-negoziato.pdf">PDF · 11 pages · download</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">For teachers and classes</div>
-            <h3>The Risorgimento</h3>
-            <p>Handmade school materials, collected on one page.</p>
-            <div class="durata"><a href="../../il-risorgimento/">Open the page</a></div>
-          </div>
+        <div class="mats">
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/4tuykJCCrvZV6G8S8hd8XN" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/kafka.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">First year · narrative</div>
+            <h3><a href="https://claude.ai/artifact/4tuykJCCrvZV6G8S8hd8XN" target="_blank" rel="noopener">Kafka’s <i>Before the Law</i></a></h3>
+            <p>The story narrated and illustrated, then a guided analysis: sequences, narrative pattern, story and plot, time, space, characters and narrator.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/4tuykJCCrvZV6G8S8hd8XN" target="_blank" rel="noopener">about 4 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/LzjHW7LfLmM6WnvFiFNb98" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/tempo-spazio.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">First year · narrative</div>
+            <h3><a href="https://claude.ai/artifact/LzjHW7LfLmM6WnvFiFNb98" target="_blank" rel="noopener">Time, space and the hero’s journey</a></h3>
+            <p>Twenty-one panels on the stages of the hero’s journey – ordinary world, call, acceptance, trials, climax, resolution – and on how a story organises time and space.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/LzjHW7LfLmM6WnvFiFNb98" target="_blank" rel="noopener">about 10 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/DnfekC1HVUqY4z3x8oELy7" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/schemi.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">First year · narrative</div>
+            <h3><a href="https://claude.ai/artifact/DnfekC1HVUqY4z3x8oELy7" target="_blank" rel="noopener">Narrative patterns</a></h3>
+            <p>What a narrative pattern is, where we find it and why it is used; then the five-stage pattern and Propp’s functions, with the character roles tested on <i>Star Wars</i>.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/DnfekC1HVUqY4z3x8oELy7" target="_blank" rel="noopener">animation with voice · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/Jfq8XiGBKWc3kreYtvv6F7" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/gabri.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">First year · narrative</div>
+            <h3><a href="https://claude.ai/artifact/Jfq8XiGBKWc3kreYtvv6F7" target="_blank" rel="noopener">Gabri at IKEA</a></h3>
+            <p>A story invented by a first-year class, completed according to the class’s choices and read stage by stage along the hero’s journey. Then space: realistic or fantastic, open or closed, symbolic. At the end, the full story and ten exercises.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/Jfq8XiGBKWc3kreYtvv6F7" target="_blank" rel="noopener">about 7½ minutes · watch</a></div>
+          </article>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="sezione">
+  <section class="sezione sezione-mat" id="grammatica">
     <div class="capo">
       <span class="capo-num">04</span>
       <div>
-        <h2>Animations and interactive tools</h2>
-        <p class="occhio">To project in class or watch at home: they open in the browser, nothing to install. In Italian; in the most recent animations the narrating voice is my own, reproduced with artificial intelligence, in the others it is synthetic.</p>
+        <h2>Grammar</h2>
+        <p class="occhio">The sentence before the labels: the verb at the centre, then the words.</p>
       </div>
     </div>
-    <div class="corpo" style="margin-top:26px">
+    <div class="corpo" style="margin-top:10px">
       <div></div>
       <div class="interno">
-        <div class="formati">
-          <div class="formato">
-            <div class="genere">Third year · literature</div>
-            <h3>Chrétien de Troyes and the knight of the cart</h3>
-            <p>A narrated animation in fourteen panels: the courtly romance, the Arthurian cycle and the «Lancelot», from the cart to the Sword Bridge.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/WRiVdm9KN6fJGkXmkYnLrF">about 4½ minutes · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Third year · literature</div>
-            <h3>The «Chanson de Roland»</h3>
-            <p>A narrated animation: the Oxford manuscript, Roncevaux between history and legend, Ganelon’s betrayal, the oliphant, the death of Roland.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/X1HMLGpBas6LKBB5ipG3ei">about 5½ minutes · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Third year · literature</div>
-            <h3>From the troubadours to the Sicilians</h3>
-            <p>A narrated animation in ten panels: the courts of Provence, <i>fin’amor</i>, the Albigensian crusade and the arrival of love poetry at the court of Frederick II. Below, poems by William IX and Bernart de Ventadorn with facing translation.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/8xJmsxdcZ3vgoXTwC7P9r8">about 4 minutes · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Third year · literature</div>
-            <h3>Giacomo da Lentini and the sonnet</h3>
-            <p>A narrated animation in eleven panels on the «Notaro», the birth of the sonnet and how the Sicilian poems reached us, copied into Tuscan. Below, «Amor è uno desio» and «Meravigliosamente» with paraphrase, the metre of the hendecasyllable and a syllable-counting workshop.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/89gJDwQvj4237YYuSqoaE4">about 4 minutes · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Second year · epic</div>
-            <h3>The plot of the <i>Iliad</i></h3>
-            <p>A narrated animation in ten scenes: from the abduction of Helen to the quarrel over Briseis, from the death of Patroclus to the duel with Hector and Priam in Achilles’ tent. Below, a summary, a timeline and the characters divided into Greeks, Trojans and gods.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/3bikf4hdV9h2iaJowBCiFS">about 3 minutes · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Second year · epic</div>
-            <h3>Chryses and the plague</h3>
-            <p>A narrated animation on the opening of <i>Iliad</i> I: the priest Chryses, Agamemnon’s insult and the plague Apollo sends on the Achaean camp.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/Ng9NfnyfmxFjPf9nZ9k7VX">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Second year · epic</div>
-            <h3>The quarrel of Achilles and Agamemnon</h3>
-            <p>A narrated animation in red-figure style on book I: Athena holding Achilles back, the sceptre thrown down, Thetis rising from the sea, the nod of Zeus. Below, the proem in Monti’s translation, a map of the characters, words and epithets, a «Who says it?» exercise and self-check questions.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/SaBGCLqipSayYgKVrdn3q5">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">Second year · epic</div>
-            <h3>The return of Odysseus</h3>
-            <p>A narrated animation in fourteen panels: the plot of the <i>Odyssey</i> from the Trojan war to the homecoming in Ithaca, with <i>nostos</i>, cunning and the structure of the poem.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/GLvHTfczn82yEFp3FcYvtG">about 7 minutes · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">First year · narrative</div>
-            <h3>Kafka’s «Before the Law»</h3>
-            <p>A narrated animation and a guided analysis of the story: sequences, narrative pattern, story and plot, time, space, characters and narrator.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/4tuykJCCrvZV6G8S8hd8XN">about 3½ minutes · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">First year · narrative</div>
-            <h3>Time, space and the hero’s journey</h3>
-            <p>A narrated animation on the stages of the hero’s journey – ordinary world, call, acceptance, trials, climax, resolution – and on how a story organises time and space.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/LzjHW7LfLmM6WnvFiFNb98">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
-            <div class="genere">First year · narrative</div>
-            <h3>Narrative patterns</h3>
-            <p>A narrated animation: what a narrative pattern is, where we find it and why it is used; then the five-stage pattern and Propp’s functions, with the character roles tested on <i>Star Wars</i>.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/DnfekC1HVUqY4z3x8oELy7">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
+        <div class="mats">
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/AvQULsjiAb2iWUGrFwgYox" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/valenza.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">First two years · grammar</div>
-            <h3>Verb valency</h3>
-            <p>A narrated animation on the verb as the centre of the sentence: valency, required arguments and optional expansions.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/AvQULsjiAb2iWUGrFwgYox">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/AvQULsjiAb2iWUGrFwgYox" target="_blank" rel="noopener">Verb valency</a></h3>
+            <p>Seventeen panels on the verb as the centre of the sentence: valency, required arguments, the deletion test and optional expansions.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/AvQULsjiAb2iWUGrFwgYox" target="_blank" rel="noopener">about 7½ minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/5Gf6sPfAKDKBce57TaPkVr" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/frase-parola.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">First two years · grammar</div>
-            <h3>Logical analysis of the sentence</h3>
-            <p>Italian sentence analysis on one page, with a fixed colour for each function: valency, subject, predicate, predicative and other complements, a step-by-step method and over twenty-five self-check exercises.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/ATXsjTSkVYLUM4YQqRFBjh">interactive · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/5Gf6sPfAKDKBce57TaPkVr" target="_blank" rel="noopener">From the sentence to the word</a></h3>
+            <p>Eighteen panels that start from a sentence and go down to phrases, content and function words, morphology and syntax, and the nine parts of speech. Below, a diagram and twenty exercises.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/5Gf6sPfAKDKBce57TaPkVr" target="_blank" rel="noopener">about 8½ minutes · watch</a></div>
+          </article>
+          <article class="mat mat-inter" data-f="inter">
+            <a class="mat-img" href="https://claude.ai/artifact/ATXsjTSkVYLUM4YQqRFBjh" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/analisi-logica.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Interactive page</span></a>
             <div class="genere">First two years · grammar</div>
-            <h3>From the sentence to the word</h3>
-            <p>A narrated animation that starts from a sentence and goes down to phrases, content and function words, the difference between morphology and syntax, and the nine parts of speech. Below, a diagram and twenty exercises.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/5Gf6sPfAKDKBce57TaPkVr">about 8½ minutes · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/ATXsjTSkVYLUM4YQqRFBjh" target="_blank" rel="noopener">Logical analysis of the sentence</a></h3>
+            <p>Italian sentence analysis on one page, with a fixed colour for each function: subject, predicate, predicatives and complements, a step-by-step method and over twenty-five self-check exercises.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/ATXsjTSkVYLUM4YQqRFBjh" target="_blank" rel="noopener">interactive · open</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sezione sezione-mat" id="scrittura">
+    <div class="capo">
+      <span class="capo-num">05</span>
+      <div>
+        <h2>Writing and current affairs</h2>
+        <p class="occhio">Reading the press, reasoning with data, writing to inform and to argue.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:10px">
+      <div></div>
+      <div class="interno">
+        <div class="mats">
+          <article class="mat mat-inter" data-f="inter">
+            <a class="mat-img" href="https://claude.ai/artifact/VNZURDQohQyqEUzqqCGzVx" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/smontare.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Interactive page</span></a>
+            <div class="genere">Upper secondary · current affairs</div>
+            <h3><a href="https://claude.ai/artifact/VNZURDQohQyqEUzqqCGzVx" target="_blank" rel="noopener">Taking apart an informative text</a></h3>
+            <p>A newspaper piece on work in Italy taken apart to see how it is built: its architecture animated with voice, the function of each paragraph to guess, and a critical reading of the figures.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/VNZURDQohQyqEUzqqCGzVx" target="_blank" rel="noopener">interactive · open</a></div>
+          </article>
+          <article class="mat mat-inter" data-f="inter">
+            <a class="mat-img" href="https://claude.ai/artifact/4F4EVbbGV82qqaAgdtqtoG" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/manosfera.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Interactive page</span></a>
             <div class="genere">Second year · writing</div>
-            <h3>From the manosphere to the thesis</h3>
-            <p>A worksheet page on argumentative writing: data on the manosphere with sources, the structure of a thesis on a model text, a quiz to recognise it, a pair exercise and the rules of a two-person debate with a timer.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/4F4EVbbGV82qqaAgdtqtoG">interactive · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/4F4EVbbGV82qqaAgdtqtoG" target="_blank" rel="noopener">From the manosphere to the thesis</a></h3>
+            <p>A worksheet page on argumentative writing: data on the manosphere with sources, the structure of a thesis on a model text, a recognition quiz, a pair exercise and the rules of a two-person debate.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/4F4EVbbGV82qqaAgdtqtoG" target="_blank" rel="noopener">interactive · open</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/italiano-scrittura-manosfera-scheda-studenti.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/italiano-scrittura-manosfera-scheda-studenti.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">Upper secondary · writing</div>
+            <h3><a href="../../materiali/italiano-scrittura-manosfera-scheda-studenti.pdf">Inside the manosphere: informing and arguing</a></h3>
+            <p>A two-part writing exercise, informative and argumentative, based on a documentary about influencers and the manosphere. At the end, a guide to coherence, cohesion and connectives.</p>
+            <div class="durata"><a href="../../materiali/italiano-scrittura-manosfera-scheda-studenti.pdf">PDF · 5 pages · download</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/italiano-scrittura-manosfera-scheda-docente.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/italiano-scrittura-manosfera-scheda-docente.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">For teachers</div>
+            <h3><a href="../../materiali/italiano-scrittura-manosfera-scheda-docente.pdf">Inside the manosphere – teacher’s sheet</a></h3>
+            <p>The same exercise from the teacher’s side: a hundred-minute plan, a marking grid and a note on assessing the reasoning, not the opinion.</p>
+            <div class="durata"><a href="../../materiali/italiano-scrittura-manosfera-scheda-docente.pdf">PDF · 1 page · download</a></div>
+          </article>
+          <article class="mat mat-testo" data-f="testo">
+            <a class="mat-img" href="../../il-riassunto/" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/riassumere.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Reading sheet</span></a>
+            <div class="genere">Lower secondary · writing</div>
+            <h3><a href="../../il-riassunto/">Summarising</a></h3>
+            <p>How to write a concise, functional and objective summary, with a worked example on one of Aesop’s fables (in Italian).</p>
+            <div class="durata"><a href="../../il-riassunto/">read the sheet</a></div>
+          </article>
+          <article class="mat mat-testo" data-f="testo">
+            <a class="mat-img" href="../../il-testo-argomentativo/" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/argomentare.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Reading sheet</span></a>
+            <div class="genere">All levels · writing</div>
+            <h3><a href="../../il-testo-argomentativo/">Arguing</a></h3>
+            <p>The argumentative essay as a practice of respect: thesis, arguments, counter-arguments (in Italian).</p>
+            <div class="durata"><a href="../../il-testo-argomentativo/">read the sheet</a></div>
+          </article>
+          <article class="mat mat-testo" data-f="testo">
+            <a class="mat-img" href="../../scrivere-bene/" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/scrivere-bene.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Reading sheet</span></a>
+            <div class="genere">All levels · writing</div>
+            <h3><a href="../../scrivere-bene/">Writing well</a></h3>
+            <p>The essential rules for a clear text (in Italian).</p>
+            <div class="durata"><a href="../../scrivere-bene/">read the sheet</a></div>
+          </article>
+          <article class="mat mat-testo" data-f="testo">
+            <a class="mat-img" href="../../un-esercizio-di-scrittura-e-di-fantasia-materiale-didattico/" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/esercizi-scrittura.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Reading sheet</span></a>
+            <div class="genere">Lower secondary · writing</div>
+            <h3><a href="../../un-esercizio-di-scrittura-e-di-fantasia-materiale-didattico/">Writing and imagination exercises</a></h3>
+            <p>Exercises to train creative writing (in Italian).</p>
+            <div class="durata"><a href="../../un-esercizio-di-scrittura-e-di-fantasia-materiale-didattico/">read the sheet</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sezione sezione-mat" id="storia-antica">
+    <div class="capo">
+      <span class="capo-num">06</span>
+      <div>
+        <h2>Ancient history</h2>
+        <p class="occhio">Rome from the patrician republic to the Mediterranean conquests, with maps that draw themselves as the voice tells the story.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:10px">
+      <div></div>
+      <div class="interno">
+        <div class="mats">
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/UnknhwkvzQpZiYsQjsvt1V" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/mura.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">Second year · history</div>
-            <h3>Inside and outside the walls</h3>
-            <p>A narrated animation in fifteen panels with maps: the struggle between patricians and plebeians, the secession to the Aventine, the new magistracies and Rome’s first conquests.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/UnknhwkvzQpZiYsQjsvt1V">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/UnknhwkvzQpZiYsQjsvt1V" target="_blank" rel="noopener">Inside and outside the walls</a></h3>
+            <p>Fifteen panels with maps: patricians and plebeians, the secession to the Aventine, the new magistracies and Rome’s first conquests, 509–290 BC.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/UnknhwkvzQpZiYsQjsvt1V" target="_blank" rel="noopener">about 8 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/QspSWPed8ZPtntZFNo67rm" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/pirro.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">Second year · history</div>
-            <h3>From Pyrrhus to Carthage</h3>
-            <p>A narrated animation in eighteen panels, eleven of them maps: the war against Pyrrhus, the conquest of southern Italy and the first Punic war.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/QspSWPed8ZPtntZFNo67rm">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/QspSWPed8ZPtntZFNo67rm" target="_blank" rel="noopener">From Pyrrhus to Carthage</a></h3>
+            <p>Eighteen panels, eleven of them maps: the war against Pyrrhus, the conquest of southern Italy and the first Punic war (290–241 BC).</p>
+            <div class="durata"><a href="https://claude.ai/artifact/QspSWPed8ZPtntZFNo67rm" target="_blank" rel="noopener">about 10 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/QY7ap9jHPLs7iFPKa4imJX" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/annibale.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">Second year · history</div>
-            <h3>Hannibal and the second Punic war</h3>
-            <p>A narrated animation with maps and animated battle diagrams: Barcid Spain, the march over the Alps, the Trebia, Trasimene, Cannae and Zama. Below, a filterable timeline, the diagram «Why Hannibal wins the battles but loses the war», an «order the battles» game and ten self-check questions.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/QY7ap9jHPLs7iFPKa4imJX">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/QY7ap9jHPLs7iFPKa4imJX" target="_blank" rel="noopener">Hannibal and the second Punic war</a></h3>
+            <p>Maps and animated battle diagrams: Barcid Spain, the march over the Alps, the Trebia, Trasimene, Cannae and Zama. Below, a timeline, the diagram «Why Hannibal wins the battles but loses the war», a game and ten questions.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/QY7ap9jHPLs7iFPKa4imJX" target="_blank" rel="noopener">about 9 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/YW5BatJAQ7P9P8kqshUNry" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/dopo-puniche.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">Second year · history</div>
-            <h3>After the Punic wars</h3>
-            <p>A narrated animation on the conquest of the Greek East, the third Punic war and the end of Carthage, and on how Rome changes after the conquests: large estates, slaves, proletarians, Greek culture. Below, a timeline, a summary, causes and effects, characters and ten self-check questions.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/YW5BatJAQ7P9P8kqshUNry">animation with voice · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/YW5BatJAQ7P9P8kqshUNry" target="_blank" rel="noopener">After the Punic wars</a></h3>
+            <p>Sixteen panels on the conquest of the Greek East, the end of Carthage and how Rome changes after the conquests: large estates, slaves, proletarians, Greek culture. Below, causes and effects, characters and ten self-check questions.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/YW5BatJAQ7P9P8kqshUNry" target="_blank" rel="noopener">about 9 minutes · watch</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sezione sezione-mat" id="storia">
+    <div class="capo">
+      <span class="capo-num">07</span>
+      <div>
+        <h2>Medieval and modern history</h2>
+        <p class="occhio">From Charlemagne’s empire to the communes, up to the Risorgimento and the war in Ukraine.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:10px">
+      <div></div>
+      <div class="interno">
+        <div class="mats">
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/VdGEyM9dFNc4UXmw62yozg" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/carlomagno-mappa.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">Third year · history</div>
-            <h3>After Charlemagne, 768–1000: timeline</h3>
-            <p>An interactive timeline with five strands (Carolingians, Normans, Magyars, Saracens, Ottonians), a card for each event and an «order the events» game.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/C8gDVCy8AuoziUq881Xtyc">interactive · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/VdGEyM9dFNc4UXmw62yozg" target="_blank" rel="noopener">After Charlemagne: the animated map</a></h3>
+            <p>A map of Europe that changes from Charlemagne’s empire to the partition of Verdun, the second invasions and the Ottonian empire, with narration.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/VdGEyM9dFNc4UXmw62yozg" target="_blank" rel="noopener">about 4 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/4ms8hDPdEcxfyBfaooaPuX" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/basso-medioevo.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
             <div class="genere">Third year · history</div>
-            <h3>After Charlemagne: the animated map</h3>
-            <p>A map of Europe changing from Charlemagne’s empire to the division of Verdun, the second invasions and the Ottonian empire, with narration.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/VdGEyM9dFNc4UXmw62yozg">animation with narration · open</a></div>
-          </div>
-          <div class="formato">
+            <h3><a href="https://claude.ai/artifact/4ms8hDPdEcxfyBfaooaPuX" target="_blank" rel="noopener">The late Middle Ages</a></h3>
+            <p>A narrated animation on the world after the year 1000: the revival of countryside and towns, the communes, papacy and empire, Barbarossa and Legnano. Then an interactive timeline from 800 to 1492.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/4ms8hDPdEcxfyBfaooaPuX" target="_blank" rel="noopener">about 5½ minutes · watch</a></div>
+          </article>
+          <article class="mat mat-inter" data-f="inter">
+            <a class="mat-img" href="https://claude.ai/artifact/C8gDVCy8AuoziUq881Xtyc" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/carlomagno-linea.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Interactive page</span></a>
             <div class="genere">Third year · history</div>
-            <h3>The late Middle Ages</h3>
-            <p>A narrated animation on the world after the year 1000: the revival of countryside and cities, the communes, papacy and empire, Barbarossa and Legnano. Followed by an interactive timeline from 800 to 1492.</p>
-            <div class="durata"><a href="https://claude.ai/artifact/4ms8hDPdEcxfyBfaooaPuX">about 5½ minutes · open</a></div>
-          </div>
+            <h3><a href="https://claude.ai/artifact/C8gDVCy8AuoziUq881Xtyc" target="_blank" rel="noopener">After Charlemagne, 768–1000: timeline</a></h3>
+            <p>A timeline with five strands (Carolingians, Normans, Magyars, Saracens, Ottonians), a card for each event and an «order the events» game.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/C8gDVCy8AuoziUq881Xtyc" target="_blank" rel="noopener">interactive · open</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/storia-alto-medioevo-dispensa.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/storia-alto-medioevo-dispensa.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">Third year · history</div>
+            <h3><a href="../../materiali/storia-alto-medioevo-dispensa.pdf">The early Middle Ages 768–1002 – handout</a></h3>
+            <p>From Charlemagne to the Ottonians: a summary with in-depth notes, links to Italian literature, a lesson plan for teachers and test questions.</p>
+            <div class="durata"><a href="../../materiali/storia-alto-medioevo-dispensa.pdf">PDF · 11 pages · download</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/storia-dopo-carlo-magno-scheda.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/storia-dopo-carlo-magno-scheda.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">Third year · history</div>
+            <h3><a href="../../materiali/storia-dopo-carlo-magno-scheda.pdf">After Charlemagne 843–962 – study sheet</a></h3>
+            <p>Second invasions, local lords and the Ottonians, with a table, glossary and study questions.</p>
+            <div class="durata"><a href="../../materiali/storia-dopo-carlo-magno-scheda.pdf">PDF · 3 pages · download</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/storia-dossier-ucraina-negoziato.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/storia-dossier-ucraina-negoziato.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">Final year · civic education</div>
+            <h3><a href="../../materiali/storia-dossier-ucraina-negoziato.pdf">Four years of war in Ukraine</a></h3>
+            <p>A historical and political dossier updated to April 2026: chronology, actors, international law and an outline for simulating a multilateral negotiation in class.</p>
+            <div class="durata"><a href="../../materiali/storia-dossier-ucraina-negoziato.pdf">PDF · 11 pages · download</a></div>
+          </article>
+          <article class="mat mat-testo" data-f="testo">
+            <a class="mat-img" href="../../il-risorgimento/" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/risorgimento.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Reading sheet</span></a>
+            <div class="genere">For teachers and classes</div>
+            <h3><a href="../../il-risorgimento/">The Risorgimento</a></h3>
+            <p>School materials gathered on one page, with a timeline (in Italian).</p>
+            <div class="durata"><a href="../../il-risorgimento/">read the sheet</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sezione sezione-mat" id="latino">
+    <div class="capo">
+      <span class="capo-num">08</span>
+      <div>
+        <h2>Latin</h2>
+        <p class="occhio">The method I use in private lessons, on a single sheet.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:10px">
+      <div></div>
+      <div class="interno">
+        <div class="mats">
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/latino-metodo-colori.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/latino-metodo-colori.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">Lower and upper secondary</div>
+            <h3><a href="../../materiali/latino-metodo-colori.pdf">Latin in colour</a></h3>
+            <p>A four-step method for translating without guessing: verb, subject, subordinate clauses, complements. Three worked examples from Caesar and Cicero and a sentence to try alone, with the solution.</p>
+            <div class="durata"><a href="../../materiali/latino-metodo-colori.pdf">PDF · 2 pages · download</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sezione sezione-mat" id="ia">
+    <div class="capo">
+      <span class="capo-num">09</span>
+      <div>
+        <h2>Artificial intelligence for teachers</h2>
+        <p class="occhio">Materials from my workshop on AI in lesson planning at the «Carlo Cattaneo» institute in Milan, for Fondazione Mondo Digitale.</p>
+      </div>
+    </div>
+    <div class="corpo" style="margin-top:10px">
+      <div></div>
+      <div class="interno">
+        <div class="mats">
+          <article class="mat mat-anim" data-f="anim">
+            <a class="mat-img" href="https://claude.ai/artifact/EnKyzaKJdfvi55hXqfQ4vS" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/uda-gemini.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">▶ Animation with voice</span></a>
+            <div class="genere">For teachers · workshop</div>
+            <h3><a href="https://claude.ai/artifact/EnKyzaKJdfvi55hXqfQ4vS" target="_blank" rel="noopener">A learning unit with Gemini</a></h3>
+            <p>An animation in twelve scenes on real screens: building an Italian and history learning unit step by step with Gemini, from <i>Rosso Malpelo</i> to the Franchetti–Sonnino inquiry.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/EnKyzaKJdfvi55hXqfQ4vS" target="_blank" rel="noopener">about 3 minutes · watch</a></div>
+          </article>
+          <article class="mat mat-pres" data-f="inter">
+            <a class="mat-img" href="https://claude.ai/artifact/CqEzfMzZPDNTxLAw5C4HfX" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/stabilimento.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Presentation</span></a>
+            <div class="genere">For teachers · presentation</div>
+            <h3><a href="https://claude.ai/artifact/CqEzfMzZPDNTxLAw5C4HfX" target="_blank" rel="noopener">The lesson factory</a></h3>
+            <p>The workshop as a factory in sixteen departments, from intake to dispatch: enter each one and browse its slides. A map you move through with the arrow keys or a finger.</p>
+            <div class="durata"><a href="https://claude.ai/artifact/CqEzfMzZPDNTxLAw5C4HfX" target="_blank" rel="noopener">presentation · open</a></div>
+          </article>
+          <article class="mat mat-inter" data-f="inter">
+            <a class="mat-img" href="../../materiali/ia/laboratorio-ia-in-aula.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/lab-ia.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Interactive page</span></a>
+            <div class="genere">For teachers · workshop</div>
+            <h3><a href="../../materiali/ia/laboratorio-ia-in-aula.html" target="_blank" rel="noopener">Two hands-on tests</a></h3>
+            <p>How a language model picks the next word, with an adjustable temperature, and the AI Act risk pyramid with eight school cases to classify.</p>
+            <div class="durata"><a href="../../materiali/ia/laboratorio-ia-in-aula.html" target="_blank" rel="noopener">interactive · open</a></div>
+          </article>
+          <article class="mat mat-pres" data-f="inter">
+            <a class="mat-img" href="../../materiali/ia/il-codice-e-la-macchina.html" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/codice-macchina.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">Presentation</span></a>
+            <div class="genere">For teachers · presentation</div>
+            <h3><a href="../../materiali/ia/il-codice-e-la-macchina.html" target="_blank" rel="noopener">The code and the machine</a></h3>
+            <p>Slides from the first session of the workshop, from planning to the learning unit.</p>
+            <div class="durata"><a href="../../materiali/ia/il-codice-e-la-macchina.html" target="_blank" rel="noopener">presentation · open</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/ia-dossier-progettazione.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/ia-dossier-progettazione.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">For teachers · dossier</div>
+            <h3><a href="../../materiali/ia-dossier-progettazione.pdf">Artificial intelligence in lesson planning</a></h3>
+            <p>A study dossier: the history of the thinking machine, how language models work, their limits, European rules, tools for humanities teachers. With notes and bibliography.</p>
+            <div class="durata"><a href="../../materiali/ia-dossier-progettazione.pdf">PDF · 27 pages · download</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/ia-scheda-corsisti.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/ia-scheda-corsisti.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">For teachers · worksheet</div>
+            <h3><a href="../../materiali/ia-scheda-corsisti.pdf">Using AI in lesson planning</a></h3>
+            <p>The workshop worksheet: three rules before starting, the prompt written as a five-part assignment, examples to adapt.</p>
+            <div class="durata"><a href="../../materiali/ia-scheda-corsisti.pdf">PDF · 2 pages · download</a></div>
+          </article>
+          <article class="mat mat-pdf" data-f="pdf">
+            <a class="mat-img" href="../../materiali/ia-modello-uda.pdf" tabindex="-1" aria-hidden="true"><img src="../../materiali/anteprime/ia-modello-uda.webp" alt="" width="640" height="360" loading="lazy" decoding="async"><span class="mat-tipo">PDF download</span></a>
+            <div class="genere">For teachers · template</div>
+            <h3><a href="../../materiali/ia-modello-uda.pdf">Learning unit – template and example</a></h3>
+            <p>The learning-unit template to fill in, with a worked example.</p>
+            <div class="durata"><a href="../../materiali/ia-modello-uda.pdf">PDF · 3 pages · download</a></div>
+          </article>
         </div>
       </div>
     </div>
@@ -341,7 +561,7 @@
       <div></div>
       <div class="interno">
         <div class="colonne">
-          <p>More materials are on the way: literature and history boards, presentations on the twentieth century, study-skills sheets. I publish them as they are ready.</p>
+          <p>More materials are in preparation: literature and history boards, slides on the twentieth century, study-method worksheets. I publish them as they are ready.</p>
         </div>
         <aside class="sostieni" id="sostieni"><p><strong>These materials are free</strong> and will stay free. If they helped you, you can support the work with a donation of your choice: it helps me prepare more.</p><p class="sostieni-link"><a href="https://ko-fi.com/daniloaprigliano">Buy me a coffee on Ko-fi</a><a href="https://www.paypal.biz/DaniloAprigliano">Donate with PayPal</a></p></aside>
       </div>
